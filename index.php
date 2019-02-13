@@ -11,6 +11,9 @@
 
 <div class="container text-center">
   <h1>StudentLogger</h1>
+  <p>Please Enter your login details</p>
+  Username:<br>
+  Password:
 </div>
 
 <body>
