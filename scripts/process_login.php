@@ -1,10 +1,11 @@
 <?php
   session_start();
-  $host = "localhost";
-  $sqlUser = "root";
-  $sqlPass = "Atheros017";
-  $database = "student_logger";
-  $conn = new mysqli($host, $sqlUser, $sqlPass, $database);
+  $conn = new mysqli(
+    getenv('HTTP_HOST'),
+    getenv('HTTP_USER'),
+    getenv('HTTP_PASS'),
+    getenv('HTTP_DATABASE')
+  );
   if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
   }
