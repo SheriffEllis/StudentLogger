@@ -36,8 +36,8 @@
         <label><input type="checkbox" name="remember"> Remember me</label>
       </div>
       <button type="submit" class="btn btn-primary">Log in</button>
-      <a href="pages/sign_up.php" class="btn btn-link" role="button">Sign up</a>
     </form>
+    <a href="pages/sign_up.php" class="btn btn-link" role="button">Don't have an account? Sign up</a>
   </div>
 <body>
 </html>

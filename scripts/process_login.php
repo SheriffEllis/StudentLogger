@@ -17,9 +17,14 @@
     $_SESSION['pwd'] = $pwd;
   }
 
-  $result = $conn->query("SELECT hash FROM users WHERE username='$usr'");
-  if($result->num_rows > 0){
-    $hash = $result->fetch_assoc()['hash'];
+  $stmt = $conn->prepare("SELECT hash FROM users WHERE username= ?");
+  $stmt->bind_param('s', $usr);
+  $stmt->execute();
+  $stmt->bind_result($result);
+  $stmt->fetch();
+  
+  if($result != null){
+    $hash = $result;
   }
 
   if(isset($hash)){
