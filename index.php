@@ -1,11 +1,5 @@
 <?php
   session_start();
-  if(!isset($_SESSION['usr'])){
-    $_SESSION['usr'] = '';
-  }
-  if(!isset($_SESSION['pwd'])){
-    $_SESSION['pwd'] = '';
-  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,11 +20,13 @@
     <form action="scripts/process_login.php" method="post">
       <div class="form-group">
         <label for="usr" class="sr-only">Username</label>
-        <input type="username" class="form-control col-lg-3 col-centered" placeholder="Enter username" id="usr" name="usr" value="<?php echo $_SESSION['usr'];?>">
+        <input type="username" class="form-control col-lg-3 col-centered" placeholder="Enter username" id="usr"
+        name="usr" value="<?php if(isset($_SESSION['usr'])){echo $_SESSION['usr'];}?>">
       </div>
       <div class="form-group">
         <label for="pwd" class="sr-only">Password</label>
-        <input type="password" class="form-control col-lg-3 col-centered" placeholder="Enter password" id="pwd" name="pwd" value="<?php echo $_SESSION['pwd'];?>">
+        <input type="password" class="form-control col-lg-3 col-centered" placeholder="Enter password" id="pwd"
+        name="pwd" value="<?php if(isset($_SESSION['pwd'])){echo $_SESSION['pwd'];}?>">
       </div>
       <div class="checkbox">
         <label><input type="checkbox" name="remember"> Remember me</label>

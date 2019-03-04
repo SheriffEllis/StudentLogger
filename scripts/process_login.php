@@ -10,8 +10,8 @@
     die("Connection failed: " . $conn->connect_error);
   }
 
-  $usr = htmlspecialchars($_POST['usr']);
-  $pwd = htmlspecialchars($_POST['pwd']);
+  $usr = htmlspecialchars($_POST['usr'],ENT_QUOTES);
+  $pwd = htmlspecialchars($_POST['pwd'],ENT_QUOTES);
   if(isset($_POST['remember'])){
     $_SESSION['usr'] = $usr;
     $_SESSION['pwd'] = $pwd;
@@ -22,7 +22,7 @@
   $stmt->execute();
   $stmt->bind_result($result);
   $stmt->fetch();
-  
+
   if($result != null){
     $hash = $result;
   }

@@ -10,8 +10,8 @@
     die("Connection failed: " . $conn->connect_error);
   }
 
-  $usr = htmlspecialchars($_POST['usr']);
-  $pwd = htmlspecialchars($_POST['pwd']);
+  $usr = htmlspecialchars($_POST['usr'],ENT_QUOTES);
+  $pwd = htmlspecialchars($_POST['pwd'],ENT_QUOTES);
   $hash = password_hash($pwd, PASSWORD_DEFAULT);
 
   $stmt = $conn->prepare("INSERT INTO users (username, hash) VALUES (?, ?)");
