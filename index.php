@@ -1,6 +1,4 @@
-<?php
-  session_start();
-?>
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +8,6 @@
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/custom.css">
   <link rel="icon" href="resources/favicon.ico">
-  <script src="js/bootstrap.min.js"></script>
 </head>
 <body>
   <div class="container text-center tb-padding">

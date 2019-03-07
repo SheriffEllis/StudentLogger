@@ -7,14 +7,17 @@
   <link rel="stylesheet" href="../css/bootstrap.min.css">
   <link rel="stylesheet" href="../css/custom.css">
   <link rel="icon" href="../resources/favicon.ico">
-  <script src="../js/bootstrap.min.js"></script>
 </head>
 <body>
-  <div class="container text-center tb-padding">
+  <div class="container text-center" style="padding-top: 25px; padding-bottom: 50px">
     <img src="../resources/logo.png">
     <h2>Sign up Page</h2>
     <p style="font-size: 15px">Please sign up</p>
     <form action="../scripts/process_signup.php" method="post">
+      <div class="form-group">
+        <label for="email" class="sr-only">Email</label>
+        <input type="email" class="form-control col-lg-3 col-centered" placeholder="Enter email address" id="email" name="email">
+      </div>
       <div class="form-group">
         <label for="usr" class="sr-only">Username</label>
         <input type="username" class="form-control col-lg-3 col-centered" placeholder="Enter username" id="usr" name="usr">
