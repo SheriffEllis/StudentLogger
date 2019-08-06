@@ -22,25 +22,29 @@
   $stmt->execute();
   $stmt->bind_result($result);
   $stmt->fetch();
+  $conn->close();
 
   if($result != null){
     $hash = $result;
   }
 
+  $_SESSION['wrng_pwd'] = false;
+  $_SESSION['wrng_usr'] = false;
   if(isset($hash)){
     if(password_verify($pwd, $hash)){
-      echo "Access granted";
+      //Access granted
+      header("Location: ../pages/homepage.php");
+      exit();
     }else{
-      echo "Access denied";
+      //Access denied: wrong password
+      $_SESSION['wrng_pwd'] = true;
+      header("Location: ../index.php");
+      exit();
     }
   }else{
-    echo "Usernamer does not exist";
+    //Access denied: wrong username
+    $_SESSION['wrng_usr'] = true;
+    header("Location: ../index.php");
+    exit();
   }
-  $conn->close();
 ?>
-
-<html>
-<body>
-<a href="../index.php"> Back</a>
-</body>
-</html>

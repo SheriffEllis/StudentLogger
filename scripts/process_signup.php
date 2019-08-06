@@ -10,6 +10,8 @@
     die("Connection failed: " . $conn->connect_error);
   }
 
+  //TODO Input validation
+
   $usr = htmlspecialchars($_POST['usr'],ENT_QUOTES);
   $email = htmlspecialchars($_POST['email'],ENT_QUOTES);
   $pwd = htmlspecialchars($_POST['pwd'],ENT_QUOTES);
@@ -19,6 +21,9 @@
   $stmt->bind_param("sss", $usr, $email ,$hash);
   $stmt->execute();
   $conn->close();
+
+  header("Location: ../pages/homepage.php");
+  exit();
 ?>
 <html>
 <body>
