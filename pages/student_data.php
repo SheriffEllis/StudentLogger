@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>StudentLogger: Home</title>
+  <title>StudentLogger: Student Data</title>
   <meta charset="utf-8">
   <meta name= "viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -17,7 +17,7 @@
       <ul class="nav navbar-nav" style="padding-left: 80px">
         <li><a href="account.php">Account</a></li>
         <li><a href="manage_students.php">Manage Students</a></li>
-        <li><a href="student_data.php">Student Data</a></li>
+        <li class="active"><a href="student_data.php">Student Data</a></li>
         <li><a href="data_representation.php">Data Representation</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right" style="padding-right: 30px">

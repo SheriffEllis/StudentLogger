@@ -1,0 +1,26 @@
+.col-centered{
+  float: none;
+  margin: 0 auto;
+}
+
+.tb-padding{
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.error-box{
+  background-color: #ff8888;
+  padding: 3px;
+  border: 2px solid #a23535;
+  width: 35%;
+  position: relative;
+  bottom: 8px;
+}
+
+.navbar-brand,
+.navbar-nav li a {
+  line-height: 100px;
+  height: 100px;
+  padding-top: 0;
+  font-size: 20px;
+}
