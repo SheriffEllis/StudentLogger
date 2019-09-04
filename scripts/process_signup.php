@@ -1,4 +1,5 @@
 <?php
+  session_start();
   $conn = new mysqli(
     getenv('HTTP_HOST'),
     getenv('HTTP_USER'),
@@ -21,6 +22,9 @@
   $stmt->bind_param("sss", $usr, $email ,$hash);
   $stmt->execute();
   $conn->close();
+
+  $_SESSION['usr'] = $usr;
+  $_SESSION['pwd'] = $pwd;
 
   header("Location: ../pages/homepage.php");
   exit();

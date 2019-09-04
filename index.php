@@ -18,7 +18,13 @@
       <div class="form-group">
         <label for="usr" class="sr-only">Username</label>
         <input type="username" class="col-lg-4 col-centered" placeholder="Enter username" id="login-field"
-        name="usr" value="<?php if(isset($_SESSION['usr'])){echo $_SESSION['usr'];}?>">
+        name="usr" value="<?php
+          if(isset($_SESSION['remember'])){
+            if($_SESSION['remember']){
+              echo $_SESSION['usr'];
+            }
+          }
+        ?>">
       </div>
       <?php
         if(isset($_SESSION['wrng_usr'])){
@@ -30,7 +36,13 @@
       <div class="form-group">
         <label for="pwd" class="sr-only">Password</label>
         <input type="password" class="col-lg-4 col-centered" placeholder="Enter password" id="login-field"
-        name="pwd" value="<?php if(isset($_SESSION['pwd'])){echo $_SESSION['pwd'];}?>">
+        name="pwd" value="<?php
+          if(isset($_SESSION['remember'])){
+            if($_SESSION['remember']){
+              echo $_SESSION['pwd'];
+            }
+          }
+        ?>">
       </div>
       <?php
         if(isset($_SESSION['wrng_pwd'])){
