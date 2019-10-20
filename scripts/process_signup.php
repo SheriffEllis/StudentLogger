@@ -29,8 +29,3 @@
   header("Location: ../pages/homepage.php");
   exit();
 ?>
-<html>
-<body>
-<a href="../pages/sign_up.php"> Back</a>
-</body>
-</html>
