@@ -17,7 +17,7 @@
   $_SESSION['usr'] = $usr;
   $_SESSION['pwd'] = $pwd;
 
-  $stmt = $conn->prepare("SELECT hash FROM users WHERE username= ?");
+  $stmt = $conn->prepare("SELECT Hash FROM teacher WHERE Username= ?");
   $stmt->bind_param('s', $usr);
   $stmt->execute();
   $stmt->bind_result($result);

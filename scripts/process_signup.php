@@ -17,9 +17,14 @@
   $email = htmlspecialchars($_POST['email'],ENT_QUOTES);
   $pwd = htmlspecialchars($_POST['pwd'],ENT_QUOTES);
   $hash = password_hash($pwd, PASSWORD_DEFAULT);
+  
+  //TODO: implement entry of remaining values
+  $name = "Blank";
+  $surname = "Blank";
+  $sex = 'M';
 
-  $stmt = $conn->prepare("INSERT INTO users (username, email, hash) VALUES (?, ?, ?)");
-  $stmt->bind_param("sss", $usr, $email ,$hash);
+  $stmt = $conn->prepare("INSERT INTO teacher (Username, First_name, Last_name, Sex, Email, Hash) VALUES (?, ?, ?, ?, ?, ?)");
+  $stmt->bind_param("ssssss", $usr, $name, $surname, $sex, $email ,$hash);
   $stmt->execute();
   $conn->close();
 
