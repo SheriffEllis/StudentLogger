@@ -8,13 +8,13 @@ $_SESSION['invld_pwd'] = false;
 ?>
 <!DOCTYPE html>
 <html lang="en">
+<!-- This is how to comment in html -->
 <head>
   <title>StudentLogger: Login</title>
   <meta charset="utf-8">
   <meta name= "viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/style.css?version=1">
-  <script src="js/login.js"></script>
   <link rel="icon" href="resources/favicon.ico">
 </head>
 <body>
@@ -31,10 +31,14 @@ $_SESSION['invld_pwd'] = false;
         if(!empty($_SESSION['remember'])){echo $_SESSION['usr'];}
         ?>">
       </div>
-        <?php
-        //Show errorbox when login algorithm returns that username does not exist
-        if(!empty($_SESSION['wrng_usr'])){echo "<div class='col-centered error-box'> Username does not exist </div>";}
-        ?>
+      <?php
+      //Show errorbox when login algorithm returns that username does not exist
+      if(!empty($_SESSION['wrng_usr'])){echo "
+        <div class='col-centered error-box'>
+          Username does not exist
+        </div>
+        ";}
+      ?>
       <div class="form-group">
         <label for="pwd" class="sr-only">Password</label>
         <input type="password" class="col-lg-4 col-centered" placeholder="Enter password" id="login-field"
@@ -43,10 +47,14 @@ $_SESSION['invld_pwd'] = false;
         if(!empty($_SESSION['remember'])){echo $_SESSION['pwd'];}
         ?>">
       </div>
-        <?php
-        //Show errorbox when login algorithm returns that password is invalid
-        if(!empty($_SESSION['wrng_pwd'])){echo "<div class='col-centered error-box'> Incorrect password, please try again </div>";}
-        ?>
+      <?php
+      //Show errorbox when login algorithm returns that password is invalid
+      if(!empty($_SESSION['wrng_pwd'])){echo "
+        <div class='col-centered error-box'>
+          Incorrect password, please try again
+        </div>
+        ";}
+      ?>
       <div class="checkbox">
         <label><input type="checkbox" name="remember"> Remember me</label>
       </div>

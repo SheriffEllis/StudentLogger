@@ -1,5 +1,4 @@
 <?php
-//TODO: Remember inputs and re-enter when invalid
 session_start();
 //Form connection with local SQL server using details in .htaccess file
 $conn = new mysqli(
@@ -24,6 +23,11 @@ function clean_input_data($data){
   $data = htmlspecialchars($data, ENT_QUOTES);
   return $data;
 }
+
+//Remember input values to re-enter if trying again
+$_SESSION['usr'] = $usr;
+$_SESSION['email'] = $email;
+$_SESSION['pwd'] = $pwd;
 
 //Input validation
 //Username: must be <=50 characters, only contains letters and whitespace, can't be an empty string
@@ -56,9 +60,6 @@ if(!($_SESSION['invld_usr'] || $_SESSION['invld_email'] || $_SESSION['invld_pwd'
   $stmt->bind_param("sss", $usr, $email ,$hash);
   $stmt->execute();
   $conn->close();
-
-  $_SESSION['usr'] = $usr;
-  $_SESSION['pwd'] = $pwd;
 
   header("Location: ../pages/homepage.php");
 }else{
