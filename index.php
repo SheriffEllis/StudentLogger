@@ -1,5 +1,6 @@
 <?php
 session_start();
+//Reset signup errorboxes
 $_SESSION['invld_usr'] = false;
 $_SESSION['usr_unavailable'] = false;
 $_SESSION['invld_email'] = false;
@@ -13,6 +14,7 @@ $_SESSION['invld_pwd'] = false;
   <meta name= "viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/style.css?version=1">
+  <script src="js/login.js"></script>
   <link rel="icon" href="resources/favicon.ico">
 </head>
 <body>
@@ -20,7 +22,7 @@ $_SESSION['invld_pwd'] = false;
     <img src="resources/logo.png">
     <h2>User Login</h2>
     <p style="font-size: 15px">Please enter your login details</p>
-    <form action="scripts/process_login.php" method="post">
+    <form action="php/process_login.php" method="post">
       <div class="form-group">
         <label for="usr" class="sr-only">Username</label>
         <input type="username" class="col-lg-4 col-centered" placeholder="Enter username" id="login-field"
@@ -50,7 +52,7 @@ $_SESSION['invld_pwd'] = false;
       </div>
       <button type="submit" class="btn btn-primary">Log in</button>
     </form>
-    <a href="pages/sign_up.php" class="btn btn-link" role="button">Don't have an account? Sign up</a>
+    <a href="pages/sign_up_page.php" class="btn btn-link" role="button">Don't have an account? Sign up</a>
   </div>
 <body>
 </html>

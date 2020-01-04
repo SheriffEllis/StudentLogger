@@ -64,7 +64,7 @@ if(!($_SESSION['invld_usr'] || $_SESSION['invld_email'] || $_SESSION['invld_pwd'
 }else{
   //Some inputs are invalid: redirect back to signup (with error boxes)
   $conn->close();
-  header("Location: ../pages/sign_up.php");
+  header("Location: ../pages/sign_up_page.php");
 }
 exit();
 ?>

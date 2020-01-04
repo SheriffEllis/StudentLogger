@@ -19,14 +19,14 @@ $_SESSION['wrng_usr'] = false;
     <img src="../resources/logo.png">
     <h2>Sign up</h2>
     <p style="font-size: 15px">Please enter your details to create an account</p>
-    <form action="../scripts/process_signup.php" method="post">
+    <form action="../php/process_signup.php" method="post">
       <div class="form-group">
         <label for="email" class="sr-only">Email</label>
         <input type="email" class="col-lg-4 col-centered" placeholder="Enter email address" id=login-field name="email">
       </div>
         <?php
         //Show errorbox when signup algorithm returns that email is invalid
-        if(!empty($_SESSION['invld_email'])){echo "<div class='col-centered error-box'> Email invalid: must be less than 320 characters and contain @. </div>";}
+        if(!empty($_SESSION['invld_email'])){echo "<div class='col-centered error-box'> Email invalid: must be less than 320 characters and a real email address. </div>";}
         ?>
       <div class="form-group">
         <label for="usr" class="sr-only">Username</label>
