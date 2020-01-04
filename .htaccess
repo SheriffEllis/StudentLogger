@@ -1,4 +1,4 @@
 SetEnv HTTP_USER "Admin"
-SetEnv HTTP_PASS "Bisc2019"
+SetEnv HTTP_PASS "BiscPass"
 SetEnv HTTP_HOST "localhost"
 SetEnv HTTP_DATABASE "student_logger"

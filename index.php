@@ -1,4 +1,10 @@
-<?php session_start();?>
+<?php
+session_start();
+$_SESSION['invld_usr'] = false;
+$_SESSION['usr_unavailable'] = false;
+$_SESSION['invld_email'] = false;
+$_SESSION['invld_pwd'] = false;
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,38 +25,26 @@
         <label for="usr" class="sr-only">Username</label>
         <input type="username" class="col-lg-4 col-centered" placeholder="Enter username" id="login-field"
         name="usr" value="<?php
-          if(isset($_SESSION['remember'])){
-            if($_SESSION['remember']){
-              echo $_SESSION['usr'];
-            }
-          }
+        //Input username if user clicked "Remember me" tickbox
+        if(!empty($_SESSION['remember'])){echo $_SESSION['usr'];}
         ?>">
       </div>
-      <?php
-        if(isset($_SESSION['wrng_usr'])){
-          if($_SESSION['wrng_usr']){
-            echo "<div class='col-centered error-box'> Username does not exist </div>";
-          }
-        }
-      ?>
+        <?php
+        //Show errorbox when login algorithm returns that username does not exist
+        if(!empty($_SESSION['wrng_usr'])){echo "<div class='col-centered error-box'> Username does not exist </div>";}
+        ?>
       <div class="form-group">
         <label for="pwd" class="sr-only">Password</label>
         <input type="password" class="col-lg-4 col-centered" placeholder="Enter password" id="login-field"
         name="pwd" value="<?php
-          if(isset($_SESSION['remember'])){
-            if($_SESSION['remember']){
-              echo $_SESSION['pwd'];
-            }
-          }
+        //Input password if user clicked "Remember me" tickbox
+        if(!empty($_SESSION['remember'])){echo $_SESSION['pwd'];}
         ?>">
       </div>
-      <?php
-        if(isset($_SESSION['wrng_pwd'])){
-          if($_SESSION['wrng_pwd']){
-            echo "<div class='col-centered error-box'> Incorrect password, please try again </div>";
-          }
-        }
-      ?>
+        <?php
+        //Show errorbox when login algorithm returns that password is invalid
+        if(!empty($_SESSION['wrng_pwd'])){echo "<div class='col-centered error-box'> Incorrect password, please try again </div>";}
+        ?>
       <div class="checkbox">
         <label><input type="checkbox" name="remember"> Remember me</label>
       </div>
