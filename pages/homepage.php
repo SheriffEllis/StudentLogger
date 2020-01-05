@@ -5,55 +5,85 @@
   <title>StudentLogger: Home</title>
   <meta charset="utf-8">
   <meta name= "viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../css/style.css?version=3">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="../css/style.css?version=10">
   <link rel="icon" href="../resources/favicon.ico">
 </head>
 <body>
+
+  <!--
+  This navbar is copied into each page of the website with the
+  currently open page set to "active"
+  -->
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <div class="navbar-header">
+        <!-- Student Logger logo links back to homepage -->
         <a class="navbar-brand navtext" href="homepage.php"><img src="../resources/logo2.png"></a>
       </div>
+
       <ul class="nav navbar-nav">
+        <!-- On the homepage none of the pages are set to active -->
         <li><a href="account_page.php">Account</a></li>
         <li><a href="manage_students_page.php">Manage Students</a></li>
-        <li><a href="exam_data_page.php">Student Data</a></li>
+        <li><a href="exam_data_page.php">Exam Data</a></li>
         <li><a href="data_representation_page.php">Data Representation</a></li>
       </ul>
+
       <ul class="nav navbar-nav navbar-right">
+        <li>
+          <!-- Construction of notification dropdown box -->
+          <div id="notifications-dropdown" class="dropdown">
+            <button id="notifications-button" class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+              <span class="caret"></span>
+              <span class="glyphicon glyphicon-bell"></span>
+              <!-- TODO: substitute real number of notifications -->
+              (3)
+            </button>
+            <ul class="dropdown-menu">
+              <!-- TODO: substitute real notifications -->
+              <li><a href="#">[STUDENT1] is struggling in [CLASS1]</a></li>
+              <li><a href="#">[STUDENT2] is struggling in [CLASS2]</a></li>
+              <li><a href="#">[STUDENT3] is struggling in [CLASS3]</a></li>
+            </ul>
+          </div>
+        </li>
         <li><a href="../index.php"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
       </ul>
     </div>
   </nav>
-  <div class="container text-size-m" style="padding-bottom: 80px">
-    <div id="welcome" class="text-center">
+
+  <div class="container text-size-m tb-padding">
+    <div id="title-text" class="text-center">
       Welcome back, <?php echo $_SESSION['usr'];?>
     </div>
     <div class="row row-padded">
       <div class="col-lg-6 text-center">
-        <a class="btn btn-primary btn-mega" href="account.php">
+        <a class="btn btn-primary btn-mega" href="account_page.php">
           <p><img src="../resources/account.png"><br>Account</p>
         </a>
       </div>
       <div class="col-lg-6 text-center">
-        <a class="btn btn-success btn-mega" href="manage_students.php">
+        <a class="btn btn-success btn-mega" href="manage_students_page.php">
           <p><img src="../resources/manage_students.png"><br>Manage Students</p>
         </a>
       </div>
     </div>
     <div class="row row-padded">
       <div class="col-lg-6 text-center">
-        <a class="btn btn-danger btn-mega" href="student_data.php">
-          <p><img src="../resources/student_data.png"><br>Student Data</p>
+        <a class="btn btn-danger btn-mega" href="exam_data_page.php">
+          <p><img src="../resources/student_data.png"><br>Exam Data</p>
         </a>
       </div>
       <div class="col-lg-6 text-center">
-        <a class="btn btn-warning btn-mega" href="data_representation.php">
+        <a class="btn btn-warning btn-mega" href="data_representation_page.php">
           <p><img src="../resources/data_representation.png"><br>Data Representation</p>
         </a>
       </div>
     </div>
   </div>
+
 </body>
 </html>

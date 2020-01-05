@@ -12,20 +12,18 @@ if ($conn->connect_error) {
 }
 
 //Clean inputs to prevent cross-site scripting attacks
-$usr = clean_input_data($_POST['usr'],ENT_QUOTES);
-$pwd = clean_input_data($_POST['pwd'],ENT_QUOTES);
+$usr = clean_input_data($_POST['usr']);
+$pwd = clean_input_data($_POST['pwd']);
 
 function clean_input_data($data){
   $data = trim($data);
   $data = stripslashes($data);
-  $data = htmlspecialchars($data);
+  $data = htmlspecialchars($data,ENT_QUOTES);
   return $data;
 }
 
 //If "Remember me" tickbox was clicked, set session variable to true
 $_SESSION['remember'] = !empty($_POST['remember']);
-$_SESSION['usr'] = $usr;
-$_SESSION['pwd'] = $pwd;
 
 //Form prepared statement searching for user's hash
 $stmt = $conn->prepare("SELECT Hash FROM teacher WHERE Username= ?");
@@ -44,6 +42,7 @@ $_SESSION['wrng_usr'] = false;
 if(isset($hash)){
   if(password_verify($pwd, $hash)){
     //Access granted
+    $_SESSION['usr'] = $_POST['usr'];
     header("Location: ../pages/homepage.php");
   }else{
     //Access denied: wrong password

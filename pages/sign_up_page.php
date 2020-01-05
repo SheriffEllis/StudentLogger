@@ -1,8 +1,8 @@
 <?php
 session_start();
 //Reset login errorboxes
-$_SESSION['wrng_pwd'] = false;
-$_SESSION['wrng_usr'] = false;
+unset($_SESSION['wrng_pwd']);
+unset($_SESSION['wrng_usr']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,19 +10,26 @@ $_SESSION['wrng_usr'] = false;
   <title>StudentLogger: Sign up</title>
   <meta charset="utf-8">
   <meta name= "viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../css/style.css?version=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="../css/style.css?version=11">
   <link rel="icon" href="../resources/favicon.ico">
 </head>
 <body>
+
   <div class="container text-center tb-padding">
     <img src="../resources/logo.png">
     <h2>Sign up</h2>
     <p style="font-size: 15px">Please enter your details to create an account</p>
+    <!--
+    The form data is sent to a separate php script file
+    which judges the validity of the signup data
+    -->
     <form action="../php/process_signup.php" method="post">
       <div class="form-group">
         <label for="email" class="sr-only">Email</label>
-        <input type="email" class="col-lg-4 col-centered" placeholder="Enter email address" id=login-field
+        <input type="email" class="col-lg-4 col-centered form-control form-m" placeholder="Enter email address" id=login-field
         name="email" value="<?php
         //Fill in email if it was entered before
         if(!empty($_SESSION['email'])){echo $_SESSION['email'];}
@@ -38,7 +45,7 @@ $_SESSION['wrng_usr'] = false;
       ?>
       <div class="form-group">
         <label for="usr" class="sr-only">Username</label>
-        <input type="username" class="col-lg-4 col-centered" placeholder="Enter username" id=login-field
+        <input type="username" class="col-lg-4 col-centered form-control form-m" placeholder="Enter username" id=login-field
         name="usr" value="<?php
         //Fill in username if it was entered before
         if(!empty($_SESSION['usr'])){echo $_SESSION['usr'];}
@@ -59,7 +66,7 @@ $_SESSION['wrng_usr'] = false;
       ?>
       <div class="form-group">
         <label for="pwd" class="sr-only">Password</label>
-        <input type="password" class="col-lg-4 col-centered" placeholder="Enter password" id=login-field
+        <input type="password" class="col-lg-4 col-centered form-control form-m" placeholder="Enter password" id=login-field
         name="pwd" value="<?php
         //Fill in password if it was entered before
         if(!empty($_SESSION['pwd'])){echo $_SESSION['pwd'];}
@@ -77,5 +84,6 @@ $_SESSION['wrng_usr'] = false;
     </form>
     <a href="../index.php" class="btn btn-link" role="button">Already have an account? Login</a>
   </div>
+
 </body>
 </html>

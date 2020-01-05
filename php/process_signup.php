@@ -35,7 +35,7 @@ $_SESSION['invld_usr'] = strlen($usr)>50 || !preg_match("/^[a-zA-Z ]*$/", $usr) 
 
 //Check if username already exists if username was valid
 if(!$_SESSION['invld_usr']){
-  $stmt = $conn->prepare("SELECT Username FROM teacher WHERE Username= ?");
+  $stmt = $conn->prepare("SELECT Username FROM teacher WHERE Username=?");
   $stmt->bind_param('s', $usr);
   $stmt->execute();
   $stmt->bind_result($result);
@@ -61,6 +61,8 @@ if(!($_SESSION['invld_usr'] || $_SESSION['invld_email'] || $_SESSION['invld_pwd'
   $stmt->execute();
   $conn->close();
 
+  unset($_SESSION['email']);
+  unset($_SESSION['pwd']);
   header("Location: ../pages/homepage.php");
 }else{
   //Some inputs are invalid: redirect back to signup (with error boxes)

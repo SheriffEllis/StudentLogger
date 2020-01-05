@@ -4,8 +4,8 @@
 }
 
 .tb-padding{
-  padding-top: 50px;
-  padding-bottom: 50px;
+  padding-top: 40px;
+  padding-bottom: 80px;
 }
 
 .error-box{
@@ -36,7 +36,26 @@
   padding-top: 25px;
 }
 
-#welcome{
+.form-m{
+  width: 400px;
+}
+
+#title-text{
+  font-size: 45px;
+  padding-bottom: 30px;
+  font-weight: bold;
+}
+
+#label-text{
   font-size: 30px;
-  padding-top: 10px;
+  font-weight: bold;
+}
+
+#notifications-dropdown{
+  padding-top: 25px;
+}
+
+#notifications-button{
+  height: 50px;
+  font-size: 18px;
 }
