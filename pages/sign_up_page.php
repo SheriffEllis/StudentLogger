@@ -36,6 +36,7 @@ unset($_SESSION['wrng_usr']);
         ?>">
       </div>
       <?php
+      //TODO: use javascript style.display = "none"/"block" instead?
       //Show errorbox when signup algorithm returns that email is invalid
       if(!empty($_SESSION['invld_email'])){echo "
         <div class='col-centered error-box'>

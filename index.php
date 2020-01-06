@@ -47,6 +47,7 @@ unset($_SESSION['pwd']);
         ?>">
       </div>
       <?php
+      //TODO: use javascript style.display = "none"/"block" instead?
       //Show errorbox when login algorithm returns that username does not exist
       if(!empty($_SESSION['wrng_usr'])){echo "
         <div class='col-centered error-box'>

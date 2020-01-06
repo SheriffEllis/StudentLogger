@@ -1,4 +1,6 @@
 <?php
+//Simplify the proccess of sending variables across pages
+
 session_start();
 //Form connection with local SQL server using details in .htaccess file
 $conn = new mysqli(
@@ -40,6 +42,7 @@ if(!$_SESSION['invld_usr']){
   $stmt->execute();
   $stmt->bind_result($result);
   $stmt->fetch();
+  $stmt->close();
   //If no results were found username is available
   $_SESSION['usr_unavailable'] = $result != null;
 }
@@ -59,8 +62,13 @@ if(!($_SESSION['invld_usr'] || $_SESSION['invld_email'] || $_SESSION['invld_pwd'
   $stmt = $conn->prepare("INSERT INTO teacher (Username, Email, Hash) VALUES (?, ?, ?)");
   $stmt->bind_param("sss", $usr, $email ,$hash);
   $stmt->execute();
+  $stmt->close();
   $conn->close();
 
+  unset($_SESSION['invld_usr']);
+  unset($_SESSION['usr_unavailable']);
+  unset($_SESSION['invld_email']);
+  unset($_SESSION['invld_pwd']);
   unset($_SESSION['email']);
   unset($_SESSION['pwd']);
   header("Location: /StudentLogger/pages/homepage.php");

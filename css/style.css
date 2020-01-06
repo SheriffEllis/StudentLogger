@@ -40,9 +40,40 @@
   width: 400px;
 }
 
+.box{
+  border-radius: 50px;
+  border: 1px solid #bbb;
+}
+
+#searchbar{
+  font-size: 20px;
+  width: 590px;
+  padding-left: 10px;
+}
+
+#searchbutton{
+  padding-top: 4px;
+  padding-left: 9px;
+  padding-right: 9px;
+  font-size: 18px;
+}
+
+#searchbox{
+  font-size: 20px;
+  width: 633px;
+  border: 1px solid #bbb;
+  padding-left: 10px;
+  overflow-y: scroll;
+  overflow-x: auto;
+  text-align: left;
+  padding-left: 10px;
+  padding-top: 10px;
+}
+
 #title-text{
   font-size: 45px;
-  padding-bottom: 30px;
+  padding-top: 40px;
+  padding-bottom: 40px;
   font-weight: bold;
 }
 

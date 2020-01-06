@@ -1,4 +1,6 @@
 <?php
+//TODO: simplify the proccess of sending variables accross pages
+
 session_start();
 //Form connection with local SQL server using details in .htaccess file
 $conn = new mysqli(
@@ -31,6 +33,7 @@ $stmt->bind_param('s', $usr);
 $stmt->execute();
 $stmt->bind_result($result);
 $stmt->fetch();
+$stmt->close();
 $conn->close();
 
 if($result != null){
@@ -42,6 +45,8 @@ $_SESSION['wrng_usr'] = false;
 if(isset($hash)){
   if(password_verify($pwd, $hash)){
     //Access granted
+    unset($_SESSION['wrng_pwd']);
+    unset($_SESSION['wrng_usr']);
     $_SESSION['usr'] = $_POST['usr'];
     header("Location: /StudentLogger/pages/homepage.php");
   }else{
