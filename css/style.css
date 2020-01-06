@@ -5,7 +5,13 @@
 
 .tb-padding{
   padding-top: 40px;
-  padding-bottom: 80px;
+  padding-bottom: 40px;
+}
+
+.vertical-text-padding{
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 20px;
 }
 
 .error-box{
@@ -40,14 +46,18 @@
   width: 400px;
 }
 
-.box{
+.rounded-box{
   border-radius: 50px;
+  border: 1px solid #bbb;
+}
+
+.box{
   border: 1px solid #bbb;
 }
 
 #searchbar{
   font-size: 20px;
-  width: 590px;
+  width: 620px;
   padding-left: 10px;
 }
 
@@ -58,16 +68,15 @@
   font-size: 18px;
 }
 
-#searchbox{
+#scrollbox{
   font-size: 20px;
-  width: 633px;
   border: 1px solid #bbb;
-  padding-left: 10px;
   overflow-y: scroll;
   overflow-x: auto;
   text-align: left;
   padding-left: 10px;
   padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 #title-text{
@@ -89,4 +98,8 @@
 #notifications-button{
   height: 50px;
   font-size: 18px;
+}
+
+#buffer-box{
+  height: 80px;
 }

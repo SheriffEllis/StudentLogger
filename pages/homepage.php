@@ -37,5 +37,6 @@
   </div>
 </div>
 
+<div id="buffer-box"></div>
 </body>
 </html>
