@@ -20,7 +20,7 @@ $hash = password_hash($pwd, PASSWORD_DEFAULT);
 function clean_input_data($data){
   $data = trim($data);
   $data = stripslashes($data);
-  $data = htmlspecialchars($data, ENT_QUOTES);
+  $data = htmlspecialchars($data);
   return $data;
 }
 
@@ -63,11 +63,11 @@ if(!($_SESSION['invld_usr'] || $_SESSION['invld_email'] || $_SESSION['invld_pwd'
 
   unset($_SESSION['email']);
   unset($_SESSION['pwd']);
-  header("Location: ../pages/homepage.php");
+  header("Location: /StudentLogger/pages/homepage.php");
 }else{
   //Some inputs are invalid: redirect back to signup (with error boxes)
   $conn->close();
-  header("Location: ../pages/sign_up_page.php");
+  header("Location: /StudentLogger/pages/sign_up_page.php");
 }
 exit();
 ?>

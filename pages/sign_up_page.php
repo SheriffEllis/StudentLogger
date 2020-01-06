@@ -13,24 +13,24 @@ unset($_SESSION['wrng_usr']);
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="../css/style.css?version=11">
-  <link rel="icon" href="../resources/favicon.ico">
+  <link rel="stylesheet" href="/StudentLogger/css/style.css?version=11">
+  <link rel="icon" href="/StudentLogger/resources/favicon.ico">
 </head>
 <body>
 
   <div class="container text-center tb-padding">
-    <img src="../resources/logo.png">
+    <img src="/StudentLogger/resources/logo.png">
     <h2>Sign up</h2>
     <p style="font-size: 15px">Please enter your details to create an account</p>
     <!--
     The form data is sent to a separate php script file
     which judges the validity of the signup data
     -->
-    <form action="../php/process_signup.php" method="post">
+    <form action="/StudentLogger/php/process_signup.php" method="post">
       <div class="form-group">
         <label for="email" class="sr-only">Email</label>
         <input type="email" class="col-lg-4 col-centered form-control form-m" placeholder="Enter email address" id=login-field
-        name="email" value="<?php
+        name="email" autocomplete="email" value="<?php
         //Fill in email if it was entered before
         if(!empty($_SESSION['email'])){echo $_SESSION['email'];}
         ?>">
@@ -46,7 +46,7 @@ unset($_SESSION['wrng_usr']);
       <div class="form-group">
         <label for="usr" class="sr-only">Username</label>
         <input type="username" class="col-lg-4 col-centered form-control form-m" placeholder="Enter username" id=login-field
-        name="usr" value="<?php
+        name="usr" autocomplete="username" value="<?php
         //Fill in username if it was entered before
         if(!empty($_SESSION['usr'])){echo $_SESSION['usr'];}
         ?>">
@@ -67,7 +67,7 @@ unset($_SESSION['wrng_usr']);
       <div class="form-group">
         <label for="pwd" class="sr-only">Password</label>
         <input type="password" class="col-lg-4 col-centered form-control form-m" placeholder="Enter password" id=login-field
-        name="pwd" value="<?php
+        name="pwd" autocomplete="new-password" value="<?php
         //Fill in password if it was entered before
         if(!empty($_SESSION['pwd'])){echo $_SESSION['pwd'];}
         ?>">
@@ -82,7 +82,7 @@ unset($_SESSION['wrng_usr']);
       ?>
       <button type="submit" class="btn btn-primary">Sign up</button>
     </form>
-    <a href="../index.php" class="btn btn-link" role="button">Already have an account? Login</a>
+    <a href="/StudentLogger/index.php" class="btn btn-link" role="button">Already have an account? Login</a>
   </div>
 
 </body>

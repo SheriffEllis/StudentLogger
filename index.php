@@ -20,29 +20,29 @@ unset($_SESSION['pwd']);
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="css/style.css?version=11">
-  <link rel="icon" href="resources/favicon.ico">
+  <link rel="stylesheet" href="/StudentLogger/css/style.css?version=11">
+  <link rel="icon" href="/StudentLogger/resources/favicon.ico">
 </head>
 <body>
 
   <div class="container text-center tb-padding">
-    <img src="resources/logo.png">
+    <img src="/StudentLogger/resources/logo.png">
     <h2>User Login</h2>
     <p style="font-size: 15px">Please enter your login details</p>
     <!--
     The form data is sent to a separate php script file
     which judges the validity of the login data
     -->
-    <form action="php/process_login.php" method="post">
+    <form action="/StudentLogger/php/process_login.php" method="post">
       <div class="form-group">
         <label for="usr" class="sr-only">Username</label>
         <input type="username" class="col-lg-4 col-centered form-control form-m" placeholder="Enter username" id="login-field"
         name="usr" autocomplete="<?php
         //Auto input username if user clicked "Remember me" tickbox
         if(empty($_SESSION['remember'])){
-          echo "off";
+          echo "false";
         }else{
-          echo "on";
+          echo "username";
         }
         ?>">
       </div>
@@ -60,9 +60,9 @@ unset($_SESSION['pwd']);
         name="pwd" autocomplete="<?php
         //Auto input password if user clicked "Remember me" tickbox
         if(empty($_SESSION['remember'])){
-          echo "off";
+          echo "false";
         }else{
-          echo "on";
+          echo "password";
         }
         ?>">
       </div>
@@ -82,7 +82,7 @@ unset($_SESSION['pwd']);
       </div>
       <button type="submit" class="btn btn-primary">Log in</button>
     </form>
-    <a href="pages/sign_up_page.php" class="btn btn-link" role="button">Don't have an account? Sign up</a>
+    <a href="/StudentLogger/pages/sign_up_page.php" class="btn btn-link" role="button">Don't have an account? Sign up</a>
   </div>
 
 <body>
