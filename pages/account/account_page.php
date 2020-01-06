@@ -112,7 +112,9 @@ $conn->close();
       </div>
 
       <div class="form-group tb-padding">
+        <!-- TODO: create update account details script -->
         <button class="btn btn-success" type="submit">Save Changes</button>
+        <!-- TODO: create actual account deletion function -->
         <button class="btn btn-danger" type="button" onclick="deleteAccount()">Delete Account</button>
       </div>
     </form>
@@ -123,7 +125,7 @@ $conn->close();
   </div>
 
 </body>
-<!-- TODO: create actual account deletion function -->
+
 <script>
 function deleteAccount(){
   confirm("Are you sure?");
