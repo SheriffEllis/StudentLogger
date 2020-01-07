@@ -5,18 +5,24 @@
   $current_path = getenv('CURRENT_PATH');
 
   require($current_path . '/templates/navbar.php');
-
-  $container = true;
-  $label = 'Select User';
-  $id_querybox = 'qBox1';
-  $id_searchbar = 'sbar1';
-  $id_searchbutton = 'sbut1';
-  $id_selection = 'select1';
-  $script_page = htmlspecialchars($_SERVER['PHP_SELF']);
-  $options = array('User1', 'User2', 'User3');
-  $buttons = '';
-  require($current_path . '/templates/query_box_template.php');
 ?>
+
+<div id="querybox" class="container text-center">
+  <!-- TODO create script for retrieving search results -->
+  <label for="search" id="label-text">Select User</label>
+  <form action="admin_settings_page.php" method="post">
+    <input name="search" id="searchbar" placeholder="Search..." type="text"></input>
+    <button id="searchbutton" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+  </form>
+
+  <!-- TODO: Use javascript to allow multiple buttons to use same selection? -->
+  <select id="scrollbox" size=10 class="col-lg-7 col-centered">
+    <!-- TODO: Enter search results into these options -->
+    <option>User1</option>
+    <option>User2</option>
+    <option>User3</option>
+  </select>
+</div>
 
 <div id="buffer-box"></div>
 
@@ -35,7 +41,6 @@
     </div>
   </div>
 
-  <!-- TODO: sumbit privilege update and delete users -->
   <form action="" method="post">
     <div class="row tb-padding">
       <div class="label-text col-lg-3 text-right">Privilege:</div>
@@ -47,25 +52,27 @@
     </div>
   </form>
 
-  <?php
-    $container = false;
-    $label = 'Select Class';
-    $id_querybox = 'qBox2';
-    $id_searchbar = 'sbar2';
-    $id_searchbutton = 'sbut2';
-    $id_selection = 'select2';
-    $script_page = htmlspecialchars($_SERVER['PHP_SELF']);
-    $options = array('13ENG', '12ENG', '13ECO');
-    $buttons = '
+  <!-- TODO create script for retrieving search results -->
+  <div id="querybox" class="text-center">
+    <label for="search" id="label-text">Select Class</label>
+    <form action="admin_settings_page.php" method="post">
+      <input name="search" id="searchbar" placeholder="Search..." type="text"></input>
+      <button id="searchbutton" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+    </form>
+
+    <!-- TODO: Use javascript to allow multiple buttons to use same selection? -->
+    <select id="scrollbox" size=10 class="col-lg-7 col-centered">
+      <!-- TODO: Enter search results into these options -->
+      <option>13ENG</option>
+      <option>12ENG</option>
+      <option>13ECO</option>
+    </select>
     <div class="btn-toolbar row row-padded">
       <div class="col-lg-4"></div>
       <button class="col-lg-2 btn btn-success" type="button">Assign User to Class</button>
       <button class="col-lg-2 btn btn-warning" type="button">Unassign User from Class</button>
     </div>
-    ';
-    require($current_path . '/templates/query_box_template.php');
-  ?>
-
+  </div>
 </div>
 
 <div id="buffer-box"></div>

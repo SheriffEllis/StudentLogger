@@ -11,7 +11,7 @@
     getenv('HTTP_DATABASE')
   );
   if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    die('Connection failed: ' . $conn->connect_error);
   }
 
   $usr = $_SESSION['usr'];
@@ -33,7 +33,7 @@
 
   $conn->close();
 
-  require($current_path . "/templates/navbar.php");
+  require($current_path . '/templates/navbar.php');
 ?>
 <div class="container text-center">
   <!-- Post results to self -->
@@ -68,8 +68,8 @@
   </form>
 
   <?php
-  //Check user's privilege to determine if they are an admin and make admin settings available
-  if($privilege <= 0){echo '<a class="btn btn-link tb-padding" role="button" href="admin_settings_page.php">Admin Settings</a>';}
+    //Check user's privilege to determine if they are an admin and make admin settings available
+    if($privilege <= 0){echo '<a class="btn btn-link tb-padding" role="button" href="admin_settings_page.php">Admin Settings</a>';}
   ?>
 </div>
 

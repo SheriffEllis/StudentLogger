@@ -31,55 +31,55 @@ unset($_SESSION['wrng_usr']);
         <label for="email" class="sr-only">Email</label>
         <input type="email" class="col-lg-4 col-centered form-control form-m" placeholder="Enter email address" id=login-field
         name="email" autocomplete="email" value="<?php
-        //Fill in email if it was entered before
-        if(!empty($_SESSION['email'])){echo $_SESSION['email'];}
+          //Fill in email if it was entered before
+          if(!empty($_SESSION['email'])){echo $_SESSION['email'];}
         ?>">
       </div>
       <?php
-      //TODO: use javascript style.display = "none"/"block" instead?
-      //Show errorbox when signup algorithm returns that email is invalid
-      if(!empty($_SESSION['invld_email'])){echo "
-        <div class='col-centered error-box'>
-          <b>Email invalid:</b> must be less than 320 characters and a real email address.
-        </div>
-        ";}
+        //TODO: use javascript style.display = "none"/"block" instead?
+        //Show errorbox when signup algorithm returns that email is invalid
+        if(!empty($_SESSION['invld_email'])){echo "
+          <div class='col-centered error-box'>
+            <b>Email invalid:</b> must be less than 320 characters and a real email address.
+          </div>
+          ";}
       ?>
       <div class="form-group">
         <label for="usr" class="sr-only">Username</label>
         <input type="username" class="col-lg-4 col-centered form-control form-m" placeholder="Enter username" id=login-field
         name="usr" autocomplete="username" value="<?php
-        //Fill in username if it was entered before
-        if(!empty($_SESSION['usr'])){echo $_SESSION['usr'];}
+          //Fill in username if it was entered before
+          if(!empty($_SESSION['usr'])){echo $_SESSION['usr'];}
         ?>">
       </div>
       <?php
-      //Show errorbox when signup algorithm returns that username is invalid
-      if(!empty($_SESSION['invld_usr'])){echo "
-        <div class='col-centered error-box'>
-          <b>Username invalid:</b> must be less than 50 characters and contain no special characters.
-        </div>
-        ";}
-      if(!empty($_SESSION['usr_unavailable'])){echo "
-        <div class='col-centered error-box'>
-          <b>Username invalid:</b> this username has already been taken.
-        </div>
-        ";}
+        //Show errorbox when signup algorithm returns that username is invalid
+        if(!empty($_SESSION['invld_usr'])){echo "
+          <div class='col-centered error-box'>
+            <b>Username invalid:</b> must be less than 50 characters and contain no special characters.
+          </div>
+          ";}
+        if(!empty($_SESSION['usr_unavailable'])){echo "
+          <div class='col-centered error-box'>
+            <b>Username invalid:</b> this username has already been taken.
+          </div>
+          ";}
       ?>
       <div class="form-group">
         <label for="pwd" class="sr-only">Password</label>
         <input type="password" class="col-lg-4 col-centered form-control form-m" placeholder="Enter password" id=login-field
         name="pwd" autocomplete="new-password" value="<?php
-        //Fill in password if it was entered before
-        if(!empty($_SESSION['pwd'])){echo $_SESSION['pwd'];}
+          //Fill in password if it was entered before
+          if(!empty($_SESSION['pwd'])){echo $_SESSION['pwd'];}
         ?>">
       </div>
       <?php
-      //Show errorbox when signup algorithm returns that password is invalid
-      if(!empty($_SESSION['invld_pwd'])){echo "
-        <div class='col-centered error-box'>
-          <b>Password invalid:</b> must contain at least one number, one lower and upper case letter, and no white spaces.
-        </div>
-        ";}
+        //Show errorbox when signup algorithm returns that password is invalid
+        if(!empty($_SESSION['invld_pwd'])){echo "
+          <div class='col-centered error-box'>
+            <b>Password invalid:</b> must contain at least one number, one lower and upper case letter, and no white spaces.
+          </div>
+          ";}
       ?>
       <button type="submit" class="btn btn-primary">Sign up</button>
     </form>
