@@ -1,5 +1,26 @@
 <?php
   session_start();
+  //Check if user is an admin just in case by checking their privilege
+  $conn = new mysqli(
+    getenv('HTTP_HOST'),
+    getenv('HTTP_USER'),
+    getenv('HTTP_PASS'),
+    getenv('HTTP_DATABASE')
+  );
+  if ($conn->connect_error) {
+    die('Connection failed: ' . $conn->connect_error);
+  }
+  $usr = $_SESSION['usr'];
+  $stmt = $conn->prepare("SELECT Privilege FROM teacher WHERE Username=? LIMIT 1");
+  $stmt->bind_param('s', $usr);
+  $stmt->execute();
+  $stmt->bind_result($privilege);
+  $stmt->fetch();
+  $stmt->close();
+  $conn->close();
+  //If user was not an admin, send them back to homepage
+  if($privilege > 0){header("Location: /StudentLogger/pages/homepage.php");}
+
   $title = 'Admin Settings';
   $web_section = 'account';
   $current_path = getenv('CURRENT_PATH');
