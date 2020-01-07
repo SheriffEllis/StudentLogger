@@ -55,20 +55,24 @@
   border: 1px solid #bbb;
 }
 
-#searchbar{
+.searchbar{
   font-size: 20px;
   width: 620px;
   padding-left: 10px;
 }
 
-#searchbutton{
+.querybox{
+  padding-bottom: 10px
+}
+
+.searchbutton{
   padding-top: 4px;
   padding-left: 9px;
   padding-right: 9px;
   font-size: 18px;
 }
 
-#scrollbox{
+.scrollbox{
   font-size: 20px;
   border: 1px solid #bbb;
   overflow-y: scroll;
@@ -79,14 +83,14 @@
   padding-bottom: 10px;
 }
 
-#title-text{
+.title-text{
   font-size: 45px;
   padding-top: 40px;
   padding-bottom: 40px;
   font-weight: bold;
 }
 
-#label-text{
+.label-text{
   font-size: 30px;
   font-weight: bold;
 }

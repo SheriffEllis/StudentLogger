@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="/StudentLogger/css/style.css?version=26">
+  <link rel="stylesheet" href="/StudentLogger/css/style.css?version=27">
   <link rel="icon" href="/StudentLogger/resources/favicon.ico">
 </head>
 <body>
@@ -64,6 +64,6 @@
   <?php
   //Don't display page title if on homepage
   if($title != "Home"){
-    echo '<div id="title-text" class="text-center">' . $title . '</div>';
+    echo '<div class="title-text text-center">' . $title . '</div>';
   }
   ?>

@@ -2,6 +2,7 @@
   session_start();
   $title = 'Account Page';
   $web_section = 'account';
+  $current_path = getenv('CURRENT_PATH');
 
   $conn = new mysqli(
     getenv('HTTP_HOST'),
@@ -32,14 +33,14 @@
 
   $conn->close();
 
-  require(getenv('REQUIRE_PATH'));
+  require($current_path . "/templates/navbar.php");
 ?>
 <div class="container text-center">
   <!-- Post results to self -->
   <form action="account_page.php" method="post">
     <!-- Username input field -->
     <div class="row form-group">
-      <label for="usr" id="label-text" class="text-center">Username</label>
+      <label for="usr" class="label-text text-center">Username</label>
       <input type="username" class="col-lg-4 col-centered form-control form-m" id="login-field"
       name="usr" value="<?php echo $usr; ?>" readonly>
       <!-- username is a unique identifier and cannot be changed -->
@@ -47,13 +48,13 @@
     </div>
 
     <div class="row form-group">
-      <label for="pwd" id="label-text" class="text-center">New Password</label>
+      <label for="pwd" class="label-text text-center">New Password</label>
       <input type="password" class="col-lg-4 col-centered form-control form-m" placeholder="Enter new password (leave blank to not change)" id="login-field"
       name="pwd" autocomplete="new-password">
     </div>
 
     <div class="row form-group">
-      <label for="email" id="label-text" class="text-center">New Email</label>
+      <label for="email" class="label-text text-center">New Email</label>
       <input type="email" class="col-lg-4 col-centered form-control form-m" placeholder="Enter new email (leave blank to not change)" id="login-field"
       name="email" autocomplete="false" value="<?php echo $email; ?>">
     </div>

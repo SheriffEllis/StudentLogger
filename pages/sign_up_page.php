@@ -86,5 +86,6 @@ unset($_SESSION['wrng_usr']);
     <a href="/StudentLogger/index.php" class="btn btn-link" role="button">Already have an account? Login</a>
   </div>
 
+<div id="buffer-box"></div>
 </body>
 </html>

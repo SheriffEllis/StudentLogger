@@ -2,12 +2,13 @@
   session_start();
   $title = 'Home';
   $web_section = '';
+  $current_path = getenv('CURRENT_PATH');
 
-  require(getenv('REQUIRE_PATH'));
+  require($current_path . "/templates/navbar.php");
 ?>
 
 <div class="container text-size-m tb-padding">
-  <div id="title-text" class="text-center">
+  <div class="title-text text-center">
     Welcome back, <?php echo $_SESSION['usr'];?>
   </div>
 
