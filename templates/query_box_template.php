@@ -34,5 +34,5 @@ buttons format:
     }
     ?>
   </select>
-  <?php if(!empty($buttons)){echo $buttons;}?>
 </div>
+<?php if(!empty($buttons)){echo $buttons;}?>
