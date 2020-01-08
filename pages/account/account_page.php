@@ -4,12 +4,7 @@
   $web_section = 'account';
   $current_path = getenv('CURRENT_PATH');
 
-  $conn = new mysqli(
-    getenv('HTTP_HOST'),
-    getenv('HTTP_USER'),
-    getenv('HTTP_PASS'),
-    getenv('HTTP_DATABASE')
-  );
+  $conn = new mysqli(getenv('HTTP_HOST'), getenv('HTTP_USER'), getenv('HTTP_PASS'), getenv('HTTP_DATABASE'));
   if ($conn->connect_error) {
     die('Connection failed: ' . $conn->connect_error);
   }
@@ -17,14 +12,14 @@
   $usr = $_SESSION['usr'];
 
   //aquire user's email and privlege for use in the page
-  $stmt = $conn->prepare("SELECT Privilege FROM teacher WHERE Username=? LIMIT 1");
+  $stmt = $conn->prepare('SELECT Privilege FROM teacher WHERE Username=? LIMIT 1');
   $stmt->bind_param('s', $usr);
   $stmt->execute();
   $stmt->bind_result($privilege);
   $stmt->fetch();
   $stmt->close();
 
-  $stmt = $conn->prepare("SELECT Email FROM teacher WHERE Username=? LIMIT 1");
+  $stmt = $conn->prepare('SELECT Email FROM teacher WHERE Username=? LIMIT 1');
   $stmt->bind_param('s', $usr);
   $stmt->execute();
   $stmt->bind_result($email);

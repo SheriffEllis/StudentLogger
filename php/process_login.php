@@ -3,14 +3,9 @@
 
 session_start();
 //Form connection with local SQL server using details in .htaccess file
-$conn = new mysqli(
-  getenv('HTTP_HOST'),
-  getenv('HTTP_USER'),
-  getenv('HTTP_PASS'),
-  getenv('HTTP_DATABASE')
-);
+$conn = new mysqli(getenv('HTTP_HOST'), getenv('HTTP_USER'), getenv('HTTP_PASS'), getenv('HTTP_DATABASE'));
 if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
+  die('Connection failed: ' . $conn->connect_error);
 }
 
 //Clean inputs to prevent cross-site scripting attacks

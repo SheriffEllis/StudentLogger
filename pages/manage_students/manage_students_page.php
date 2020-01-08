@@ -5,12 +5,7 @@
   $current_path = getenv('CURRENT_PATH');
 
   //Acquire user's privilege
-  $conn = new mysqli(
-    getenv('HTTP_HOST'),
-    getenv('HTTP_USER'),
-    getenv('HTTP_PASS'),
-    getenv('HTTP_DATABASE')
-  );
+  $conn = new mysqli(getenv('HTTP_HOST'), getenv('HTTP_USER'), getenv('HTTP_PASS'), getenv('HTTP_DATABASE'));
   if ($conn->connect_error) {
     die('Connection failed: ' . $conn->connect_error);
   }
@@ -47,8 +42,8 @@
   $buttons = '
   <div class="row row-padded">
     <div class="col-lg-4"></div>
-    <a class="col-lg-1 btn btn-success" href="#">Add Student</a>
-    <a class="col-lg-1 btn btn-warning" href="#">Edit Student</a>
+    <a class="col-lg-1 btn btn-success" href="create_student_page.php">Add Student</a>
+    <a class="col-lg-1 btn btn-warning" href="edit_student_page.php">Edit Student</a>
     <a class="col-lg-1 btn btn-danger" href="#">Remove Student</a>
     <a class="col-lg-1 btn btn-primary" href="view_students_page.php">View Student</a>
   </div>
