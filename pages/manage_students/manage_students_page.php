@@ -40,12 +40,11 @@
   </div>
   */
   $buttons = '
-  <div class="row row-padded">
-    <div class="col-lg-4"></div>
-    <a class="col-lg-1 btn btn-success" href="create_student_page.php">Add Student</a>
-    <a class="col-lg-1 btn btn-warning" href="edit_student_page.php">Edit Student</a>
-    <a class="col-lg-1 btn btn-danger" href="#">Remove Student</a>
-    <a class="col-lg-1 btn btn-primary" href="view_students_page.php">View Student</a>
+  <div class="text-center">
+    <a class="btn-regular btn btn-success" href="create_student_page.php">Add Student</a>
+    <a class="btn-regular btn btn-warning" href="edit_student_page.php">Edit Student</a>
+    <a class="btn-regular btn btn-danger" href="#">Remove Student</a>
+    <a class="btn-regular btn btn-primary" href="view_students_page.php">View Student</a>
   </div>
   ';
   require($current_path . '/templates/query_box_template.php');
@@ -65,12 +64,11 @@
   $script_page = htmlspecialchars($_SERVER['PHP_SELF']);
   $options = array('13ENG', '12ENG', '13ECO');
   $buttons = '
-  <div class="row row-padded">
-    <div class="col-lg-4"></div>
-    <button class="col-lg-1 btn btn-success" type="button">Add Class</button>
-    <button class="col-lg-1 btn btn-warning" type="button">Edit Class</button>
-    <button class="col-lg-1 btn btn-danger" type="button">Remove Class</button>
-    <button class="col-lg-1 btn btn-success" type="button">Assign Student</button>
+  <div class="text-center">
+    <button class="btn-regular btn btn-success" type="button">Add Class</button>
+    <button class="btn-regular btn btn-warning" type="button">Edit Class</button>
+    <button class="btn-regular btn btn-danger" type="button">Remove Class</button>
+    <button class="btn-regular btn btn-success" type="button">Assign Student</button>
   </div>
   ';
   require($current_path . '/templates/query_box_template.php');
@@ -90,10 +88,9 @@
     $script_page = htmlspecialchars($_SERVER['PHP_SELF']);
     $options = array('Age', 'First_name', 'Last_name');
     $buttons = '
-    <div class="row row-padded">
-      <div class="col-lg-4"></div>
-      <button class="col-lg-2 btn btn-success" type="button">Add Field</button>
-      <button class="col-lg-2 btn btn-danger" type="button">Remove Field</button>
+    <div class="text-center">
+      <button class="btn-regular btn btn-success" type="button">Add Field</button>
+      <button class="btn-regular btn btn-danger" type="button">Remove Field</button>
     </div>
     ';
     require($current_path . '/templates/query_box_template.php');

@@ -56,9 +56,9 @@
 
       <div class="row row-padded">
         <!-- TODO: create update account details script -->
-        <button class="btn btn-success" type="submit">Save Changes</button>
+        <button class="btn btn-success btn-regular" type="submit">Save Changes</button>
         <!-- TODO: create delete account script -->
-        <button class="btn btn-danger" type="button" onclick="deleteAccount()">Delete Account</button>
+        <button class="btn btn-danger btn-regular" type="button" onclick="deleteAccount()">Delete Account</button>
       </div>
     </form>
 

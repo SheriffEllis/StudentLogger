@@ -50,6 +50,10 @@
   font-size: 20px;
 }
 
+.btn-regular{
+  width: 200px;
+}
+
 .row-padded{
   padding-top: 25px;
 }
