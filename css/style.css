@@ -2,6 +2,14 @@
   display: none;
 }
 
+.bold{
+  font-weight: bold;
+}
+
+.unknown-length{
+  overflow-x: auto;
+}
+
 .col-centered{
   float: none;
   margin: 0 auto;
@@ -97,6 +105,10 @@
 .label-text{
   font-size: 30px;
   font-weight: bold;
+}
+
+.output-text{
+  font-size: 25px;
 }
 
 #notifications-dropdown{
