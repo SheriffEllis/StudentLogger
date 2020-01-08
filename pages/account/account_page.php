@@ -35,44 +35,44 @@
 
   require($current_path . '/templates/navbar.php');
 ?>
-<div class="container text-center">
-  <!-- Post results to self -->
-  <form action="account_page.php" method="post">
-    <!-- Username input field -->
-    <div class="row form-group">
-      <label for="usr" class="label-text text-center">Username</label>
-      <input type="username" class="col-lg-4 col-centered form-control form-m" id="login-field"
-      name="usr" value="<?php echo $usr; ?>" readonly>
-      <!-- username is a unique identifier and cannot be changed -->
-      <label for="usr">(Cannot be changed)</label>
-    </div>
+  <div class="container text-center">
+    <!-- Post results to self -->
+    <form action="account_page.php" method="post">
+      <!-- Username input field -->
+      <div class="row form-group">
+        <label for="usr" class="label-text text-center">Username</label>
+        <input type="username" class="col-lg-4 col-centered form-control form-m" id="login-field"
+        name="usr" value="<?php echo $usr; ?>" readonly>
+        <!-- username is a unique identifier and cannot be changed -->
+        <label for="usr">(Cannot be changed)</label>
+      </div>
 
-    <div class="row form-group">
-      <label for="pwd" class="label-text text-center">New Password</label>
-      <input type="password" class="col-lg-4 col-centered form-control form-m" placeholder="Enter new password (leave blank to not change)" id="login-field"
-      name="pwd" autocomplete="new-password">
-    </div>
+      <div class="row form-group">
+        <label for="pwd" class="label-text text-center">New Password</label>
+        <input type="password" class="col-lg-4 col-centered form-control form-m" placeholder="Enter new password (leave blank to not change)" id="login-field"
+        name="pwd" autocomplete="new-password">
+      </div>
 
-    <div class="row form-group">
-      <label for="email" class="label-text text-center">New Email</label>
-      <input type="email" class="col-lg-4 col-centered form-control form-m" placeholder="Enter new email (leave blank to not change)" id="login-field"
-      name="email" autocomplete="false" value="<?php echo $email; ?>">
-    </div>
+      <div class="row form-group">
+        <label for="email" class="label-text text-center">New Email</label>
+        <input type="email" class="col-lg-4 col-centered form-control form-m" placeholder="Enter new email (leave blank to not change)" id="login-field"
+        name="email" autocomplete="false" value="<?php echo $email; ?>">
+      </div>
 
-    <div class="row row-padded">
-      <!-- TODO: create update account details script -->
-      <button class="btn btn-success" type="submit">Save Changes</button>
-      <!-- TODO: create delete account script -->
-      <button class="btn btn-danger" type="button" onclick="deleteAccount()">Delete Account</button>
-    </div>
-  </form>
+      <div class="row row-padded">
+        <!-- TODO: create update account details script -->
+        <button class="btn btn-success" type="submit">Save Changes</button>
+        <!-- TODO: create delete account script -->
+        <button class="btn btn-danger" type="button" onclick="deleteAccount()">Delete Account</button>
+      </div>
+    </form>
 
-  <?php
-    //Check user's privilege to determine if they are an admin and make admin settings available
-    if($privilege <= 0){echo '<a class="btn btn-link tb-padding" role="button" href="admin_settings_page.php">Admin Settings</a>';}
-  ?>
-</div>
+    <?php
+      //Check user's privilege to determine if they are an admin and make admin settings available
+      if($privilege <= 0){echo '<a class="btn btn-link tb-padding" role="button" href="admin_settings_page.php">Admin Settings</a>';}
+    ?>
+  </div>
 
-<div id="buffer-box"></div>
+  <div id="buffer-box"></div>
 </body>
 </html>

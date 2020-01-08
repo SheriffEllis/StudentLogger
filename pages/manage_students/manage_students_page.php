@@ -34,7 +34,8 @@
   $id_selection = 'select1';
   $script_page = htmlspecialchars($_SERVER['PHP_SELF']);
   $options = array('Student1', 'Student2', 'Student3');
-  $buttons = '
+  //TODO: substitute actual code in the buttons
+  /*
   <div class="row row-padded">
     <div class="col-lg-4"></div>
     <button class="col-lg-1 btn btn-success" type="button">Add Student</button>
@@ -42,11 +43,20 @@
     <button class="col-lg-1 btn btn-danger" type="button">Remove Student</button>
     <button class="col-lg-1 btn btn-primary" type="button">View Student</button>
   </div>
+  */
+  $buttons = '
+  <div class="row row-padded">
+    <div class="col-lg-4"></div>
+    <a class="col-lg-1 btn btn-success" href="#">Add Student</a>
+    <a class="col-lg-1 btn btn-warning" href="#">Edit Student</a>
+    <a class="col-lg-1 btn btn-danger" href="#">Remove Student</a>
+    <a class="col-lg-1 btn btn-primary" href="view_students_page.php">View Student</a>
+  </div>
   ';
   require($current_path . '/templates/query_box_template.php');
 ?>
 
-<div id="buffer-box"></div>
+  <div id="buffer-box"></div>
 
 <?php
   //Class Query Box
@@ -71,7 +81,7 @@
   require($current_path . '/templates/query_box_template.php');
 ?>
 
-<div id="buffer-box"></div>
+  <div id="buffer-box"></div>
 
 <?php
   //(Admin only) Edit Student Data Fields Query Box
@@ -95,6 +105,6 @@
   }
 ?>
 
-<div id="buffer-box"></div>
+  <div id="buffer-box"></div>
 </body>
 </html>

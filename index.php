@@ -74,6 +74,6 @@ unset($_SESSION['pwd']);
     <a href="/StudentLogger/pages/sign_up_page.php" class="btn btn-link" role="button">Don't have an account? Sign up</a>
   </div>
 
-<div id="buffer-box"></div><!-- Creates vertical space between elements -->
+  <div id="buffer-box"></div><!-- Creates vertical space between elements -->
 <body>
 </html>

@@ -9,6 +9,6 @@
 
   <!-- [INSERT BODY HERE] -->
 
-<div id="buffer-box"></div>
+  <div id="buffer-box"></div>
 </body>
 </html>

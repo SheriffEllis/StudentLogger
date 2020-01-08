@@ -59,12 +59,12 @@ unset($_SESSION['wrng_usr']);
         <b>Password invalid:</b> must contain at least one number, one lower and upper case letter, and no white spaces.
       </div>
       <!-- Show errorbox when signup algorithm returns that password is invalid -->
-      
+
       <button type="submit" class="btn btn-primary">Sign up</button>
     </form>
     <a href="/StudentLogger/index.php" class="btn btn-link" role="button">Already have an account? Login</a>
   </div>
 
-<div id="buffer-box"></div>
+  <div id="buffer-box"></div>
 </body>
 </html>
