@@ -4,78 +4,64 @@
   $web_section = 'manage_students';
   $current_path = getenv('CURRENT_PATH');
 
+  $conn = new mysqli(getenv('HTTP_HOST'), getenv('HTTP_USER'), getenv('HTTP_PASS'), getenv('HTTP_DATABASE'));
+  if ($conn->connect_error) {
+    die('Connection failed: ' . $conn->connect_error);
+  }
+
+  $values = array(); //array to fill with values corresponding to fields for existing student
+
+  //TODO: insert actual student ID selected from manage students page
+  $Student_ID = 1;
+  $stmt = $conn->prepare('SELECT * FROM student WHERE Student_ID=?');
+  $stmt->bind_param('i', $Student_ID);
+  $stmt->execute();
+  $get_values = $stmt->get_result();
+  //fetch only the first row; there shouldn't be more, but if there are, they'll be ignored
+  $values = $get_values->fetch_assoc(); //Associative array of values
+  $stmt->close();
+  $conn->close();
+
   require($current_path . '/templates/navbar.php');
 ?>
 
   <div class="container">
     <div class="row text-center">
-      <a class="btn btn-primary col-lg-1 col-centered" href="manage_students_page.php">Back</a>
+      <a class="btn btn-primary btn-regular col-centered" href="manage_students_page.php">Back</a>
     </div>
 
     <div class="row row-padded text-center">
-      <!-- TODO: insert student's name into label -->
-      <label id="student_name" class="label-text">[Student name]</label>
+      <label class="label-text"><?php echo $values['First_name'] . ' ' . $values['Last_name']; ?></label>
     </div>
 
     <div class="row row-padded">
-        <!-- TODO: substitute with real database values -->
-        <div class="col-lg-6 rounded-box tb-padding">
-          <div class="row">
-            <div class="col-lg-6 text-right output-text unknown-length bold">
-              First_name:
+      <div class="col-lg-6 rounded-box tb-padding">
+        <?php
+          foreach($values as $field => $value){
+            echo '
+            <div class="row">
+              <div class="col-lg-6 text-right output-text unknown-length bold">
+                ' . $field . ':
+              </div>
+              <div class="col-lg-6 text-left output-text unknown-length">
+                ' . $value . '
+              </div>
             </div>
-            <div class="col-lg-6 text-left output-text unknown-length">
-              Value
-            </div>
-          </div>
+            ';
+          }
+        ?>
+      </div>
 
-          <div class="row">
-            <div class="col-lg-6 text-right output-text unknown-length bold">
-              Last_name:
-            </div>
-            <div class="col-lg-6 text-left output-text unknown-length">
-              Value
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-lg-6 text-right output-text unknown-length bold">
-              Year_group:
-            </div>
-            <div class="col-lg-6 text-left output-text unknown-length">
-              Value
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-lg-6 text-right output-text unknown-length bold">
-              Field1:
-            </div>
-            <div class="col-lg-6 text-left output-text unknown-length">
-              Value
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-lg-6 text-right output-text unknown-length bold">
-              Field2:
-            </div>
-            <div class="col-lg-6 text-left output-text unknown-length">
-              Value
-            </div>
+      <div class="col-lg-6 rounded-box">
+        <div class="row row-padded">
+          <div class="output-text bold col-lg-3 text-right">Classes:</div>
+          <div class="scrollbox box col-lg-8">
+            <!-- TODO: return actual classes from database -->
+            13ENG, 12ENG, 13ECO
           </div>
         </div>
-
-        <div class="col-lg-6 rounded-box">
-          <div class="row row-padded">
-            <div class="output-text bold col-lg-3 text-right">Classes:</div>
-            <div class="scrollbox box col-lg-8">
-              <!-- TODO: return actual classes from database -->
-              13ENG, 12ENG, 13ECO
-            </div>
-          </div>
-          <div class="row row-padded"></div><!-- padding for aesthetic purpose -->
-        </div>
+        <div class="row row-padded"></div><!-- padding for aesthetic purpose -->
+      </div>
     </div>
   </div>
 
