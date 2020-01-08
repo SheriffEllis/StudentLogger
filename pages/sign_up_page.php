@@ -27,7 +27,7 @@ unset($_SESSION['wrng_usr']);
       <div class="form-group">
         <label for="email" class="sr-only">Email</label>
         <input type="email" class="col-lg-4 col-centered form-control form-m" placeholder="Enter email address" id=login-field
-        name="email" autocomplete="email" value="<?php if(!empty($_SESSION['email'])){echo $_SESSION['email'];} ?>">
+        name="email" required autocomplete="email" value="<?php if(!empty($_SESSION['email'])){echo $_SESSION['email'];} ?>">
         <!-- email is filled in if it was entered before -->
       </div>
       <div class="col-centered error-box <?php if(empty($_SESSION['invld_email'])){echo 'hidden';} ?>">
@@ -38,7 +38,7 @@ unset($_SESSION['wrng_usr']);
       <div class="form-group">
         <label for="usr" class="sr-only">Username</label>
         <input type="username" class="col-lg-4 col-centered form-control form-m" placeholder="Enter username" id=login-field
-        name="usr" autocomplete="username" value="<?php if(!empty($_SESSION['usr'])){echo $_SESSION['usr'];} ?>">
+        name="usr" required autocomplete="username" value="<?php if(!empty($_SESSION['usr'])){echo $_SESSION['usr'];} ?>">
         <!-- username is filled in if it was entered before -->
       </div>
       <div class="col-centered error-box <?php if(empty($_SESSION['invld_usr'])){echo 'hidden';} ?>">
@@ -52,7 +52,7 @@ unset($_SESSION['wrng_usr']);
       <div class="form-group">
         <label for="pwd" class="sr-only">Password</label>
         <input type="password" class="col-lg-4 col-centered form-control form-m" placeholder="Enter password" id=login-field
-        name="pwd" autocomplete="new-password" value="<?php if(!empty($_SESSION['pwd'])){echo $_SESSION['pwd'];} ?>">
+        name="pwd" required autocomplete="new-password" value="<?php if(!empty($_SESSION['pwd'])){echo $_SESSION['pwd'];} ?>">
         <!-- password is filled in if it was entered before -->
       </div>
       <div class="col-centered error-box <?php if(empty($_SESSION['invld_pwd'])){echo 'hidden';} ?>">

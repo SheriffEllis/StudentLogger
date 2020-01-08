@@ -34,7 +34,7 @@ unset($_SESSION['pwd']);
       <div class="form-group">
         <label for="usr" class="sr-only">Username</label>
         <input type="username" class="col-lg-4 col-centered form-control form-m" placeholder="Enter username" id="login-field"
-        name="usr" autocomplete="<?php
+        name="usr" required autocomplete="<?php
           //Auto input username if user clicked "Remember me" tickbox
           if(empty($_SESSION['remember'])){
             echo "false";
@@ -51,7 +51,7 @@ unset($_SESSION['pwd']);
       <div class="form-group">
         <label for="pwd" class="sr-only">Password</label>
         <input type="password" class="col-lg-4 col-centered form-control form-m" placeholder="Enter password" id="login-field"
-        name="pwd" autocomplete="<?php
+        name="pwd" required autocomplete="<?php
           //Auto input password if user clicked "Remember me" tickbox
           if(empty($_SESSION['remember'])){
             echo "false";
