@@ -22,12 +22,8 @@
 
   require($current_path . '/templates/navbar.php');
 
-  $container = true;
+  $is_container = true;
   $label = 'Select User';
-  $id_querybox = 'qBox1';
-  $id_searchbar = 'sbar1';
-  $id_searchbutton = 'sbut1';
-  $id_selection = 'select1';
   $script_page = htmlspecialchars($_SERVER['PHP_SELF']);
   $options = array('User1', 'User2', 'User3');
   $buttons = '';
@@ -63,12 +59,8 @@
     </form>
 
     <?php
-      $container = false;
+      $is_container = false;
       $label = 'Select Class';
-      $id_querybox = 'qBox2';
-      $id_searchbar = 'sbar2';
-      $id_searchbutton = 'sbut2';
-      $id_selection = 'select2';
       $script_page = htmlspecialchars($_SERVER['PHP_SELF']);
       $options = array('13ENG', '12ENG', '13ECO');
       $buttons = '

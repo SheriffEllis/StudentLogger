@@ -21,12 +21,8 @@
   require($current_path . '/templates/navbar.php');
 
   //Student Query Box
-  $container = true;
+  $is_container = true;
   $label = 'Select Student';
-  $id_querybox = 'qBox1';
-  $id_searchbar = 'sbar1';
-  $id_searchbutton = 'sbut1';
-  $id_selection = 'select1';
   $script_page = htmlspecialchars($_SERVER['PHP_SELF']);
   $options = array('Student1', 'Student2', 'Student3');
   //TODO: substitute actual code in the buttons
@@ -55,12 +51,8 @@
 <?php
   //Class Query Box
   //TODO: Box next to this displaying memebers of the class?
-  $container = true;
+  $is_container = true;
   $label = 'Select Class';
-  $id_querybox = 'qBox2';
-  $id_searchbar = 'sbar2';
-  $id_searchbutton = 'sbut2';
-  $id_selection = 'select2';
   $script_page = htmlspecialchars($_SERVER['PHP_SELF']);
   $options = array('13ENG', '12ENG', '13ECO');
   $buttons = '
@@ -79,12 +71,8 @@
 <?php
   //(Admin only) Edit Student Data Fields Query Box
   if($privilege <= 0){
-    $container = true;
+    $is_container = true;
     $label = 'Edit Student Data Fields';
-    $id_querybox = 'qBox3';
-    $id_searchbar = 'sbar3';
-    $id_searchbutton = 'sbut3';
-    $id_selection = 'select3';
     $script_page = htmlspecialchars($_SERVER['PHP_SELF']);
     $options = array('Age', 'First_name', 'Last_name');
     $buttons = '

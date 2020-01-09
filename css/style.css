@@ -73,12 +73,18 @@
 
 .searchbar{
   font-size: 20px;
-  width: 620px;
+  width: 621px;
   padding-left: 10px;
 }
 
+.criterionbox{
+  font-size: 20px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
 .querybox{
-  padding-bottom: 10px
+  padding-bottom: 10px;
 }
 
 .searchbutton{
