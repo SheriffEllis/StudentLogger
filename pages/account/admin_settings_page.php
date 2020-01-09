@@ -51,7 +51,7 @@
     <form action="" method="post">
       <div class="row tb-padding">
         <div class="label-text col-lg-4 text-right">Privilege:</div>
-        <input type="number" name="privilege" step="1" min="0" max="2" value="2" class="vertical-text-padding col-lg-1">
+        <input type="number" name="privilege" step="1" min="0" max="2" value="2" class="vertical-text-padding col-lg-1"></input>
         <div class="col-lg-1"></div>
         <button class="btn btn-success btn-regular" type="submit">Update Privilege</button>
         <button class="btn btn-danger btn-regular" type="button">Remove User</button>

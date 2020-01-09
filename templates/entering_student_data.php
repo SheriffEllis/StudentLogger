@@ -23,8 +23,8 @@
 
     <div class="row row-padded">
       <!-- TODO: create/edit student script -->
-      <button class="btn btn-success btn-regular" type="submit">Save Changes</button>
-      <a class="btn btn-primary btn-regular" href="manage_students_page.php">Back</a>
+      <button class="btn btn-success btn-regular" type="submit">Save</button>
+      <a class="btn btn-danger btn-regular" href="manage_students_page.php">Cancel</a>
     </div>
   </form>
 </div>
