@@ -30,10 +30,12 @@
       <a class="btn btn-primary btn-regular col-centered" href="manage_students_page.php">Back</a>
     </div>
 
+    <!-- Display student first and last name as title -->
     <div class="row row-padded text-center">
       <label class="label-text"><?php echo $values['First_name'] . ' ' . $values['Last_name']; ?></label>
     </div>
 
+    <!-- Display student's field and values -->
     <div class="row row-padded">
       <div class="col-lg-6 rounded-box tb-padding">
         <?php
@@ -52,6 +54,7 @@
         ?>
       </div>
 
+      <!-- Display student's classes -->
       <div class="col-lg-6 rounded-box">
         <div class="row row-padded">
           <div class="output-text bold col-lg-3 text-right">Classes:</div>
