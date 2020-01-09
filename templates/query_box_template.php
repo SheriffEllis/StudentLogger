@@ -40,7 +40,7 @@ class="querybox <?php if(!empty($is_container)){echo "container";} ?> text-cente
         }
         $criteria_string = $criteria_string . '</select>';
 
-        echo $criterion_string;
+        echo $criteria_string;
         /*
         criteria_string comes in this format:
         <select id="[$id_criteriabox]" class="criterionbox">
