@@ -22,8 +22,8 @@
           $options = array('Table Name 1', 'Table Name 2', 'Table Name 3');
           $buttons = '
           <div class="text-center">
-            <a class="btn-regular btn btn-success" href="">Add Table</a>
-            <a class="btn-regular btn btn-warning" href="">Edit Table</a>
+            <a class="btn-regular btn btn-success" href="create_table_page.php">Add Table</a>
+            <a class="btn-regular btn btn-warning" href="edit_table_page.php">Edit Table</a>
             <a class="btn-regular btn btn-danger" href="">Remove Table</a>
           </div>
           ';

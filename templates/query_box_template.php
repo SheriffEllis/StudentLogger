@@ -24,7 +24,7 @@ class="querybox <?php if(!empty($is_container)){echo "container";} ?> text-cente
   <label for="search" class="label-text"><?php echo $label; ?></label>
   <form action="<?php echo $script_page; ?>" method="post">
     <input name="search" id="<?php if(!empty($id_searchbar)){echo $id_searchbar;} ?>" class="searchbar"
-    placeholder="Search..." type="text" <?php if(!empty($search_criteria)){echo 'style="width: 448px;"';} ?>></input>
+    placeholder="Search..." type="search" <?php if(!empty($search_criteria)){echo 'style="width: 448px;"';} ?>></input>
     <!-- If there are search criteria, the searchbar width is adjusted for it -->
     <?php
       if(!empty($search_criteria)){
