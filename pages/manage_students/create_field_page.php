@@ -1,6 +1,6 @@
 <?php
   session_start();
-  $title = 'Edit Class';
+  $title = 'Create Student Field';
   $web_section = 'manage_students';
   $current_path = getenv('CURRENT_PATH');
 
@@ -10,24 +10,13 @@
   }
 
   $fields = array(); //array to fill with field names
-  $values = array(); //array to fill with values corresponding to fields for existing class
 
   //Each fetched row has keys: Field, Type, Null, Key, Default, Extra
-  $sql = 'SHOW COLUMNS FROM class';
+  $sql = 'SHOW COLUMNS FROM student_field';
   $get_fields = $conn->query($sql);
   while($row = $get_fields->fetch_assoc()){
     array_push($fields, $row['Field']);
   }
-
-  //TODO: insert actual class ID selected from manage class page
-  $Class_ID = 1;
-  $stmt = $conn->prepare('SELECT * FROM class WHERE Class_ID=?');
-  $stmt->bind_param('i', $Class_ID);
-  $stmt->execute();
-  $get_values = $stmt->get_result();
-  //fetch only the first row; there shouldn't be more, but if there are, they'll be ignored
-  $values = $get_values->fetch_assoc(); //Associative array of values
-  $stmt->close();
   $conn->close();
 
   require($current_path . '/templates/navbar.php');

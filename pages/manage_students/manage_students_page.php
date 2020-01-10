@@ -77,8 +77,9 @@
     $options = array('Age', 'First_name', 'Last_name');
     $buttons = '
     <div class="text-center">
-      <button class="btn-regular btn btn-success" type="button">Add Field</button>
-      <button class="btn-regular btn btn-danger" type="button">Remove Field</button>
+      <a class="btn-regular btn btn-success" href="create_field_page.php">Add Field</a>
+      <a class="btn-regular btn btn-warning" href="edit_field_page.php">Edit Field</a>
+      <a class="btn-regular btn btn-danger" href="">Remove Field</a>
     </div>
     ';
     require($current_path . '/templates/query_box_template.php');
