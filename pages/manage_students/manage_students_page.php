@@ -50,7 +50,7 @@
 
 <?php
   //Class Query Box
-  //TODO: Box next to this displaying memebers of the class?
+  //TODO: Box next to this displaying members of the class?
   $is_container = true;
   $label = 'Select Class';
   $script_page = htmlspecialchars($_SERVER['PHP_SELF']);

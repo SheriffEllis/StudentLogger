@@ -16,6 +16,19 @@
   padding-bottom: 40px;
 }
 
+.description-box{
+  height: 400px;
+  overflow-y: auto;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.description-text{
+  font-size: 20px;
+}
+
 .vertical-text-padding{
   padding-top: 5px;
   padding-bottom: 5px;
@@ -91,6 +104,7 @@
 }
 
 .scrollbox{
+  width: 665px;
   font-size: 20px;
   border: 1px solid #bbb;
   overflow-y: scroll;

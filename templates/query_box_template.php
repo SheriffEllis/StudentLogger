@@ -59,7 +59,7 @@ class="querybox <?php if(!empty($is_container)){echo "container";} ?> text-cente
   </form>
 
   <!-- TODO: Use javascript to allow multiple buttons to use same selection? -->
-  <select id="<?php if(!empty($id_selection)){echo $id_selection;} ?>" size=10 class="scrollbox col-lg-7 col-centered">
+  <select id="<?php if(!empty($id_selection)){echo $id_selection;} ?>" size=10 class="scrollbox col-centered">
     <!-- TODO: Enter search results into these options -->
     <?php
     if(!empty($options)){
