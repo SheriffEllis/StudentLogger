@@ -3,10 +3,10 @@
   <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post">
     <?php
       foreach($fields as $field){
-        $readonly = ''; //used to make Student_ID readonly in edit page
+        $readonly = ''; //used to make Student_ID (and other ID's) readonly in edit page
         if(!empty($values)){
           $value = $values[$field];
-          if($field == 'Student_ID'){$readonly = "readonly";}
+          if(!substr_compare($field, '_ID', -3)){$readonly = "readonly";}
         }else{
           $value = '';
         }

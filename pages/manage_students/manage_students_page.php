@@ -39,7 +39,7 @@
   <div class="text-center">
     <a class="btn-regular btn btn-success" href="create_student_page.php">Add Student</a>
     <a class="btn-regular btn btn-warning" href="edit_student_page.php">Edit Student</a>
-    <a class="btn-regular btn btn-danger" href="#">Remove Student</a>
+    <a class="btn-regular btn btn-danger" href="">Remove Student</a>
     <a class="btn-regular btn btn-primary" href="view_students_page.php">View Student</a>
   </div>
   ';
@@ -57,10 +57,10 @@
   $options = array('13ENG', '12ENG', '13ECO');
   $buttons = '
   <div class="text-center">
-    <button class="btn-regular btn btn-success" type="button">Add Class</button>
-    <button class="btn-regular btn btn-warning" type="button">Edit Class</button>
-    <button class="btn-regular btn btn-danger" type="button">Remove Class</button>
-    <button class="btn-regular btn btn-success" type="button">Assign Student</button>
+    <a class="btn-regular btn btn-success" href="create_class_page.php">Add Class</a>
+    <a class="btn-regular btn btn-warning" href="edit_class_page.php">Edit Class</a>
+    <a class="btn-regular btn btn-danger" href="">Remove Class</a>
+    <a class="btn-regular btn btn-success" href="">Assign Student</a>
   </div>
   ';
   require($current_path . '/templates/query_box_template.php');
