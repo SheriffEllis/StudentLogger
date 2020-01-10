@@ -60,8 +60,8 @@
           $options = array('Function Name 1', 'Function Name 2', 'Function Name 3');
           $buttons = '
           <div class="text-center">
-            <a class="btn-regular btn btn-success" href="">Add Function</a>
-            <a class="btn-regular btn btn-warning" href="">Edit Function</a>
+            <a class="btn-regular btn btn-success" href="create_function_page.php">Add Function</a>
+            <a class="btn-regular btn btn-warning" href="edit_function_page.php">Edit Function</a>
             <a class="btn-regular btn btn-danger" href="">Remove Function</a>
           </div>
           ';
