@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="/StudentLogger/css/style.css?version=34">
+  <link rel="stylesheet" href="/StudentLogger/css/style.css?version=36">
   <link rel="icon" href="/StudentLogger/resources/favicon.ico">
 </head>
 <body>
@@ -19,7 +19,9 @@
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand navtext" href="/StudentLogger/pages/homepage.php"><img src="/StudentLogger/resources/logo2.png"></a>
+        <a class="navbar-brand navtext" href="/StudentLogger/pages/homepage.php">
+          <img class="navbar-logo" src="/StudentLogger/resources/logo2.png">
+        </a>
       </div>
 
       <!-- Set active website section to class="active" -->
