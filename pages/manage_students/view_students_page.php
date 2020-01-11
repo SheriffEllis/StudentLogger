@@ -58,7 +58,7 @@
       <div class="col-lg-6 rounded-box">
         <div class="row row-padded">
           <div class="output-text bold col-lg-3 text-right">Classes:</div>
-          <div class="scrollbox box col-lg-8">
+          <div class="scrollbox box" style="width: 400px;">
             <!-- TODO: return actual classes from database -->
             13ENG, 12ENG, 13ECO
           </div>
