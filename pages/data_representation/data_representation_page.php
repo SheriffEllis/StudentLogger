@@ -39,7 +39,7 @@
         <p id="table-columns" class="description-text">DataSet1, DataSet2, DataSet3</p>
 
         <div class="row row-padded text-center">
-          <a class="btn-regular btn btn-primary text-center" href="">View Table</a>
+          <a class="btn-regular btn btn-primary text-center" href="view_table_page.php">View Table</a>
         </div>
       </div>
     </div>
