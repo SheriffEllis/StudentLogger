@@ -9,8 +9,10 @@
 
   <div class="container">
     <div class="row text-center">
-      <a class="btn btn-primary btn-regular col-centered" href="data_representation.php">Back</a>
+      <a class="btn btn-primary btn-regular col-centered" href="data_representation_page.php">Back</a>
     </div>
+
+    <div id="buffer-box"></div>
 
     <!-- TODO: insert table name -->
     <div class="row row-padded text-center">
@@ -18,7 +20,7 @@
     </div>
 
     <!-- TODO: insert description -->
-    <div class="row row-padded ">
+    <div class="row row-padded">
       <p class="tb-padding box col-lg-6 col-centered output-text">
         (Description)
       </p>

@@ -80,7 +80,7 @@
         <p id="function-type" class="description-text">AVERAGE(Value1, Value2, ...)</p>
 
         <div class="row row-padded text-center">
-          <a class="btn-regular btn btn-primary text-center" href="">View Function Output</a>
+          <a class="btn-regular btn btn-primary text-center" href="view_function_page.php">View Function Output</a>
         </div>
       </div>
     </div>
