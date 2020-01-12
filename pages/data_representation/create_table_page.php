@@ -38,7 +38,7 @@
         <a class="btn btn-danger btn-regular" href="data_representation_page.php">Cancel</a>
       </div>
 
-      <div id="buffer-box"></div>
+      <div id="buffer-box-small"></div>
     </div>
   </form>
 

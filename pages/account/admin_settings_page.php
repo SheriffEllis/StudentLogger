@@ -64,10 +64,9 @@
       $script_page = htmlspecialchars($_SERVER['PHP_SELF']);
       $options = array('13ENG', '12ENG', '13ECO');
       $buttons = '
-      <div class="text-center">
+      <div class="row row-padded text-center">
           <button class="btn btn-success btn-regular" type="button">Assign User to Class</button>
           <button class="btn btn-warning btn-regular" type="button">Unassign User from Class</button>
-        </div>
       </div>
       ';
       require($current_path . '/templates/query_box_template.php');

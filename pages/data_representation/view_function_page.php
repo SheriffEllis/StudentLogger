@@ -11,7 +11,7 @@
     <a class="btn btn-primary btn-regular col-centered" href="data_representation_page.php">Back</a>
   </div>
 
-  <div id="buffer-box"></div>
+  <div id="buffer-box-small"></div>
 
   <!-- TODO: insert function name -->
   <div class="row row-padded text-center">
@@ -25,7 +25,7 @@
     </p>
   </div>
 
-  <div id="buffer-box"></div>
+  <div id="buffer-box-small"></div>
 
   <div class="row row-padded text-center">
     <p class="output-text">AVERAGE(Value1, Value2, ...)</p>

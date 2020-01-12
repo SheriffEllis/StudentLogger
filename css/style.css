@@ -1,3 +1,8 @@
+input.mediumCheckbox{
+  height: 18px;
+  width: 18px;
+}
+
 table {
   border: 1px solid #bbb;
 }
@@ -96,6 +101,11 @@ td {
   padding-top: 25px;
 }
 
+.row-mid-padded{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
 .form-m{
   width: 400px;
 }
@@ -171,4 +181,8 @@ td {
 
 #buffer-box{
   height: 80px;
+}
+
+#buffer-box-small{
+  height: 40px;
 }

@@ -12,7 +12,7 @@
       <a class="btn btn-primary btn-regular col-centered" href="data_representation_page.php">Back</a>
     </div>
 
-    <div id="buffer-box"></div>
+    <div id="buffer-box-small"></div>
 
     <!-- TODO: insert table name -->
     <div class="row row-padded text-center">
@@ -26,7 +26,7 @@
       </p>
     </div>
 
-    <div id="buffer-box"></div>
+    <div id="buffer-box-small"></div>
 
     <!-- TODO: enter actual table values -->
     <table class="col-centered">
