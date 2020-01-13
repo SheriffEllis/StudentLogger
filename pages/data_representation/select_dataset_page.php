@@ -79,6 +79,52 @@
           </div>
         </div>
 
+        <div class="row row-mid-padded text-center">
+          <select class="col-centered output-text">
+            <option selected disabled hidden>Logical Operator</option>
+            <option>AND</option>
+            <option>OR</option>
+            <option>XOR</option>
+            <option>NAND</option>
+            <option>NOR</option>
+          </select>
+        </div>
+
+        <!-- Condition 2 -->
+        <div class="col-lg-8 col-centered box">
+          <div class="row row-padded label-text text-center">
+            <label>Condition 1</label>
+            <input class="mediumCheckbox" type="checkbox"></input>
+          </div>
+
+          <div class="row row-padded text-center">
+            <select class="output-text">
+              <option disabled selected hidden>Investigated Field</option>
+              <option>Field1</option>
+              <option>Field2</option>
+              <option>Field3</option>
+            </select>
+          </div>
+
+          <div class="row row-mid-padded text-center">
+            <select class="output-text">
+              <option disabled selected hidden>Comparator</option>
+              <option> == </option>
+              <option> != </option>
+              <option> <  </option>
+              <option> <= </option>
+              <option> >  </option>
+              <option> => </option>
+            </select>
+          </div>
+
+          <div class="row row-mid-padded">
+            <p class="col-lg-6 text-right output-text">Compared Value:</p>
+            <input class="col-lg-3 vertical-text-padding" type="text" placeholder="Enter value..."></input>
+          </div>
+        </div>
+
+
         <!-- TODO: make submit button actuall submit relevant data -->
         <div class="row row-padded text-center">
           <button class="btn btn-success btn-regular" type="submit">Select</button>
