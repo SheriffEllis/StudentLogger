@@ -35,7 +35,7 @@
   <!-- TODO: Hide with javascript if no user selected -->
   <div class="rounded-box container tb-padding">
     <div class="label-text row text-center">
-      <!-- return actual selected user -->
+      <!-- TODO: return actual selected user -->
       [Selected User]
     </div>
 

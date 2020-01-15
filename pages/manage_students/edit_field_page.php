@@ -31,6 +31,7 @@
   $conn->close();
 
   require($current_path . '/templates/navbar.php');
+  //TODO: make student_fields update the student table's fields
   require($current_path . '/templates/entering_student_data.php')
 ?>
 

@@ -6,6 +6,7 @@
 
   require($current_path . '/templates/navbar.php');
 ?>
+  <!-- TODO: enter existing data into form -->
   <form action="" method="post">
     <div class="container box">
       <div class="row row-padded text-center">
