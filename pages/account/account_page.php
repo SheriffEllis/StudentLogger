@@ -97,8 +97,7 @@
 
       <div class="row row-padded">
         <button class="btn btn-success btn-regular" type="submit" name="submitted" value="true">Save Changes</button>
-        <!-- TODO: create delete account script -->
-        <button class="btn btn-danger btn-regular" type="button" onclick="deleteAccount()">Delete Account</button>
+        <button class="btn btn-danger btn-regular" type="button" onclick="deleteAccountPrompt()">Delete Account</button>
       </div>
     </form>
 
@@ -110,4 +109,11 @@
 
   <div id="buffer-box"></div>
 </body>
+<script>
+  function deleteAccountPrompt(){
+    if(confirm("Are you sure you want to delete <?php echo $_SESSION['usr']; ?>?")){
+      window.location = '/StudentLogger/php/delete_account.php';
+    }
+  }
+</script>
 </html>

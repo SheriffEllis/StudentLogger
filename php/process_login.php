@@ -9,8 +9,8 @@ if(!empty($_POST['submitted'])){
   }
 
   //Clean inputs to prevent cross-site scripting attacks
-  $usr = clean_input_data($_POST['usr']);
-  $pwd = clean_input_data($_POST['pwd'], false);
+  $usr = cleaninputdata($_POST['usr']);
+  $pwd = cleaninputdata($_POST['pwd'], false);
 
   //If "Remember me" tickbox was clicked, set session variable to true otherwise, false
   $_SESSION['remember'] = !empty($_POST['remember']);

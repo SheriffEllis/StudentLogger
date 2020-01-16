@@ -1,5 +1,5 @@
 <?php
-function clean_input_data($data, $do_lowercase = true){
+function cleaninputdata($data, $do_lowercase = true){
   $data = trim($data);
   $data = stripslashes($data);
   $data = htmlspecialchars($data);

@@ -9,9 +9,9 @@ if(!empty($_POST['submitted'])){
   }
 
   //Clean inputs to prevent cross-site scripting attacks
-  $usr = clean_input_data($_POST['usr']);
-  $email = clean_input_data($_POST['email']);
-  $pwd = clean_input_data($_POST['pwd'], false);
+  $usr = cleaninputdata($_POST['usr']);
+  $email = cleaninputdata($_POST['email']);
+  $pwd = cleaninputdata($_POST['pwd'], false);
   $hash = password_hash($pwd, PASSWORD_DEFAULT);
 
   //Input validation
