@@ -26,6 +26,39 @@
   $stmt->fetch();
   $stmt->close();
 
+  if(!empty($_POST['submitted'])){
+    if(!empty($_POST['email'])){
+      $email = $_POST['email'];
+
+      //Email: must be <=320 characters, must be valid email
+      $invld_email = strlen($email)>320 || !filter_var($email, FILTER_VALIDATE_EMAIL) || empty($email);
+      if(!$invld_email){
+        $stmt = $conn->prepare('UPDATE teacher SET Email=? WHERE Username=?');
+        $stmt->bind_param('ss', $email, $usr);
+        $stmt->execute();
+        $stmt->close();
+      }
+    }
+    if(!empty($_POST['pwd'])){
+      $pwd = $_POST['pwd'];
+
+      //Password: at least one number, at least one lower-case and upper-case letter, no whitespaces
+      $invld_pwd = !(preg_match("/\d+/", $pwd) &&
+                    preg_match("/[a-z]+/", $pwd) &&
+                    preg_match("/[A-Z]+/", $pwd) &&
+                    !preg_match("/\s+/", $pwd));
+      if(!$invld_pwd){
+        $hash = password_hash($pwd, PASSWORD_DEFAULT);
+        $stmt = $conn->prepare('UPDATE teacher SET Hash=? WHERE Username=?');
+        $stmt->bind_param('ss', $hash, $usr);
+        $stmt->execute();
+        $stmt->close();
+      }
+    }
+
+    $_POST['submitted'] = false;
+  }
+
   $conn->close();
 
   require($current_path . '/templates/navbar.php');
@@ -47,16 +80,23 @@
         <input type="password" class="col-lg-4 col-centered form-control form-m" placeholder="Enter new password (leave blank to not change)" id="login-field"
         name="pwd" autocomplete="new-password">
       </div>
+      <div class="col-centered error-box <?php if(empty($invld_pwd)){echo 'hidden';} ?>">
+        <b>Password invalid:</b> must contain at least one number, one lower and upper case letter, and no white spaces.
+      </div>
+      <!-- Show errorbox when signup algorithm returns that password is invalid -->
 
       <div class="row form-group">
         <label for="email" class="label-text text-center">New Email</label>
         <input type="email" class="col-lg-4 col-centered form-control form-m" placeholder="Enter new email (leave blank to not change)" id="login-field"
         name="email" autocomplete="false" value="<?php echo $email; ?>">
       </div>
+      <div class="col-centered error-box <?php if(empty($invld_email)){echo 'hidden';} ?>">
+        <b>Email invalid:</b> must be less than 320 characters and a real email address.
+      </div>
+      <!-- Show errorbox when signup algorithm returns that email is invalid -->
 
       <div class="row row-padded">
-        <!-- TODO: create update account details script -->
-        <button class="btn btn-success btn-regular" type="submit">Save Changes</button>
+        <button class="btn btn-success btn-regular" type="submit" name="submitted" value="true">Save Changes</button>
         <!-- TODO: create delete account script -->
         <button class="btn btn-danger btn-regular" type="button" onclick="deleteAccount()">Delete Account</button>
       </div>
