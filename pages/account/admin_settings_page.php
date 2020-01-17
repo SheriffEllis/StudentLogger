@@ -28,7 +28,7 @@
   $options = array('User1', 'User2', 'User3');
   $buttons = '';
   $id_selection = 'userSelect';
-  $select_script = 'test()';
+  $select_script = 'hideUserEdit()';
   require($current_path . '/templates/query_box_template.php');
   unset($id_selection);
 ?>
@@ -79,17 +79,18 @@
   <div id="buffer-box"></div>
 </body>
 <script>
-  function test(){
+  function hideUserEdit(){
     var userSelectVal = document.getElementById('userSelect').value;
     //Check if selection is empty, null or undefined
     if(!userSelectVal || userSelectVal.length === 0){
       document.getElementById('userEdit').style.display = 'none';
     }else{
       document.getElementById('userEdit').style.display = 'block';
+
     }
   }
 
   //run once on page load
-  test();
+  hideUserEdit();
 </script>
 </html>
