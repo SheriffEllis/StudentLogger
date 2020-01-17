@@ -1,23 +1,11 @@
 <?php
-session_start();
-$current_path = getenv('CURRENT_PATH');
-include($current_path . '/php/process_login.php');
+  session_start();
+  $title = 'Login';
+  $current_path = getenv('CURRENT_PATH');
+  include($current_path . '/php/process_login.php');
+  require($current_path . '/templates/metadata.php');
+  unset($_SESSION['usr']);
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>StudentLogger: Login</title>
-  <meta charset="utf-8">
-  <meta name= "viewport" content="width=device-width, initial-scale=1">
-  <!-- Bootstrap and custom CSS stylesheet are both used in each page for aesthetic purposes -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="/StudentLogger/css/style.css?version=11">
-  <link rel="icon" href="/StudentLogger/resources/favicon.ico">
-</head>
-<body>
 
   <div class="container text-center tb-padding">
     <img src="/StudentLogger/resources/logo.png">
