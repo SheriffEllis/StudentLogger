@@ -66,7 +66,9 @@
         <input id="privilege" type="number" name="privilege" step="1" min="0" max="2" value="2" class="vertical-text-padding col-lg-1"></input>
         <div class="col-lg-1"></div>
         <button class="btn btn-success btn-regular" type="submit">Update Privilege</button>
-        <button class="btn btn-danger btn-regular" type="button">Remove User</button>
+        <!-- deletes selected user and refreshes page when clicked -->
+        <button class="btn btn-danger btn-regular" type="button"
+        onclick="deleteAccount($('#userSelect').val(), '')">Remove User</button>
       </div>
     </form>
 
@@ -90,6 +92,7 @@
   <div id="buffer-box"></div>
 </body>
 <script src="/StudentLogger/js/renderUserEdit.js"></script>
+<script src="/StudentLogger/js/deleteAccount.js"></script>
 <script>
   //run once on page load
   renderUserEdit();
