@@ -8,7 +8,7 @@
 
   $usr = $_SESSION['usr'];
 
-  $stmt = $conn->prepare("SELECT Privilege FROM teacher WHERE Username=? LIMIT 1");
+  $stmt = $conn->prepare('SELECT Privilege FROM teacher WHERE Username=? LIMIT 1');
   $stmt->bind_param('s', $usr);
   $stmt->execute();
   $stmt->bind_result($privilege);
@@ -23,10 +23,17 @@
 
   require($current_path . '/templates/navbar.php');
 
+  $sql = 'SELECT Username FROM teacher';
+  $results = $conn->query($sql);
+  $usernames = array();
+  while($username = $results->fetch_row()){
+    array_push($usernames, $username[0]);
+  }
+
   $is_container = true;
   $label = 'Select User';
   $script_page = htmlspecialchars($_SERVER['PHP_SELF']);
-  $options = array('User1', 'User2', 'User3');
+  $options = $usernames;
   $buttons = '';
   $id_selection = 'userSelect';
   $select_script = 'renderUserEdit()';
@@ -40,14 +47,15 @@
 
   <div id="userEdit" class="rounded-box container tb-padding">
     <div id="selectedUserLabel" class="label-text row text-center">
+      <!-- Message displayed if javascript does not replace text -->
       [Error: no user selected]
     </div>
 
     <div class="row row-padded">
-      <div class="label-text col-lg-2 text-right">Classes:</div>
-      <div class="scrollbox box col-lg-9">
-        <!-- TODO: return actual classes from database -->
-        13ENG, 12ENG, 13ECO
+      <div class="label-text col-lg-3 text-right">Classes:</div>
+      <div id="classesBox" style="height: 100px;" class="scrollbox box col-lg-9">
+        <!-- Message displayed if javascript does not replace text -->
+        [Error: no classes found]
       </div>
     </div>
 
@@ -55,7 +63,7 @@
     <form action="" method="post">
       <div class="row tb-padding">
         <div class="label-text col-lg-4 text-right">Privilege:</div>
-        <input type="number" name="privilege" step="1" min="0" max="2" value="2" class="vertical-text-padding col-lg-1"></input>
+        <input id="privilege" type="number" name="privilege" step="1" min="0" max="2" value="2" class="vertical-text-padding col-lg-1"></input>
         <div class="col-lg-1"></div>
         <button class="btn btn-success btn-regular" type="submit">Update Privilege</button>
         <button class="btn btn-danger btn-regular" type="button">Remove User</button>
@@ -66,6 +74,7 @@
       $is_container = false;
       $label = 'Select Class';
       $script_page = htmlspecialchars($_SERVER['PHP_SELF']);
+      //TODO: query classes
       $options = array('13ENG', '12ENG', '13ECO');
       $buttons = '
       <div class="row row-padded text-center">
@@ -80,20 +89,8 @@
 
   <div id="buffer-box"></div>
 </body>
+<script src="/StudentLogger/js/renderUserEdit.js"></script>
 <script>
-  function renderUserEdit(){
-    var selectedUser = $('#userSelect').val();
-    //Check if selection is empty, null or undefined
-    if(!selectedUser || selectedUser.length === 0){
-      $('#userEdit').hide();
-    }else{
-      $('#userEdit').show();
-      $('#selectedUserLabel').text(selectedUser);
-
-      //var userData = $.post();
-    }
-  }
-
   //run once on page load
   renderUserEdit();
 </script>
