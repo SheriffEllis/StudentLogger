@@ -12,17 +12,10 @@
   $usr = $_SESSION['usr'];
 
   //aquire user's email and privlege for use in the page
-  $stmt = $conn->prepare('SELECT Privilege FROM teacher WHERE Username=? LIMIT 1');
+  $stmt = $conn->prepare('SELECT Privilege, Email FROM teacher WHERE Username=? LIMIT 1');
   $stmt->bind_param('s', $usr);
   $stmt->execute();
-  $stmt->bind_result($privilege);
-  $stmt->fetch();
-  $stmt->close();
-
-  $stmt = $conn->prepare('SELECT Email FROM teacher WHERE Username=? LIMIT 1');
-  $stmt->bind_param('s', $usr);
-  $stmt->execute();
-  $stmt->bind_result($email);
+  $stmt->bind_result($privilege, $email);
   $stmt->fetch();
   $stmt->close();
 

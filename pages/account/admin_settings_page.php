@@ -5,14 +5,15 @@
   if ($conn->connect_error) {
     die('Connection failed: ' . $conn->connect_error);
   }
+
   $usr = $_SESSION['usr'];
+
   $stmt = $conn->prepare("SELECT Privilege FROM teacher WHERE Username=? LIMIT 1");
   $stmt->bind_param('s', $usr);
   $stmt->execute();
   $stmt->bind_result($privilege);
   $stmt->fetch();
   $stmt->close();
-  $conn->close();
   //If user was not an admin, send them back to homepage
   if($privilege > 0){header("Location: /StudentLogger/pages/homepage.php");}
 
@@ -28,17 +29,18 @@
   $options = array('User1', 'User2', 'User3');
   $buttons = '';
   $id_selection = 'userSelect';
-  $select_script = 'hideUserEdit()';
+  $select_script = 'renderUserEdit()';
   require($current_path . '/templates/query_box_template.php');
   unset($id_selection);
+
+  $conn->close();
 ?>
 
   <div id="buffer-box"></div>
 
   <div id="userEdit" class="rounded-box container tb-padding">
-    <div class="label-text row text-center">
-      <!-- TODO: return actual selected user -->
-      [Selected User]
+    <div id="selectedUserLabel" class="label-text row text-center">
+      [Error: no user selected]
     </div>
 
     <div class="row row-padded">
@@ -79,18 +81,20 @@
   <div id="buffer-box"></div>
 </body>
 <script>
-  function hideUserEdit(){
-    var userSelectVal = document.getElementById('userSelect').value;
+  function renderUserEdit(){
+    var selectedUser = $('#userSelect').val();
     //Check if selection is empty, null or undefined
-    if(!userSelectVal || userSelectVal.length === 0){
-      document.getElementById('userEdit').style.display = 'none';
+    if(!selectedUser || selectedUser.length === 0){
+      $('#userEdit').hide();
     }else{
-      document.getElementById('userEdit').style.display = 'block';
+      $('#userEdit').show();
+      $('#selectedUserLabel').text(selectedUser);
 
+      //var userData = $.post();
     }
   }
 
   //run once on page load
-  hideUserEdit();
+  renderUserEdit();
 </script>
 </html>

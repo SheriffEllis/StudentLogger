@@ -1,10 +1,10 @@
 <?php
   session_start();
+  unset($_SESSION['usr']);
   $title = 'Login';
   $current_path = getenv('CURRENT_PATH');
   include($current_path . '/php/process_login.php');
   require($current_path . '/templates/metadata.php');
-  unset($_SESSION['usr']);
 ?>
 
   <div class="container text-center tb-padding">
