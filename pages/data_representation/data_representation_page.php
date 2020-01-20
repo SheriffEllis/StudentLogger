@@ -18,7 +18,6 @@
           //Table Query Box
           //TODO: substitute real table names
           $label = 'Select Table';
-          $script_page = htmlspecialchars($_SERVER['PHP_SELF']);
           $options = array('Table Name 1', 'Table Name 2', 'Table Name 3');
           $buttons = '
           <div class="text-center">
@@ -56,7 +55,6 @@
           //Function Query Box
           //TODO: substitute real function names
           $label = 'Select Function';
-          $script_page = htmlspecialchars($_SERVER['PHP_SELF']);
           $options = array('Function Name 1', 'Function Name 2', 'Function Name 3');
           $buttons = '
           <div class="text-center">

@@ -32,10 +32,10 @@
 
   $is_container = true;
   $label = 'Select User';
-  $script_page = htmlspecialchars($_SERVER['PHP_SELF']);
   $options = $usernames;
   $buttons = '';
   $id_selection = 'userSelect';
+  $search_script = '';
   $select_script = 'renderUserEdit()';
   require($current_path . '/templates/query_box_template.php');
   unset($id_selection);
@@ -60,23 +60,21 @@
     </div>
 
     <!-- TODO: sumbit privilege update and delete users -->
-    <form action="" method="post">
-      <div class="row tb-padding">
-        <div class="label-text col-lg-4 text-right">Privilege:</div>
-        <input id="privilege" type="number" name="privilege" step="1" min="0" max="2" value="2" class="vertical-text-padding col-lg-1"></input>
-        <div class="col-lg-1"></div>
-        <button class="btn btn-success btn-regular" type="submit">Update Privilege</button>
-        <!-- deletes selected user and refreshes page when clicked -->
-        <button class="btn btn-danger btn-regular" type="button"
-        onclick="deleteAccount($('#userSelect').val(), '')">Remove User</button>
-      </div>
-    </form>
+    <div class="row tb-padding">
+      <div class="label-text col-lg-4 text-right">Privilege:</div>
+      <input id="privilege" type="number" step="1" min="0" max="2" value="2" class="vertical-text-padding col-lg-1"></input>
+      <div class="col-lg-1"></div>
+      <button class="btn btn-success btn-regular" type="button"
+      onclick="updatePrivilege()">Update Privilege</button>
+      <!-- deletes selected user and refreshes page when clicked -->
+      <button class="btn btn-danger btn-regular" type="button"
+      onclick="deleteAccount($('#userSelect').val(), '')">Remove User</button>
+    </div>
 
     <?php
       $is_container = false;
       $label = 'Select Class';
-      $script_page = htmlspecialchars($_SERVER['PHP_SELF']);
-      //TODO: query classes
+      //TODO: Assign Users to Classes
       $options = array('13ENG', '12ENG', '13ECO');
       $buttons = '
       <div class="row row-padded text-center">
@@ -86,13 +84,25 @@
       ';
       require($current_path . '/templates/query_box_template.php');
     ?>
-
   </div>
 
   <div id="buffer-box"></div>
 </body>
 <script src="/StudentLogger/js/renderUserEdit.js"></script>
 <script src="/StudentLogger/js/deleteAccount.js"></script>
+<script>
+  function updatePrivilege(){
+    var selectedUser = $('#userSelect').val();
+    var privilege = $('#privilege').val();
+
+    $.post('/StudentLogger/php/update_privilege.php',
+      { usr : selectedUser, privilege : privilege },
+      function (data){
+        alert(selectedUser.concat('\'s privilege successfully updated to ', privilege));
+      }
+    );
+  }
+</script>
 <script>
   //run once on page load
   renderUserEdit();

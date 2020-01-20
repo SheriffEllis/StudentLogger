@@ -9,7 +9,6 @@
   //Exam Query Box
   $is_container = true;
   $label = 'Select Exam';
-  $script_page = htmlspecialchars($_SERVER['PHP_SELF']);
   //TODO: substitute real database data
   $search_criteria = array('Criterion1', 'Criterion2', 'Criterion3');
   $options = array('Exam1', 'Exam2', 'Exam3');

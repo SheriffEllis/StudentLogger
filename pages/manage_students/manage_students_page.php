@@ -23,7 +23,6 @@
   //Student Query Box
   $is_container = true;
   $label = 'Select Student';
-  $script_page = htmlspecialchars($_SERVER['PHP_SELF']);
   $options = array('Student1', 'Student2', 'Student3');
   //TODO: substitute actual code in the buttons
   /*
@@ -53,7 +52,6 @@
   //TODO: Box next to this displaying members of the class?
   $is_container = true;
   $label = 'Select Class';
-  $script_page = htmlspecialchars($_SERVER['PHP_SELF']);
   $options = array('13ENG', '12ENG', '13ECO');
   $buttons = '
   <div class="text-center">
@@ -73,7 +71,6 @@
   if($privilege <= 0){
     $is_container = true;
     $label = 'Edit Student Data Fields';
-    $script_page = htmlspecialchars($_SERVER['PHP_SELF']);
     $options = array('Age', 'First_name', 'Last_name');
     $buttons = '
     <div class="text-center">
