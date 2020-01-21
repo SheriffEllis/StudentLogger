@@ -34,8 +34,10 @@
   $label = 'Select User';
   $options = $usernames;
   $buttons = '';
+  $id_searchbar = 'userSearchbar';
+  $id_searchbutton = 'userSearchbutton';
   $id_selection = 'userSelect';
-  $search_script = '';
+  $search_script = 'searchNormal('.$id_searchbar.','.$id_searchbutton.','.$id_selection.')';
   $select_script = 'renderUserEdit()';
   require($current_path . '/templates/query_box_template.php');
   unset($id_selection);
@@ -90,18 +92,9 @@
 </body>
 <script src="/StudentLogger/js/renderUserEdit.js"></script>
 <script src="/StudentLogger/js/deleteAccount.js"></script>
+<script src="/StudentLogger/js/updatePrivilege.js"></script>
 <script>
-  function updatePrivilege(){
-    var selectedUser = $('#userSelect').val();
-    var privilege = $('#privilege').val();
 
-    $.post('/StudentLogger/php/update_privilege.php',
-      { usr : selectedUser, privilege : privilege },
-      function (data){
-        alert(selectedUser.concat('\'s privilege successfully updated to ', privilege));
-      }
-    );
-  }
 </script>
 <script>
   //run once on page load
