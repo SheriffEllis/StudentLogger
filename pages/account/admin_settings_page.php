@@ -35,13 +35,11 @@
   $options = $usernames;
   $buttons = '';
   $id_searchbar = 'userSearchbar';
-  $id_searchbutton = 'userSearchbutton';
   $id_selection = 'userSelect';
-  $search_script = 'searchNormal('.$id_searchbar.','.$id_searchbutton.','.$id_selection.')';
+  $search_script = "searchNormal('#".$id_searchbar."','#".$id_selection."',
+    'teacher','Username', 'Username')";
   $select_script = 'renderUserEdit()';
   require($current_path . '/templates/query_box_template.php');
-  unset($id_selection);
-
   $conn->close();
 ?>
 
@@ -61,7 +59,6 @@
       </div>
     </div>
 
-    <!-- TODO: sumbit privilege update and delete users -->
     <div class="row tb-padding">
       <div class="label-text col-lg-4 text-right">Privilege:</div>
       <input id="privilege" type="number" step="1" min="0" max="2" value="2" class="vertical-text-padding col-lg-1"></input>
@@ -93,9 +90,7 @@
 <script src="/StudentLogger/js/renderUserEdit.js"></script>
 <script src="/StudentLogger/js/deleteAccount.js"></script>
 <script src="/StudentLogger/js/updatePrivilege.js"></script>
-<script>
-
-</script>
+<script src="/StudentLogger/js/searchNormal.js"></script>
 <script>
   //run once on page load
   renderUserEdit();

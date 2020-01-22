@@ -23,9 +23,10 @@ standard buttons format:
 <div id="<?php if(!empty($id_querybox)){echo $id_querybox;} ?>"
 class="querybox <?php if(!empty($is_container)){echo "container";} ?> text-center">
   <p class="label-text"><?php echo $label; ?></p>
-  <input name="search" id="<?php if(!empty($id_searchbar)){echo $id_searchbar;} ?>" class="searchbar"
-  placeholder="Search..." type="search" <?php if(!empty($search_criteria)){echo 'style="width: 448px;"';} ?>
-  onchange="<php? if(!empty($search_script)){echo $search_script;} ?>"></input>
+  <!-- When user types in searchbar and presses enter/deselects it, the searchscript is run -->
+  <input id="<?php if(!empty($id_searchbar)){echo $id_searchbar;} ?>" class="searchbar"
+  onchange="<?php if(!empty($search_script)){echo $search_script;} ?>"
+  placeholder="Search..." type="search" <?php if(!empty($search_criteria)){echo 'style="width: 448px;"';} ?>></input>
   <!-- If there are search criteria, the searchbar width is adjusted for it -->
   <?php
     if(!empty($search_criteria)){
@@ -54,13 +55,14 @@ class="querybox <?php if(!empty($is_container)){echo "container";} ?> text-cente
       */
     }
   ?>
-  <button id="<?php if(!empty($id_searchbutton)){echo $id_searchbutton;} ?>" class="searchbutton" type="submit">
+  <button id="<?php if(!empty($id_searchbutton)){echo $id_searchbutton;} ?>"
+  onclick="<?php if(!empty($search_script)){echo $search_script;} ?>" class="searchbutton" type="button">
     <span class="glyphicon glyphicon-search"></span>
   </button>
 
   <!-- TODO: Use javascript to allow multiple buttons to use same selection? -->
   <select id="<?php if(!empty($id_selection)){echo $id_selection;} ?>" size=10
-    onchange="<?php if(!empty($select_script)){echo $select_script;} ?>" class="scrollbox col-centered">
+  onchange="<?php if(!empty($select_script)){echo $select_script;} ?>" class="scrollbox col-centered">
     <!-- TODO: Enter search results into these options -->
     <?php
     if(!empty($options)){
@@ -71,4 +73,16 @@ class="querybox <?php if(!empty($is_container)){echo "container";} ?> text-cente
     ?>
   </select>
 </div>
-<?php if(!empty($buttons)){echo $buttons;}?>
+<?php
+  if(!empty($buttons)){echo $buttons;}
+
+  unset($id_querybox);
+  unset($id_searchbar);
+  unset($id_criteriabox);
+  unset($id_searchbutton);
+  unset($id_selection);
+  unset($search_script);
+  unset($select_script);
+  unset($search_criteria);
+  unset($buttons);
+?>

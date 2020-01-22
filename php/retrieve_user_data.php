@@ -23,7 +23,6 @@
     array_push($classes, $class);
   }
   $stmt->close();
-
   $conn->close();
 
   //encode values into a json file that is returned to the jquery made on page
