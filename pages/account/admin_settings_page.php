@@ -23,21 +23,11 @@
 
   require($current_path . '/templates/navbar.php');
 
-  $sql = 'SELECT Username FROM teacher';
-  $results = $conn->query($sql);
-  $usernames = array();
-  while($username = $results->fetch_row()){
-    array_push($usernames, $username[0]);
-  }
-
   $is_container = true;
   $label = 'Select User';
-  $options = $usernames;
-  $buttons = '';
   $id_searchbar = 'userSearchbar';
   $id_selection = 'userSelect';
-  $search_script = "searchNormal('#".$id_searchbar."','#".$id_selection."',
-    'teacher','Username', 'Username')";
+  $search_script = "searchNormal('#$id_searchbar','#$id_selection','teacher','Username','Username')";
   $select_script = 'renderUserEdit()';
   require($current_path . '/templates/query_box_template.php');
   $conn->close();
@@ -92,7 +82,10 @@
 <script src="/StudentLogger/js/updatePrivilege.js"></script>
 <script src="/StudentLogger/js/searchNormal.js"></script>
 <script>
-  //run once on page load
-  renderUserEdit();
+  //run once when page opened
+  $(document).ready(function(){
+    renderUserEdit();
+    searchNormal('#userSearchbar','#userSelect','teacher','Username','Username');
+  });
 </script>
 </html>

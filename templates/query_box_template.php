@@ -10,7 +10,6 @@ $id_selection:    String        (optional)
 $search_script:   String
 $select_script:   String        (optional)
 $search_criteria  array[String] (optional)
-$options:         array[String]
 $buttons:         String        (html, optional)
 standard buttons format:
 <div class="text-center">
