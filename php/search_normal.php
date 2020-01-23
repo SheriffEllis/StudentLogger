@@ -8,7 +8,7 @@
   $inputField = $_POST['inputField'];
   $outputField = $_POST['outputField'];
   //search for string similar to what was entered (denoted by %'s)
-  $searchString = '%' . $_POST['searchString'] . '%';
+  $searchString = '%' . (string)$_POST['searchString'] . '%';
 
   $sql = 'SELECT '.$outputField.' FROM '.$table.' WHERE '.$inputField.' LIKE ?';
   $stmt = $conn->prepare($sql);

@@ -62,14 +62,6 @@ class="querybox <?php if(!empty($is_container)){echo "container";} ?> text-cente
   <!-- TODO: Use javascript to allow multiple buttons to use same selection? -->
   <select id="<?php if(!empty($id_selection)){echo $id_selection;} ?>" size=10
   onchange="<?php if(!empty($select_script)){echo $select_script;} ?>" class="scrollbox col-centered">
-    <!-- TODO: Enter search results into these options -->
-    <?php
-    if(!empty($options)){
-      foreach($options as $option){
-        echo '<option value="' . $option . '">' . $option . '</option>';
-      }
-    }
-    ?>
   </select>
 </div>
 <?php

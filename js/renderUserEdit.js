@@ -26,5 +26,9 @@ function renderUserEdit(){
         });
         $('#classesBox').text(classString);
       }, 'json');
+
+    //run an empty search for classes
+    var outputFields = ['Year_group', 'Form_group', 'Subject'];
+    searchCustomOutputString('#classSearchBar', '#classSelect', 'class', 'Class_ID', outputFields);
   }
 }

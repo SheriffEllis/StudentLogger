@@ -63,8 +63,10 @@
     <?php
       $is_container = false;
       $label = 'Select Class';
-      //TODO: Assign Users to Classes
-      $options = array('13ENG', '12ENG', '13ECO');
+      $id_searchbar = 'classSearchbar';
+      $id_selection = 'classSelect';
+      $outputFields = "['Year_group', 'Form_group', 'Subject']";
+      $search_script = "searchCustomOutputString('#$id_searchbar', '#$id_selection', 'class', 'Class_ID', $outputFields)";
       $buttons = '
       <div class="row row-padded text-center">
           <button class="btn btn-success btn-regular" type="button">Assign User to Class</button>
@@ -81,11 +83,11 @@
 <script src="/StudentLogger/js/deleteAccount.js"></script>
 <script src="/StudentLogger/js/updatePrivilege.js"></script>
 <script src="/StudentLogger/js/searchNormal.js"></script>
+<script src="/StudentLogger/js/searchCustomOutputString.js"></script>
 <script>
   //run once when page opened
-  $(document).ready(function(){
-    renderUserEdit();
-    searchNormal('#userSearchbar','#userSelect','teacher','Username','Username');
-  });
+  renderUserEdit();
+  //run an empty search for users on page load
+  searchNormal('#userSearchbar','#userSelect','teacher','Username','Username');
 </script>
 </html>

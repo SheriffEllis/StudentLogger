@@ -1,5 +1,4 @@
-//TODO: implement search criteria
-function searchNormal(searchId, selectId, table, inputField, outputField){
+function searchCustomOutputString(searchId, selectId, table, idField, outputFields){
   var search = $(searchId);
   var select = $(selectId);
 
@@ -13,15 +12,15 @@ function searchNormal(searchId, selectId, table, inputField, outputField){
   var data = {
     searchString : searchString,
     table : table,
-    inputField : inputField,
-    outputField: outputField
+    idField : idField,
+    outputFields : outputFields
   };
 
-  $.post('/StudentLogger/php/search_normal.php',data,
+  $.post('/StudentLogger/php/search_custom_output_string.php',data,
     function(results){
       select.empty();
       $.each(results, function(index, value){
-        select.append(`<option value=${value}>${value}</option>`);
+        select.append(`<option value=${index}>${value}</option>`);
       });
     }, 'json');
 }
