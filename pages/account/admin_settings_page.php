@@ -65,11 +65,12 @@
       $label = 'Select Class';
       $id_searchbar = 'classSearchbar';
       $id_selection = 'classSelect';
-      $outputFields = "['Year_group', 'Form_group', 'Subject']";
+      $outputFields = "['Year_group', 'Form_group', 'Subject', 'Username']";
       $search_script = "searchCustomOutputString('#$id_searchbar', '#$id_selection', 'class', 'Class_ID', $outputFields)";
       $buttons = '
       <div class="row row-padded text-center">
-          <button class="btn btn-success btn-regular" type="button">Assign User to Class</button>
+          <button class="btn btn-success btn-regular"
+          onclick="assignUserToClass(\'#userSelect\',\'#classSelect\')" type="button">Assign User to Class</button>
           <button class="btn btn-warning btn-regular" type="button">Unassign User from Class</button>
       </div>
       ';
@@ -84,6 +85,7 @@
 <script src="/StudentLogger/js/updatePrivilege.js"></script>
 <script src="/StudentLogger/js/searchNormal.js"></script>
 <script src="/StudentLogger/js/searchCustomOutputString.js"></script>
+<script src="/StudentLogger/js/assignUserToClass.js"></script>
 <script>
   //run once when page opened
   renderUserEdit();

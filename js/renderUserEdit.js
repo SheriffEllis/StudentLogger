@@ -28,7 +28,7 @@ function renderUserEdit(){
       }, 'json');
 
     //run an empty search for classes
-    var outputFields = ['Year_group', 'Form_group', 'Subject'];
+    var outputFields = ['Year_group', 'Form_group', 'Subject', 'Username'];
     searchCustomOutputString('#classSearchBar', '#classSelect', 'class', 'Class_ID', outputFields);
   }
 }
