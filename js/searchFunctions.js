@@ -1,4 +1,3 @@
-//TODO: implement search criteria
 function searchNormal(searchId, selectId, table, inputField, outputField){
   var search = $(searchId);
   var select = $(selectId);

@@ -37,21 +37,12 @@
   $outputFields = "['First_name', 'Last_name']";
   $search_script = "searchCriterion('#$id_searchbar', '#$id_selection', '#$id_criteriabox', 'student', 'Student_ID', $outputFields)";
   //TODO: substitute actual code in the buttons
-  /*
-  <div class="row row-padded">
-    <div class="col-lg-4"></div>
-    <button class="col-lg-1 btn btn-success" type="button">Add Student</button>
-    <button class="col-lg-1 btn btn-warning" type="button">Edit Student</button>
-    <button class="col-lg-1 btn btn-danger" type="button">Remove Student</button>
-    <button class="col-lg-1 btn btn-primary" type="button">View Student</button>
-  </div>
-  */
   $buttons = '
   <div class="text-center">
     <a class="btn-regular btn btn-success" href="create_student_page.php">Add Student</a>
-    <a class="btn-regular btn btn-warning" href="edit_student_page.php">Edit Student</a>
-    <a class="btn-regular btn btn-danger" href="">Remove Student</a>
-    <a class="btn-regular btn btn-primary" href="view_students_page.php">View Student</a>
+    <button class="btn-regular btn btn-warning" onclick="editStudent()">Edit Student</button>
+    <button class="btn-regular btn btn-danger" onclick="removeStudent()">Remove Student</button>
+    <button class="btn-regular btn btn-primary" onclick="viewStudent()">View Student</button>
   </div>
   ';
   require($current_path . '/templates/query_box_template.php');
@@ -61,16 +52,28 @@
 
 <?php
   //Class Query Box
-  //TODO: Box next to this displaying members of the class?
   $is_container = true;
   $label = 'Select Class';
-  $options = array('13ENG', '12ENG', '13ECO');
+  $id_searchbar = 'classSearchbar';
+  $id_selection = 'classSelect';
+  $id_criteriabox = 'classCriterion';
+
+  //retrieve fields of class as criteria
+  $search_criteria = array();
+  $sql = 'SHOW COLUMNS FROM class';
+  $get_fields = $conn->query($sql);
+  while($row = $get_fields->fetch_assoc()){
+    array_push($search_criteria, $row['Field']);
+  }
+
+  $outputFields = "['Year_group', 'Form_group', 'Subject']";
+  $search_script = "searchCriterion('#$id_searchbar', '#$id_selection', '#$id_criteriabox', 'class', 'Class_ID', $outputFields)";
   $buttons = '
   <div class="text-center">
     <a class="btn-regular btn btn-success" href="create_class_page.php">Add Class</a>
-    <a class="btn-regular btn btn-warning" href="edit_class_page.php">Edit Class</a>
-    <a class="btn-regular btn btn-danger" href="">Remove Class</a>
-    <a class="btn-regular btn btn-success" href="">Assign Student</a>
+    <button class="btn-regular btn btn-warning" onclick="editClass()">Edit Class</button>
+    <button class="btn-regular btn btn-danger" onclick="removeClass()">Remove Class</button>
+    <button class="btn-regular btn btn-success" onclick="assignStudentToClass()">Assign Student</button>
   </div>
   ';
   require($current_path . '/templates/query_box_template.php');
@@ -100,8 +103,14 @@
   <div id="buffer-box"></div>
 </body>
 <script src="/StudentLogger/js/searchFunctions"></script>
+<script src="/StudentLogger/js/manageStudentsFunctions.js"></script>
 <script>
+//student initial blank search
 var outputFields = ['First_name', 'Last_name'];
 searchCriterion('#studentSearchbar', '#studentSelect', '#studentCriterion', 'student', 'Student_ID', outputFields, true);
+
+//class initial blank search
+var outputFields = ['Year_group', 'Form_group', 'Subject']
+searchCriterion('#classSearchbar', '#classSelect', '#classCriterion', 'class', 'Class_ID', outputFields, true);
 </script>
 </html>
