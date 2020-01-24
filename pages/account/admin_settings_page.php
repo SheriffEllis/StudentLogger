@@ -30,7 +30,6 @@
   $search_script = "searchNormal('#$id_searchbar','#$id_selection','teacher','Username','Username')";
   $select_script = 'renderUserEdit()';
   require($current_path . '/templates/query_box_template.php');
-  $conn->close();
 ?>
 
   <div id="buffer-box"></div>
@@ -65,8 +64,19 @@
       $label = 'Select Class';
       $id_searchbar = 'classSearchbar';
       $id_selection = 'classSelect';
+      $id_criteriabox = 'classCriterion';
+
+      //retrieve fields of class as criteria
+      $search_criteria = array();
+      $sql = 'SHOW COLUMNS FROM class';
+      $get_fields = $conn->query($sql);
+      while($row = $get_fields->fetch_assoc()){
+        array_push($search_criteria, $row['Field']);
+      }
+      $conn->close();
+
       $outputFields = "['Year_group', 'Form_group', 'Subject', 'Username']";
-      $search_script = "searchCustomOutputString('#$id_searchbar', '#$id_selection', 'class', 'Class_ID', $outputFields)";
+      $search_script = "searchCriterion('#$id_searchbar', '#$id_selection', '#$id_criteriabox', 'class', 'Class_ID', $outputFields)";
       $buttons = '
       <div class="row row-padded text-center">
           <button class="btn btn-success btn-regular"
@@ -85,7 +95,7 @@
 <script src="/StudentLogger/js/deleteAccount.js"></script>
 <script src="/StudentLogger/js/searchFunctions.js"></script>
 <script>
-  //run once when page opened
+  //run once when page opened to hide user edit
   renderUserEdit();
   //run an empty search for users on page load
   searchNormal('#userSearchbar','#userSelect','teacher','Username','Username');

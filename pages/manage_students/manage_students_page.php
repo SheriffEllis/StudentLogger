@@ -4,7 +4,7 @@
   $web_section = 'manage_students';
   $current_path = getenv('CURRENT_PATH');
 
-  //Acquire user's privilege
+  //Acquire user's privilege to determine if edit fields should be displayed
   $conn = new mysqli(getenv('HTTP_HOST'), getenv('HTTP_USER'), getenv('HTTP_PASS'), getenv('HTTP_DATABASE'));
   if ($conn->connect_error) {
     die('Connection failed: ' . $conn->connect_error);
@@ -16,14 +16,26 @@
   $stmt->bind_result($privilege);
   $stmt->fetch();
   $stmt->close();
-  $conn->close();
 
   require($current_path . '/templates/navbar.php');
 
   //Student Query Box
   $is_container = true;
   $label = 'Select Student';
-  $options = array('Student1', 'Student2', 'Student3');
+  $id_searchbar = 'studentSearchbar';
+  $id_selection = 'studentSelect';
+  $id_criteriabox = 'studentCriterion';
+
+  //retrieve fields of student as criteria
+  $search_criteria = array();
+  $sql = 'SHOW COLUMNS FROM student';
+  $get_fields = $conn->query($sql);
+  while($row = $get_fields->fetch_assoc()){
+    array_push($search_criteria, $row['Field']);
+  }
+
+  $outputFields = "['First_name', 'Last_name']";
+  $search_script = "searchCriterion('#$id_searchbar', '#$id_selection', '#$id_criteriabox', 'student', 'Student_ID', $outputFields)";
   //TODO: substitute actual code in the buttons
   /*
   <div class="row row-padded">
@@ -81,8 +93,15 @@
     ';
     require($current_path . '/templates/query_box_template.php');
   }
+
+  $conn->close();
 ?>
 
   <div id="buffer-box"></div>
 </body>
+<script src="/StudentLogger/js/searchFunctions"></script>
+<script>
+var outputFields = ['First_name', 'Last_name'];
+searchCriterion('#studentSearchbar', '#studentSelect', '#studentCriterion', 'student', 'Student_ID', outputFields, true);
+</script>
 </html>
