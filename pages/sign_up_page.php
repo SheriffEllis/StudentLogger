@@ -14,7 +14,7 @@
     <form action="<?php htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
       <div class="form-group">
         <label for="email" class="sr-only">Email</label>
-        <input type="email" class="col-lg-4 col-centered form-control form-m" placeholder="Enter email address" id=login-field
+        <input type="email" class="col-lg-4 col-centered form-control form-m" placeholder="Enter email address"
         name="email" required autocomplete="email" value="<?php if(!empty($email)){echo $email;} ?>">
         <!-- email is filled in if it was entered before -->
       </div>
@@ -25,7 +25,7 @@
 
       <div class="form-group">
         <label for="usr" class="sr-only">Username</label>
-        <input type="username" class="col-lg-4 col-centered form-control form-m" placeholder="Enter username" id=login-field
+        <input type="username" class="col-lg-4 col-centered form-control form-m" placeholder="Enter username"
         name="usr" required autocomplete="username" value="<?php if(!empty($usr)){echo $usr;} ?>">
         <!-- username is filled in if it was entered before -->
       </div>
@@ -39,7 +39,7 @@
 
       <div class="form-group">
         <label for="pwd" class="sr-only">Password</label>
-        <input type="password" class="col-lg-4 col-centered form-control form-m" placeholder="Enter password" id=login-field
+        <input type="password" class="col-lg-4 col-centered form-control form-m" placeholder="Enter password" 
         name="pwd" required autocomplete="new-password" value="<?php if(!empty($pwd)){echo $pwd;} ?>">
         <!-- password is filled in if it was entered before -->
       </div>

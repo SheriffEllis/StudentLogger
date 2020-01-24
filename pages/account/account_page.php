@@ -62,7 +62,7 @@
       <!-- Username input field -->
       <div class="row form-group">
         <label for="usr" class="label-text text-center">Username</label>
-        <input type="username" class="col-lg-4 col-centered form-control form-m" id="login-field"
+        <input type="username" class="col-lg-4 col-centered form-control form-m"
         name="usr" value="<?php echo $usr; ?>" readonly>
         <!-- username is a unique identifier and cannot be changed -->
         <label for="usr">(Cannot be changed)</label>
@@ -70,7 +70,7 @@
 
       <div class="row form-group">
         <label for="pwd" class="label-text text-center">New Password</label>
-        <input type="password" class="col-lg-4 col-centered form-control form-m" placeholder="Enter new password (leave blank to not change)" id="login-field"
+        <input type="password" class="col-lg-4 col-centered form-control form-m" placeholder="Enter new password (leave blank to not change)"
         name="pwd" autocomplete="new-password">
       </div>
       <div class="col-centered error-box <?php if(empty($invld_pwd)){echo 'hidden';} ?>">
@@ -80,7 +80,7 @@
 
       <div class="row form-group">
         <label for="email" class="label-text text-center">New Email</label>
-        <input type="email" class="col-lg-4 col-centered form-control form-m" placeholder="Enter new email (leave blank to not change)" id="login-field"
+        <input type="email" class="col-lg-4 col-centered form-control form-m" placeholder="Enter new email (leave blank to not change)"
         name="email" autocomplete="false" value="<?php echo $email; ?>">
       </div>
       <div class="col-centered error-box <?php if(empty($invld_email)){echo 'hidden';} ?>">

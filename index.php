@@ -15,7 +15,7 @@
     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
       <div class="form-group">
         <label for="usr" class="sr-only">Username</label>
-        <input type="username" class="col-lg-4 col-centered form-control form-m" placeholder="Enter username" id="login-field"
+        <input type="username" class="col-lg-4 col-centered form-control form-m" placeholder="Enter username"
         name="usr" required autocomplete="<?php
           //Auto input username if user clicked "Remember me" tickbox
           if(empty($_SESSION['remember'])){
@@ -32,7 +32,7 @@
 
       <div class="form-group">
         <label for="pwd" class="sr-only">Password</label>
-        <input type="password" class="col-lg-4 col-centered form-control form-m" placeholder="Enter password" id="login-field"
+        <input type="password" class="col-lg-4 col-centered form-control form-m" placeholder="Enter password" 
         name="pwd" required autocomplete="<?php
           //Auto input password if user clicked "Remember me" tickbox
           if(empty($_SESSION['remember'])){

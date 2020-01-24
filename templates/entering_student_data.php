@@ -14,7 +14,7 @@
         echo '
         <div class="row form-group">
           <label for="' . $field . '" class="label-text text-center">' . $field .'</label>
-          <input type="text" class="col-lg-4 col-centered form-control form-m" id="login-field"
+          <input type="text" class="col-lg-4 col-centered form-control form-m"
           name="' . $field . '" value="' . $value . '" ' . $readonly . '>
         </div>
         ';
