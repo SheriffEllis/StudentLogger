@@ -36,7 +36,6 @@
 
   $outputFields = "['First_name', 'Last_name']";
   $search_script = "searchCriterion('#$id_searchbar', '#$id_selection', '#$id_criteriabox', 'student', 'Student_ID', $outputFields)";
-  //TODO: substitute actual code in the buttons
   $buttons = '
   <div class="text-center">
     <a class="btn-regular btn btn-success" href="create_student_page.php">Add Student</a>
@@ -85,7 +84,7 @@
   <div id="buffer-box"></div>
 
 <?php
-  //TODO (Admin only) Edit Student Data Fields Query Box
+  //(Admin only) Edit Student Data Fields Query Box
   if($privilege <= 0){
     $is_container = true;
     $label = 'Edit Student Data Fields';
