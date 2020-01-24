@@ -83,8 +83,7 @@
 </body>
 <script src="/StudentLogger/js/adminSettingsFunctions.js"></script>
 <script src="/StudentLogger/js/deleteAccount.js"></script>
-<script src="/StudentLogger/js/searchNormal.js"></script>
-<script src="/StudentLogger/js/searchCustomOutputString.js"></script>
+<script src="/StudentLogger/js/searchFunctions.js"></script>
 <script>
   //run once when page opened
   renderUserEdit();
