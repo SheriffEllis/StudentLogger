@@ -1,4 +1,4 @@
-function searchNormal(searchId, selectId, table, inputField, outputField){
+function searchNormal(searchId, selectId, table, idField, outputField){
   var search = $(searchId);
   var select = $(selectId);
 
@@ -12,7 +12,7 @@ function searchNormal(searchId, selectId, table, inputField, outputField){
   var data = {
     searchString : searchString,
     table : table,
-    inputField : inputField,
+    idField : idField,
     outputField: outputField
   };
 
@@ -20,7 +20,7 @@ function searchNormal(searchId, selectId, table, inputField, outputField){
     function(results){
       select.empty();
       $.each(results, function(index, value){
-        select.append(`<option value=${value}>${value}</option>`);
+        select.append(`<option value=${index}>${value}</option>`);
       });
     }, 'json');
 }

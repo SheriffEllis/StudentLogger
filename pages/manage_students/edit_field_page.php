@@ -19,8 +19,7 @@
     array_push($fields, $row['Field']);
   }
 
-  //TODO: insert actual student field ID selected from manage student field page
-  $Field_ID = 1;
+  $Field_ID = $_POST['Field_ID'];
   $stmt = $conn->prepare('SELECT * FROM student_field WHERE Field_ID=?');
   $stmt->bind_param('i', $Field_ID);
   $stmt->execute();

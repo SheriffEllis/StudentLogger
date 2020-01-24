@@ -85,16 +85,18 @@
   <div id="buffer-box"></div>
 
 <?php
-  //(Admin only) Edit Student Data Fields Query Box
+  //TODO (Admin only) Edit Student Data Fields Query Box
   if($privilege <= 0){
     $is_container = true;
     $label = 'Edit Student Data Fields';
-    $options = array('Age', 'First_name', 'Last_name');
+    $id_searchbar = 'fieldSearchbar';
+    $id_selection = 'fieldSelect';
+    $search_script = "searchNormal('#$id_searchbar','#$id_selection','student_field','Field_ID','Field_name')";
     $buttons = '
     <div class="text-center">
       <a class="btn-regular btn btn-success" href="create_field_page.php">Add Field</a>
-      <a class="btn-regular btn btn-warning" href="edit_field_page.php">Edit Field</a>
-      <a class="btn-regular btn btn-danger" href="">Remove Field</a>
+      <button class="btn-regular btn btn-warning" onclick="editField()">Edit Field</button>
+      <button class="btn-regular btn btn-danger" onclick="removeField()">Remove Field</button>
     </div>
     ';
     require($current_path . '/templates/query_box_template.php');
@@ -111,9 +113,10 @@
 //student initial blank search
 var outputFields = ['First_name', 'Last_name'];
 searchCriterion('#studentSearchbar', '#studentSelect', '#studentCriterion', 'student', 'Student_ID', outputFields, true);
-
 //class initial blank search
 var outputFields = ['Year_group', 'Form_group', 'Subject']
 searchCriterion('#classSearchbar', '#classSelect', '#classCriterion', 'class', 'Class_ID', outputFields, true);
+//student fields blank search
+searchNormal('#fieldSearchbar','#fieldSelect','student_field','Field_ID','Field_name');
 </script>
 </html>

@@ -137,3 +137,34 @@ function unassignStudentFromClass(){
     }
   );
 }
+
+function editField(){
+  var url = '/StudentLogger/pages/manage_students/edit_field_page.php';
+  var fieldId = $('#fieldSelect').val();
+  if(!fieldId){
+    alert('No field selected');
+    return;
+  }
+  var form = $(`
+    <form action="${url}" method="post">
+      <input type="text" name="Field_ID" value="${fieldId}"></input>
+    </form>
+  `);
+  $('body').append(form);
+  form.submit();
+}
+
+function removeField(){
+  var fieldId = $('#fieldSelect').val();
+  if(!fieldId){
+    alert('No field selected');
+    return;
+  }
+  if(confirm('Are you sure you want to delete this field?')){
+    $.post('/StudentLogger/php/delete_field.php',
+      {Field_ID: fieldId},
+      alert('Successfully deleted field')
+    );
+    window.location.reload();
+  }
+}
