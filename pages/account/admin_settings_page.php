@@ -71,7 +71,8 @@
       <div class="row row-padded text-center">
           <button class="btn btn-success btn-regular"
           onclick="assignUserToClass(\'#userSelect\',\'#classSelect\')" type="button">Assign User to Class</button>
-          <button class="btn btn-warning btn-regular" type="button">Unassign User from Class</button>
+          <button class="btn btn-warning btn-regular"
+          onclick="unassignUserFromClass(\'#classSelect\')" type="button">Unassign User from Class</button>
       </div>
       ';
       require($current_path . '/templates/query_box_template.php');
@@ -80,12 +81,10 @@
 
   <div id="buffer-box"></div>
 </body>
-<script src="/StudentLogger/js/renderUserEdit.js"></script>
+<script src="/StudentLogger/js/adminSettingsFunctions.js"></script>
 <script src="/StudentLogger/js/deleteAccount.js"></script>
-<script src="/StudentLogger/js/updatePrivilege.js"></script>
 <script src="/StudentLogger/js/searchNormal.js"></script>
 <script src="/StudentLogger/js/searchCustomOutputString.js"></script>
-<script src="/StudentLogger/js/assignUserToClass.js"></script>
 <script>
   //run once when page opened
   renderUserEdit();
