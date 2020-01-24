@@ -6,7 +6,7 @@
 
   $classId = $_POST['classId'];
 
-  $stmt = $conn->prepare('UPDATE class SET Username=\'\' WHERE Class_ID=?');
+  $stmt = $conn->prepare('UPDATE class SET Username=null WHERE Class_ID=?');
   $stmt->bind_param('i', $classId);
   $stmt->execute();
   $stmt->close();

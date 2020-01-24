@@ -77,5 +77,63 @@ function removeClass(){
 }
 
 function assignStudentToClass(){
-  
+  var classId = $('#classSelect').val();
+  var studentId = $('#studentSelect').val();
+
+  if(!classId){
+    alert('No class selected');
+    return;
+  }
+  if(!studentId){
+    alert('No student selected');
+    return;
+  }
+
+  var data = {
+    Class_ID : classId,
+    Student_ID : studentId
+  };
+
+  $.post('/StudentLogger/php/assign_student_to_class.php', data,
+    function(response){
+      if(response == 'success'){
+        alert('Successfully assigned student to class');
+      }else if(response == 'exists'){
+        alert('Student already assigned to that class');
+      }else{
+        alert('Error');
+      }
+    }
+  );
+}
+
+function unassignStudentFromClass(){
+  var classId = $('#classSelect').val();
+  var studentId = $('#studentSelect').val();
+
+  if(!classId){
+    alert('No class selected');
+    return;
+  }
+  if(!studentId){
+    alert('No student selected');
+    return;
+  }
+
+  var data = {
+    Class_ID : classId,
+    Student_ID : studentId
+  };
+
+  $.post('/StudentLogger/php/unassign_student_from_class.php', data,
+    function(response){
+      if(response == 'success'){
+        alert('Successfully removed student from class');
+      }else if(response == 'notexist'){
+        alert('Student was not assigned to class');
+      }else{
+        alert('Error');
+      }
+    }
+  );
 }

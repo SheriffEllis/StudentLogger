@@ -15,8 +15,8 @@
     $hash = password_hash($pwd, PASSWORD_DEFAULT);
 
     //Input validation
-    //Username: must be <=50 characters, only contains letters and whitespace, can't be an empty string
-    $invld_usr = strlen($usr)>50 || !preg_match("/^[a-z ]*$/", $usr) || empty($usr);
+    //Username: must be <=50 characters, only contains letters, numbers and whitespace, can't be an empty string
+    $invld_usr = strlen($usr)>50 || !preg_match("/^[a-z\d ]*$/", $usr) || empty($usr);
 
     //Check if username already exists if username was valid
     if(!$invld_usr){

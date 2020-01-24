@@ -73,7 +73,10 @@
     <a class="btn-regular btn btn-success" href="create_class_page.php">Add Class</a>
     <button class="btn-regular btn btn-warning" onclick="editClass()">Edit Class</button>
     <button class="btn-regular btn btn-danger" onclick="removeClass()">Remove Class</button>
+  </div>
+  <div class="text-center row-padded">
     <button class="btn-regular btn btn-success" onclick="assignStudentToClass()">Assign Student</button>
+    <button class="btn-regular btn btn-danger" onclick="unassignStudentFromClass()">Unassign Student</button>
   </div>
   ';
   require($current_path . '/templates/query_box_template.php');
