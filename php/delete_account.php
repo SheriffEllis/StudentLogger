@@ -1,14 +1,15 @@
 <?php
-$conn = new mysqli(getenv('HTTP_HOST'), getenv('HTTP_USER'), getenv('HTTP_PASS'), getenv('HTTP_DATABASE'));
-if ($conn->connect_error) {
-  die('Connection failed: ' . $conn->connect_error);
-}
+  //TODO: remove all instances of account from database
+  $conn = new mysqli(getenv('HTTP_HOST'), getenv('HTTP_USER'), getenv('HTTP_PASS'), getenv('HTTP_DATABASE'));
+  if ($conn->connect_error) {
+    die('Connection failed: ' . $conn->connect_error);
+  }
 
-$usr = $_POST['usr'];
+  $usr = $_POST['usr'];
 
-$stmt = $conn->prepare('DELETE FROM teacher WHERE Username=?');
-$stmt->bind_param('s', $usr);
-$stmt->execute();
-$stmt->close();
-$conn->close();
+  $stmt = $conn->prepare('DELETE FROM teacher WHERE Username=?');
+  $stmt->bind_param('s', $usr);
+  $stmt->execute();
+  $stmt->close();
+  $conn->close();
 ?>
