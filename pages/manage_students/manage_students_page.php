@@ -79,13 +79,10 @@
   </div>
   ';
   require($current_path . '/templates/query_box_template.php');
-?>
 
-  <div id="buffer-box"></div>
-
-<?php
   //(Admin only) Edit Student Data Fields Query Box
   if($privilege <= 0){
+    echo '<div id="buffer-box"></div>';
     $is_container = true;
     $label = 'Edit Student Data Fields';
     $id_searchbar = 'fieldSearchbar';
