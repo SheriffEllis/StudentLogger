@@ -11,11 +11,13 @@
           continue;
         }
 
+        //Do not show the Class_ID input
+        if($field == 'Class_ID'){$hidden = 'style="display: none;"';}
+
         //If on edit page, do not allow edit of Student ID
         if(!empty($values)){
           $value = $values[$field];
           if($field == 'Student_ID'){$readonly = 'readonly';}
-          if($field == 'Class_ID'){$hidden = 'style="display: none;"';}
         }else{
           $value = '';
         }
