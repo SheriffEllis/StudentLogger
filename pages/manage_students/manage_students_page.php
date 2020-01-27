@@ -80,24 +80,6 @@
   ';
   require($current_path . '/templates/query_box_template.php');
 
-  //(Admin only) Edit Student Data Fields Query Box
-  if($privilege <= 0){
-    echo '<div id="buffer-box"></div>';
-    $is_container = true;
-    $label = 'Edit Student Data Fields';
-    $id_searchbar = 'fieldSearchbar';
-    $id_selection = 'fieldSelect';
-    $search_script = "searchNormal('#$id_searchbar','#$id_selection','student_field','Field_ID','Field_name')";
-    $buttons = '
-    <div class="text-center">
-      <a class="btn-regular btn btn-success" href="create_field_page.php">Add Field</a>
-      <button class="btn-regular btn btn-warning" onclick="editField()">Edit Field</button>
-      <button class="btn-regular btn btn-danger" onclick="removeField()">Remove Field</button>
-    </div>
-    ';
-    require($current_path . '/templates/query_box_template.php');
-  }
-
   $conn->close();
 ?>
 
