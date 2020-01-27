@@ -18,8 +18,9 @@
     array_push($fields, $row['Field']);
   }
 
+  //TODO: data validation (optional)
   //if data has been submitted
-  if(!empty($_POST['Student_ID'])){
+  if(!empty($_POST['First_name'])){
     //Enter known fields into student
     $Student_ID = $_POST['Student_ID'];
     $First_name = $_POST['First_name'];

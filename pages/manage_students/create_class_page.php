@@ -17,10 +17,27 @@
   while($row = $get_fields->fetch_assoc()){
     array_push($fields, $row['Field']);
   }
-  $conn->close();
 
-  require($current_path . '/templates/navbar.php');
-  require($current_path . '/templates/entering_student_data.php')
+  //TODO: Data validation (optional)
+  //if data has been submitted
+  if(!empty($_POST['Subject'])){
+    //Enter known fields into class (Class_ID is autoincremented)
+    $Subject = $_POST['Subject'];
+    $Year_group = $_POST['Year_group'];
+    $Form_group = $_POST['Form_group'];
+    $sql = 'INSERT INTO class (Subject, Year_group, Form_group)
+      VALUES (?, ?, ?)';
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('sis', $Subject, $Year_group, $Form_group);
+    $stmt->execute();
+    $stmt->close();
+
+    header("Location: /StudentLogger/pages/manage_students/manage_students_page.php");
+  }else{
+    require($current_path . '/templates/navbar.php');
+    require($current_path . '/templates/entering_student_data.php');
+  }
+  $conn->close();
 ?>
 
   <div id="buffer-box"></div>
