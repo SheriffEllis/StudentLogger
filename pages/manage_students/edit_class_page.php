@@ -19,19 +19,34 @@
     array_push($fields, $row['Field']);
   }
 
-  //TODO: insert actual class ID selected from manage class page
-  $Class_ID = 1;
-  $stmt = $conn->prepare('SELECT * FROM class WHERE Class_ID=?');
-  $stmt->bind_param('i', $Class_ID);
-  $stmt->execute();
-  $get_values = $stmt->get_result();
-  //fetch only the first row; there shouldn't be more, but if there are, they'll be ignored
-  $values = $get_values->fetch_assoc(); //Associative array of values
-  $stmt->close();
-  $conn->close();
+  $Class_ID = $_POST['Class_ID'];
+  //TODO: Data validation (optional)
+  //if data has been submitted
+  if(!empty($_POST['Subject'])){
+    //Enter known fields into class
+    $Subject = $_POST['Subject'];
+    $Year_group = $_POST['Year_group'];
+    $Form_group = $_POST['Form_group'];
+    $sql = 'UPDATE class SET Subject=?, Year_group=?, Form_group=? WHERE Class_ID=?';
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('sisi', $Subject, $Year_group, $Form_group, $Class_ID);
+    $stmt->execute();
+    $stmt->close();
 
-  require($current_path . '/templates/navbar.php');
-  require($current_path . '/templates/entering_student_data.php')
+    header("Location: /StudentLogger/pages/manage_students/manage_students_page.php");
+  }else{
+    $stmt = $conn->prepare('SELECT * FROM class WHERE Class_ID=?');
+    $stmt->bind_param('i', $Class_ID);
+    $stmt->execute();
+    $get_values = $stmt->get_result();
+    //fetch only the first row; there shouldn't be more, but if there are, they'll be ignored
+    $values = $get_values->fetch_assoc(); //Associative array of values
+    $stmt->close();
+
+    require($current_path . '/templates/navbar.php');
+    require($current_path . '/templates/entering_student_data.php');
+  }
+  $conn->close();
 ?>
 
   <div id="buffer-box"></div>

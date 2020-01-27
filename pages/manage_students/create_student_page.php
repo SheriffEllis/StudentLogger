@@ -17,10 +17,32 @@
   while($row = $get_fields->fetch_assoc()){
     array_push($fields, $row['Field']);
   }
-  $conn->close();
 
-  require($current_path . '/templates/navbar.php');
-  require($current_path . '/templates/entering_student_data.php')
+  //TODO: data validation (optional)
+  //if data has been submitted
+  if(!empty($_POST['First_name'])){
+    //Enter known fields into student
+    $Student_ID = $_POST['Student_ID'];
+    $First_name = $_POST['First_name'];
+    $Last_name = $_POST['Last_name'];
+    $Email = $_POST['Email'];
+    $Year_group = $_POST['Year_group'];
+    $Age = $_POST['Age'];
+    $Sex = $_POST['Sex'];
+    $sql = 'INSERT INTO student (Student_ID, First_name, Last_name, Email, Year_group, Age, Sex)
+      VALUES (?, ?, ?, ?, ?, ?, ?)';
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('isssiis', $Student_ID, $First_name, $Last_name,
+      $Email, $Year_group, $Age, $Sex);
+    $stmt->execute();
+    $stmt->close();
+
+    header("Location: /StudentLogger/pages/manage_students/manage_students_page.php");
+  }else{
+    require($current_path . '/templates/navbar.php');
+    require($current_path . '/templates/entering_student_data.php');
+  }
+  $conn->close();
 ?>
 
   <div id="buffer-box"></div>

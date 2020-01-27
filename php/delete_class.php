@@ -7,7 +7,7 @@
 
   $Class_ID = $_POST['Class_ID'];
 
-  $stmt = $conn->prepare('DELETE FROM class WHERE Student_ID=?');
+  $stmt = $conn->prepare('DELETE FROM class WHERE Class_ID=?');
   $stmt->bind_param('i', $Class_ID);
   $stmt->execute();
   $stmt->close();
