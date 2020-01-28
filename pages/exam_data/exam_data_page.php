@@ -9,16 +9,20 @@
   //Exam Query Box
   $is_container = true;
   $label = 'Select Exam';
-  //TODO: substitute real database data
-  $search_criteria = array('Criterion1', 'Criterion2', 'Criterion3');
-  $options = array('Exam1', 'Exam2', 'Exam3');
-  //TODO: substitute actual code in the buttons
+  $id_searchbar = 'examSearchbar';
+  $id_selection = 'examSelect';
+  $id_criteriabox = 'examCriterion';
+
+  //Specific criteria that are proccessed differently for exam search
+  $search_criteria = array('Paper', 'Student_ID', 'Date');
+
+  $search_script = "searchExam('#$id_searchbar', '#$id_selection', '#$id_criteriabox')";
   $buttons = '
   <div class="text-center">
     <a class="btn-regular btn btn-success" href="create_exam_page.php">Add Exam</a>
-    <a class="btn-regular btn btn-warning" href="edit_exam_page.php">Edit Exam</a>
-    <a class="btn-regular btn btn-danger" href="#">Remove Exam</a>
-    <a class="btn-regular btn btn-primary" href="view_exam_page.php">View Exam</a>
+    <button class="btn-regular btn btn-warning" onclick="editExam()">Edit Exam</button>
+    <button class="btn-regular btn btn-danger" onclick="removeExam()">Remove Exam</button>
+    <button class="btn-regular btn btn-primary" onclick="viewExam()">View Exam</button>
   </div>
   ';
   require($current_path . '/templates/query_box_template.php');
@@ -26,4 +30,9 @@
 
   <div id="buffer-box"></div>
 </body>
+<script src="/StudentLogger/js/examDataFunctions.js"></script>
+<script>
+  //blank search on page open
+  searchExam('#examSearch', '#examSelect', '#examCriterion', true);
+</script>
 </html>
