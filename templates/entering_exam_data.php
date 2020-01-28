@@ -3,29 +3,33 @@
   if ($conn->connect_error) {
     die('Connection failed: ' . $conn->connect_error);
   }
-
-  //Class Query Box
-  $is_container = true;
-  $label = 'Select Class';
-  $id_searchbar = 'classSearchbar';
-  $id_selection = 'classSelect';
-  $id_criteriabox = 'classCriterion';
-
-  //retrieve fields of class as criteria
-  $search_criteria = array();
-  $sql = 'SHOW COLUMNS FROM class';
-  $get_fields = $conn->query($sql);
-  while($row = $get_fields->fetch_assoc()){
-    array_push($search_criteria, $row['Field']);
-  }
-
-  $outputFields = "['Year_group', 'Form_group', 'Subject']";
-  $search_script = "searchCriterion('#$id_searchbar', '#$id_selection', '#$id_criteriabox', 'class', 'Class_ID', $outputFields)";
-  require($current_path . '/templates/query_box_template.php');
 ?>
 
-<!-- TODO: pre-enter data for edit page -->
-  <form action="" method="post">
+  <form action="<?php htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+  <?php
+    //Class Query Box
+    $is_container = true;
+    $label = 'Select Class';
+    $id_searchbar = 'classSearchbar';
+    $id_selection = 'classSelect';
+    $id_criteriabox = 'classCriterion';
+
+    //retrieve fields of class as criteria
+    $search_criteria = array();
+    $sql = 'SHOW COLUMNS FROM class';
+    $get_fields = $conn->query($sql);
+    while($row = $get_fields->fetch_assoc()){
+      array_push($search_criteria, $row['Field']);
+    }
+
+    $select_script = 'renderGradeBox()';
+    $outputFields = "['Year_group', 'Form_group', 'Subject']";
+    $search_script = "searchCriterion('#$id_searchbar', '#$id_selection', '#$id_criteriabox', 'class', 'Class_ID', $outputFields)";
+    require($current_path . '/templates/query_box_template.php');
+  ?>
+
+    <!-- TODO: pre-enter data for edit page -->
+
     <div class="container">
       <div class="row row-padded">
         <label class="label-text text-right col-lg-6" for="paper_name">Paper Name:</label>
@@ -39,13 +43,13 @@
 
     <div id="buffer-box"></div>
 
-    <div class="container rounded-box">
+    <div class="container rounded-box" id="gradeBox">
       <div class="row row-padded label-text text-center">
         Grades
       </div>
       <div class="row row-padded output-text text-center">
         <!-- Display and select grade formats -->
-        <select required>
+        <select id="format" onchange="renderGrades()" required>
           <option value="" disabled selected hidden>Format</option>
           <?php
             $sql = 'SELECT Format_ID FROM format';
@@ -76,50 +80,14 @@
               $row = $results->fetch_assoc();
               $min_grade = $row['Symbol'];
 
-              echo '<option value="'.$id.'">('.$max_grade.') - ('.$min_grade.')</option>';
+              echo '<option value="'.$id.'">('.$max_grade.') => ('.$min_grade.')</option>';
             }
           ?>
         </select>
       </div>
-
-      <!-- TODO: substitue relevant format -->
-      <div class="row row-padded">
-        <label class="label-text text-right col-lg-6" for="student1">Student1:</label>
-        <select class="vertical-text-padding output-text col-lg-2" name="student1" required>
-          <option value="" disabled selected hidden>Grade</option>
-          <option>A*</option>
-          <option>A</option>
-          <option>B</option>
-          <option>C</option>
-          <option>D</option>
-          <option>E</option>
-        </select>
+      <div id="gradeSelections">
+        <!-- Student grade selection is appended here by javascript -->
       </div>
-      <div class="row row-padded">
-        <label class="label-text text-right col-lg-6" for="student2">Student2:</label>
-        <select class="vertical-text-padding output-text col-lg-2" name="student2" required>
-          <option value="" disabled selected hidden>Grade</option>
-          <option>A*</option>
-          <option>A</option>
-          <option>B</option>
-          <option>C</option>
-          <option>D</option>
-          <option>E</option>
-        </select>
-      </div>
-      <div class="row row-padded">
-        <label class="label-text text-right col-lg-6" for="student3">Student3:</label>
-        <select class="vertical-text-padding output-text col-lg-2" name="student3" required>
-          <option value="" disabled selected hidden>Grade</option>
-          <option>A*</option>
-          <option>A</option>
-          <option>B</option>
-          <option>C</option>
-          <option>D</option>
-          <option>E</option>
-        </select>
-      </div>
-
       <div id="buffer-box"></div>
     </div>
 
@@ -132,3 +100,12 @@
 <?php
   $conn->close();
 ?>
+<script src="/StudentLogger/js/enteringExamDataFunctions.js"></script>
+<script src="/StudentLogger/js/searchFunctions.js"></script>
+<script>
+  //empty search for classes
+  var outputFields = ['Year_group', 'Form_group', 'Subject']
+  searchCriterion('#classSearchbar', '#classSelect', '#classCriterion', 'class', 'Class_ID', outputFields, true);
+
+  renderGradeBox();
+</script>

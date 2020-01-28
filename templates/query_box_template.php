@@ -59,7 +59,8 @@ class="querybox <?php if(!empty($is_container)){echo "container";} ?> text-cente
     <span class="glyphicon glyphicon-search"></span>
   </button>
 
-  <select id="<?php if(!empty($id_selection)){echo $id_selection;} ?>" size=10
+  <select id="<?php if(!empty($id_selection)){echo $id_selection;} ?>"
+  name="<?php if(!empty($id_selection)){echo $id_selection;} ?>" size=10 required
   onchange="<?php if(!empty($select_script)){echo $select_script;} ?>" class="scrollbox col-centered">
   </select>
 </div>
