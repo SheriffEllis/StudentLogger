@@ -1,10 +1,3 @@
-<?php
-  $conn = new mysqli(getenv('HTTP_HOST'), getenv('HTTP_USER'), getenv('HTTP_PASS'), getenv('HTTP_DATABASE'));
-  if ($conn->connect_error) {
-    die('Connection failed: ' . $conn->connect_error);
-  }
-?>
-
   <form action="<?php htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
   <?php
     //Class Query Box
@@ -32,12 +25,12 @@
 
     <div class="container">
       <div class="row row-padded">
-        <label class="label-text text-right col-lg-6" for="paper_name">Paper Name:</label>
-        <input class="vertical-text-padding output-text col-lg-3" placeholder="Enter paper name" name="paper_name" type="text" required></input>
+        <label class="label-text text-right col-lg-6" for="Paper">Paper Name:</label>
+        <input class="vertical-text-padding output-text col-lg-3" placeholder="Enter paper name" name="Paper" type="text" required></input>
       </div>
       <div class="row row-padded">
-        <label class="label-text text-right col-lg-6" for="exam_date">Date of Exam:</label>
-        <input class="vertical-text-padding output-text col-lg-3" name="exam_date" type="date" required></input>
+        <label class="label-text text-right col-lg-6" for="Date">Date of Exam:</label>
+        <input class="vertical-text-padding output-text col-lg-3" name="Date" type="date" required></input>
       </div>
     </div>
 
@@ -49,7 +42,7 @@
       </div>
       <div class="row row-padded output-text text-center">
         <!-- Display and select grade formats -->
-        <select id="format" onchange="renderGrades()" required>
+        <select id="format" name="Format_ID" onchange="renderGrades()" required>
           <option value="" disabled selected hidden>Format</option>
           <?php
             $sql = 'SELECT Format_ID FROM format';

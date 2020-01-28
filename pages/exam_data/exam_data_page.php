@@ -17,6 +17,8 @@
   $search_criteria = array('Paper', 'Student_ID', 'Date');
 
   $search_script = "searchExam('#$id_searchbar', '#$id_selection', '#$id_criteriabox')";
+
+  //TODO: edit exam, remove exam, view exam
   $buttons = '
   <div class="text-center">
     <a class="btn-regular btn btn-success" href="create_exam_page.php">Add Exam</a>

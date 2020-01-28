@@ -31,12 +31,10 @@ function renderGrades(){
       var students = results.students;
       var grades = results.grades;
 
-      //grades available for selection
+      //construct string of options for grades available for selection
       var gradeOptions = '';
       $.each(grades, function(index, value){
-        gradeOptions = gradeOptions.concat(`
-          <option value="${value}">${value}</option>
-        `);
+        gradeOptions = gradeOptions.concat(`<option value="${value}">${value}</option>`);
       });
 
       //Reset if different format selected
@@ -47,15 +45,14 @@ function renderGrades(){
         //index is pupil id, value is student's full name
         gradeSelections.append(`
           <div class="row row-padded">
-            <label class="label-text text-right col-lg-6" for="${index}">${value}:</label>
-            <select class="vertical-text-padding output-text col-lg-2" name="${index}" required>
+            <label class="label-text text-right col-lg-6" for="Pupil_Grades[]">${value}:</label>
+            <select class="vertical-text-padding output-text col-lg-2" name="Pupil_Grades[${index}]" required>
               <option value="" disabled selected hidden>Grade</option>
               ${gradeOptions}
             </select>
           </div>
         `);
       });
-
     }, 'json');
   }
 }

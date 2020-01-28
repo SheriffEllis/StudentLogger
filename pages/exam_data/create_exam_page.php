@@ -4,10 +4,35 @@
   $web_section = 'exam_data';
   $current_path = getenv('CURRENT_PATH');
 
-  //TODO: proccess submitted form data
+  $conn = new mysqli(getenv('HTTP_HOST'), getenv('HTTP_USER'), getenv('HTTP_PASS'), getenv('HTTP_DATABASE'));
+  if ($conn->connect_error) {
+    die('Connection failed: ' . $conn->connect_error);
+  }
 
-  require($current_path . '/templates/navbar.php');
-  require($current_path . '/templates/entering_exam_data.php');
+  //TODO: proccess submitted form data
+  if(!empty($_POST['Paper'])){
+    $Paper = $_POST['Paper'];
+    $Date = $_POST['Date'];
+    $Format_ID = $_POST['Format_ID'];
+    $Pupil_Grades = $_POST['Pupil_Grades'];
+
+    $sql = 'INSERT INTO grade (Paper, Date, Format_ID, Pupil_ID, Grade)
+      VALUES (?, ?, ?, ?, ?)';
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('ssiis', $Paper, $Date, $Format_ID, $Pupil_ID, $Grade);
+    foreach($Pupil_Grades as $pupil_ID => $grade){
+      //set bound parameters to values of local loop variables
+      $Pupil_ID = $pupil_ID;
+      $Grade = $grade;
+      $stmt->execute();
+    }
+    $stmt->close();
+
+    header('Location: /StudentLogger/pages/exam_data/exam_data_page/php');
+  }else{
+    require($current_path . '/templates/navbar.php');
+    require($current_path . '/templates/entering_exam_data.php');
+  }
 ?>
 
   <div id="buffer-box"></div>
