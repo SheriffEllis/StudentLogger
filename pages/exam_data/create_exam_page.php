@@ -10,4 +10,10 @@
 
   <div id="buffer-box"></div>
 </body>
+<script src="/StudentLogger/js/searchFunctions.js"></script>
+<script>
+  //empty search for classes
+  var outputFields = ['Year_group', 'Form_group', 'Subject']
+  searchCriterion('#classSearchbar', '#classSelect', '#classCriterion', 'class', 'Class_ID', outputFields, true);
+</script>
 </html>
