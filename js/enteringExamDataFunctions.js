@@ -17,10 +17,7 @@ function renderGrades(){
   var selectedClass = $('#classSelect').val();
   var gradeSelections = $('#gradeSelections');
 
-  if(!selectedFormat){
-    $('#gradeSelections').empty();
-  }else{
-
+  if(selectedFormat){
     var data = {
       Class_ID : selectedClass,
       Format_ID: selectedFormat

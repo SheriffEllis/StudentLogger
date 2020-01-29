@@ -9,7 +9,6 @@
     die('Connection failed: ' . $conn->connect_error);
   }
 
-  //TODO: proccess submitted form data
   if(!empty($_POST['Paper'])){
     $Paper = $_POST['Paper'];
     $Date = $_POST['Date'];
