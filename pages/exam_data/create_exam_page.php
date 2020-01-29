@@ -27,7 +27,7 @@
     }
     $stmt->close();
 
-    header('Location: /StudentLogger/pages/exam_data/exam_data_page/php');
+    header('Location: /StudentLogger/pages/exam_data/exam_data_page.php');
   }else{
     require($current_path . '/templates/navbar.php');
     require($current_path . '/templates/entering_exam_data.php');

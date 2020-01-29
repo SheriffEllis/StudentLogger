@@ -83,6 +83,8 @@
   $conn->close();
 ?>
 
+  <!-- TODO: add view class section? -->
+
   <div id="buffer-box"></div>
 </body>
 <script src="/StudentLogger/js/searchFunctions"></script>
