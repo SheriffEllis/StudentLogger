@@ -16,9 +16,11 @@
       <div class="col-lg-8">
         <?php
           //Table Query Box
-          //TODO: substitute real table names
           $label = 'Select Table';
-          $options = array('Table Name 1', 'Table Name 2', 'Table Name 3');
+          $id_searchbar = 'tableSearchbar';
+          $id_selection = 'tableSelect';
+          $search_script = "searchNormal('#$id_searchbar','#$id_selection','data_table','Data_table_ID','Table_title')";
+          $select_script = 'selectTable()';
           $buttons = '
           <div class="text-center">
             <a class="btn-regular btn btn-success" href="create_table_page.php">Add Table</a>
@@ -30,12 +32,11 @@
         ?>
       </div>
       <div class="col-lg-4 description-box box">
-        <!-- TODO: input actual descriptions and datasets -->
         <label class="description-text bold">Description:</label>
-        <p id="table-description" class="description-text">(Description)</p>
+        <p id="table-description" class="description-text">...</p>
 
         <label class="description-text bold">Table Columns:</label>
-        <p id="table-columns" class="description-text">DataSet1, DataSet2, DataSet3</p>
+        <p id="table-columns" class="description-text">...</p>
 
         <div class="row row-padded text-center">
           <a class="btn-regular btn btn-primary text-center" href="view_table_page.php">View Table</a>
@@ -53,9 +54,11 @@
       <div class="col-lg-8">
         <?php
           //Function Query Box
-          //TODO: substitute real function names
           $label = 'Select Function';
-          $options = array('Function Name 1', 'Function Name 2', 'Function Name 3');
+          $id_searchbar = 'functionSearchbar';
+          $id_selection = 'functionSelect';
+          $search_script = "searchNormal('#$id_searchbar','#$id_selection','function','Function_ID','Function_title')";
+          $select_script = 'selectFunction()';
           $buttons = '
           <div class="text-center">
             <a class="btn-regular btn btn-success" href="create_function_page.php">Add Function</a>
@@ -67,15 +70,14 @@
         ?>
       </div>
       <div class="col-lg-4 description-box box">
-        <!-- TODO: input actual descriptions, inputs, and function type -->
         <label class="description-text bold">Description:</label>
-        <p id="function-description" class="description-text">(Description)</p>
+        <p id="function-description" class="description-text">...</p>
 
         <label class="description-text bold">Function Inputs:</label>
-        <p id="function-inputs" class="description-text">DataSet1, DataSet2, DataSet3</p>
+        <p id="function-inputs" class="description-text">...</p>
 
         <label class="description-text bold">Function Type:</label>
-        <p id="function-type" class="description-text">AVERAGE(Value1, Value2, ...)</p>
+        <p id="function-type" class="description-text">...</p>
 
         <div class="row row-padded text-center">
           <a class="btn-regular btn btn-primary text-center" href="view_function_page.php">View Function Output</a>
@@ -86,4 +88,41 @@
 
   <div id="buffer-box"></div>
 </body>
+<script src="/StudentLogger/js/searchFunctions.js"></script>
+<script>
+  function selectTable(){
+    var tableId = $('#tableSelect').val();
+    if(tableId){
+      $.post('/StudentLogger/php/retrieve_table_properties.php', {Data_table_ID : tableId},
+        function(results){
+          var description = results.description;
+          var columns = results.columns;
+
+          $('#table-description').text(description);
+          $('#table-columns').text(columns);
+        }
+      , 'json');
+    }
+  }
+
+  function selectFunction(){
+    var functionId = $('#functionSelect').val();
+    if(functionId){
+      $.post('/StudentLogger/php/retrieve_function_properties.php', {Function_ID : functionId},
+        function(results){
+          var description = results.description;
+          var inputs = results.inputs;
+          var functionType = results.functionType;
+
+          $('#function-description').text(description);
+          $('#function-inputs').text(inputs);
+          $('#function-type').text(functionType);
+        }
+      , 'json');
+    }
+  }
+
+  searchNormal('#tableSearchbar','#tableSelect','data_table','Data_table_ID','Table_title');
+  searchNormal('#functionSearchbar','#functionSelect','function','Function_ID','Function_title');
+</script>
 </html>

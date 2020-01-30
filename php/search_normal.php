@@ -12,7 +12,7 @@
 
   $results = array();
 
-  $sql = 'SELECT '.$idField.','.$outputField.' FROM '.$table.' WHERE '.$idField.' LIKE ?';
+  $sql = 'SELECT '.$idField.','.$outputField.' FROM '.$table.' WHERE '.$outputField.' LIKE ?';
   $stmt = $conn->prepare($sql);
   $stmt->bind_param('s', $searchString);
   $stmt->execute();
