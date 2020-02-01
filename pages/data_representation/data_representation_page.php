@@ -89,39 +89,8 @@
   <div id="buffer-box"></div>
 </body>
 <script src="/StudentLogger/js/searchFunctions.js"></script>
+<script src="/StudentLogger/js/dataRepresentationFunctions.js"></script>
 <script>
-  function selectTable(){
-    var tableId = $('#tableSelect').val();
-    if(tableId){
-      $.post('/StudentLogger/php/retrieve_table_properties.php', {Data_table_ID : tableId},
-        function(results){
-          var description = results.description;
-          var columns = results.columns;
-
-          $('#table-description').text(description);
-          $('#table-columns').text(columns);
-        }
-      , 'json');
-    }
-  }
-
-  function selectFunction(){
-    var functionId = $('#functionSelect').val();
-    if(functionId){
-      $.post('/StudentLogger/php/retrieve_function_properties.php', {Function_ID : functionId},
-        function(results){
-          var description = results.description;
-          var inputs = results.inputs;
-          var functionType = results.functionType;
-
-          $('#function-description').text(description);
-          $('#function-inputs').text(inputs);
-          $('#function-type').text(functionType);
-        }
-      , 'json');
-    }
-  }
-
   searchNormal('#tableSearchbar','#tableSelect','data_table','Data_table_ID','Table_title');
   searchNormal('#functionSearchbar','#functionSelect','function','Function_ID','Function_title');
 </script>

@@ -14,7 +14,7 @@
       </div>
 
       <div class="row row-padded text-center">
-        <textarea name="table-description" class="col-lg-8 col-centered output-text description-box" placeholder="Enter table description..."></textarea>
+        <textarea name="table_description" class="col-lg-8 col-centered output-text description-box" placeholder="Enter table description..."></textarea>
       </div>
 
       <!-- TODO: make into dyanmic column selection as well as output datasets -->

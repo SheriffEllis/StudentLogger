@@ -14,7 +14,7 @@
       </div>
 
       <div class="row row-padded text-center">
-        <textarea name="function-description" class="col-lg-8 col-centered output-text description-box" placeholder="Enter function description..."></textarea>
+        <textarea name="function_description" class="col-lg-8 col-centered output-text description-box" placeholder="Enter function description..."></textarea>
       </div>
 
       <!-- TODO: input actual functions into options -->
