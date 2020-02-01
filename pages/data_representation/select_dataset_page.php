@@ -4,17 +4,42 @@
   $web_section = 'data_representation';
   $current_path = getenv('CURRENT_PATH');
 
+  $conn = new mysqli(getenv('HTTP_HOST'), getenv('HTTP_USER'), getenv('HTTP_PASS'), getenv('HTTP_DATABASE'));
+  if ($conn->connect_error) {
+    die('Connection failed: ' . $conn->connect_error);
+  }
+
+  $Table_title = $_POST['Table_title'];
+  $Table_description = $_POST['Table_description'];
+  $Dataset_IDs = $_POST['Dataset_IDs'];
+  $Dataset_index = $_POST['Dataset_index'];
+  $Postback = $_POST['Postback'];
+
   require($current_path . '/templates/navbar.php');
+  /*
+  TODO:
+    Retrieve relevant data (Note: everything after table selection requires javascript)
+    Configure dynamic selection of conditions
+    Submit->create dataset->add dataset id to Dataset_IDs->Submit data
+    Cancel->Resubmit data
+    if user cancels creation of table, all prior created datasets should be deleted
+  */
 ?>
 
-  <form action="" method="post">
+  <form action="<?php echo $Postback; ?>" method="post">
     <div class="container box">
       <div class="row row-padded text-center">
         <select class="col-centered output-text">
           <option disabled selected hidden>Select Table</option>
-          <option>Table1</option>
-          <option>Table2</option>
-          <option>Table3</option>
+          <?php
+            //Select all table names except dataset and teacher
+            $sql = 'SELECT table_name FROM information_schema.tables
+              WHERE table_schema ="student_logger" AND table_name != "dataset" AND table_name != "teacher"';
+            $results = $conn->query($sql);
+            while($result = $results->fetch_assoc()){
+              echo '<option value="'.$result['table_name'].'">'.$result['table_name'].'</option>';
+            }
+          ?>
         </select>
       </div>
 
@@ -36,8 +61,8 @@
         </select>
         <select class="output-text">
           <option disabled selected hidden>Order</option>
-          <option>Ascending</option>
-          <option>Descending</option>
+          <option value="true">Ascending</option>
+          <option value="false">Descending</option>
         </select>
       </div>
 
