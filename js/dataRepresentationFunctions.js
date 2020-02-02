@@ -1,7 +1,7 @@
 function selectTable(){
   var tableId = $('#tableSelect').val();
   if(tableId){
-    $.post('/StudentLogger/php/retrieve_table_properties.php', {Data_table_ID : tableId},
+    $.post('/StudentLogger/php/retrieve_datatable_properties.php', {Data_table_ID : tableId},
       function(results){
         var description = results.description;
         var columns = results.columns;

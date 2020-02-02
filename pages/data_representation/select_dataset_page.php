@@ -18,7 +18,6 @@
   require($current_path . '/templates/navbar.php');
   /*
   TODO:
-    Retrieve relevant data (Note: everything after table selection requires javascript)
     Configure dynamic selection of conditions
     Submit->create dataset->add dataset id to Dataset_IDs->Submit data
     Cancel->Resubmit data
@@ -29,7 +28,7 @@
   <form action="<?php echo $Postback; ?>" method="post">
     <div class="container box">
       <div class="row row-padded text-center">
-        <select class="col-centered output-text">
+        <select id="tableSelect" onchange="renderOptions()" class="col-centered output-text">
           <option disabled selected hidden>Select Table</option>
           <?php
             //Select all table names except dataset and teacher
@@ -43,21 +42,13 @@
         </select>
       </div>
 
-      <div class="row row-padded text-center">
-        <select class="col-centered output-text">
-          <option disabled selected hidden>Select Output Field</option>
-          <option>Field1</option>
-          <option>Field2</option>
-          <option>Field3</option>
+      <div id="outputFieldRow" class="row row-padded text-center" style="display: none;">
+        <select id="outputFieldSelect" class="col-centered output-text">
         </select>
       </div>
 
-      <div class="row row-padded text-center">
-        <select class="output-text">
-          <option disabled selected hidden>Order Determining Field</option>
-          <option>Field1</option>
-          <option>Field2</option>
-          <option>Field3</option>
+      <div id="orderDeterminingRow" class="row row-padded text-center" style="display: none;">
+        <select id="orderDeterminingFieldSelect" class="output-text">
         </select>
         <select class="output-text">
           <option disabled selected hidden>Order</option>
@@ -118,7 +109,7 @@
         <!-- Condition 2 -->
         <div class="col-lg-8 col-centered box">
           <div class="row row-padded label-text text-center">
-            <label>Condition 1</label>
+            <label>Condition 2</label>
             <input class="mediumCheckbox" type="checkbox"></input>
           </div>
 
@@ -163,4 +154,8 @@
 
   <div id="buffer-box"></div>
 </body>
+<script src="/StudentLogger/js/selectDatasetFunctions.js"></script>
+<script>
+
+</script>
 </html>
