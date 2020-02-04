@@ -9,40 +9,19 @@
     die('Connection failed: ' . $conn->connect_error);
   }
 
-  $Table_title = $_POST['Table_title'];
-  $Table_description = $_POST['Table_description'];
+  //TODO: adjust for function
+  $Title = $_POST['Title'];
+  $Description = $_POST['Description'];
   $Dataset_IDs = $_POST['Dataset_IDs'];
   $Dataset_index = $_POST['Dataset_index'];
   $Postback = $_POST['Postback'];
+  $javascript_data = "'".$Title."', '".$Description.
+    "', [".implode(', ', $Dataset_IDs)."], ".$Dataset_index;
 
   require($current_path . '/templates/navbar.php');
-  /*
-  TODO:
-    Submit->create dataset->add dataset id to Dataset_IDs->Submit data
-    Cancel->Resubmit data
-    if user cancels creation of table, all prior created datasets should be deleted
-  */
 ?>
 
-  <form action="<?php echo $Postback; ?>" method="post">
-    <!-- hidden part of form resubmitting data to datatable/function -->
-    <div style="display: none;">
-      <?php
-        if($Postback == 'create_table_page.php'){
-          echo '
-            <input name="Table_title" value="'.$Table_title.'"/>
-            <input name="Table_description" value="'.$Table_description.'"/>
-            <input name="Dataset_index" value="'.$Dataset_index.'"/>
-          ';
-          foreach($Dataset_IDs as $index=>$ID){
-            echo '<input name="Dataset_IDs['.$index.']" value="'.$ID.'"/>';
-          }
-        }else{
-          //TODO
-        }
-      ?>
-    </div>
-
+  <form id="datasetForm" action="<?php echo $Postback; ?>" method="post">
     <div class="container box">
       <div class="row row-padded text-center">
         <select id="tableSelect" name="selected_table" onchange="renderOptions()" class="col-centered output-text">
@@ -60,17 +39,17 @@
       </div>
 
       <div id="outputFieldRow" class="row row-padded text-center" style="display: none;">
-        <select id="outputFieldSelect" name="output_field" class="col-centered output-text">
+        <select id="outputFieldSelect" name="output_field" class="col-centered output-text" >
         </select>
       </div>
 
       <div id="orderDeterminingRow" class="row row-padded text-center" style="display: none;">
         <select id="orderDeterminingFieldSelect" name="order_field" class="output-text">
         </select>
-        <select name="ascending" class="output-text">
+        <select id="orderSelect" name="order" class="output-text">
           <option disabled selected hidden>Order</option>
-          <option value=true>Ascending</option>
-          <option value=false>Descending</option>
+          <option value="ascending">Ascending</option>
+          <option value="descending">Descending</option>
         </select>
       </div>
 
@@ -78,10 +57,9 @@
         <div id="conditionsSection">
         </div>
 
-        <!-- TODO: make submit button actuall submit relevant data -->
         <div class="row row-padded text-center">
-          <button class="btn btn-success btn-regular" type="submit">Select</button>
-          <a class="btn btn-danger btn-regular" href="data_representation_page.php">Cancel</a>
+          <button class="btn btn-success btn-regular" type="button" onclick="selectDataset(<?php echo $javascript_data; ?>)">Select</button>
+          <button class="btn btn-danger btn-regular" type="button" onclick="cancelDataset(<?php echo $javascript_data; ?>)">Cancel</button>
         </div>
       </div>
 
@@ -93,6 +71,61 @@
 </body>
 <script src="/StudentLogger/js/selectDatasetFunctions.js"></script>
 <script>
+  function selectDataset(Title, Description, Dataset_IDs, Dataset_index){
+    var form = $('#datasetForm');
+    if(validateInput()){
+      appendResubmissionData(form, Title, Description, Dataset_IDs);
+      alert(`<input style="display: none;" name="Dataset_index" value=${Dataset_index} />`);
+      form.append(`<input style="display: none;" name="Dataset_index" value=${Dataset_index} />`);
+      form.submit();
+    }
+  }
 
+  function cancelDataset(Title, Description, Dataset_IDs){
+    var form = $('#datasetForm');
+    form.empty();
+    appendResubmissionData(form, Title, Description, Dataset_IDs);
+    form.submit();
+  }
+
+  function appendResubmissionData(form, Title, Description, Dataset_IDs){
+    var Dataset_IDs_String = '';
+    $.each(Dataset_IDs, function(index, value){
+      if(value != null){
+        Dataset_IDs_String = Dataset_IDs_String.concat(`
+          <input name="Dataset_IDs[${index}]" value=${value} />
+        `);
+      }
+    });
+    form.append(`
+      <div style="display: none;">
+        <input name="Title" value="${Title}"/>
+        <input name="Description" value="${Description}" />
+        ${Dataset_IDs_String}
+      </div>
+    `);
+  }
+
+  function validateInput(){
+    var tableSelection = $('#tableSelect').val();
+    var outputFieldSelection = $('#outputFieldSelect').val();
+    var orderDeterminingFieldSelection = $('#orderDeterminingFieldSelect').val();
+    var orderSelection = $('#orderSelect').val();
+
+    if(tableSelection && outputFieldSelection && orderDeterminingFieldSelection && orderSelection){
+      return true;
+    }
+
+    if(!tableSelection){
+      alert('Please select a table');
+    }else if(!outputFieldSelection){
+      alert('Please select an output field');
+    }else if(!orderDeterminingFieldSelection){
+      alert('Please select an order determining field');
+    }else if(!orderSelection){
+      alert('Please select an order of output');
+    }
+    return false;
+  }
 </script>
 </html>

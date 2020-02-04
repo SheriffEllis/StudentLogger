@@ -41,8 +41,10 @@ function selectDataset(Dataset_IDs, index){
   //Dataset_index determines which column the dataset corresponds to
   //Postback tells the select_dataset_page to send the data back to create_table_page
   form.append(`
-    <input name="Dataset_index" value="${index}"/>
-    <input name="Postback" value="${postback}"/>
+    <div style="display: none;">
+      <input name="Dataset_index" value="${index}"/>
+      <input name="Postback" value="${postback}"/>
+    </div>
   `);
   form.attr('action', url); //change action of form to submit (temporily) to select_dataset_page
   //Posts Dataset_IDs[], Dataset_index, Table_title, and Table_description to select_dataset_page
