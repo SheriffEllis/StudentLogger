@@ -23,6 +23,10 @@
 
   <form id="datasetForm" action="<?php echo $Postback; ?>" method="post">
     <div class="container box">
+      <div class="row row-padded text-center output-text">
+        <input id="datasetName" name="dataset_name" type="text" placeholder="Enter dataset name..."/>
+      </div>
+
       <div class="row row-padded text-center">
         <select id="tableSelect" name="selected_table" onchange="renderOptions()" class="col-centered output-text">
           <option disabled selected hidden>Select Table</option>
@@ -48,8 +52,8 @@
         </select>
         <select id="orderSelect" name="order" class="output-text">
           <option disabled selected hidden>Order</option>
-          <option value="ascending">Ascending</option>
-          <option value="descending">Descending</option>
+          <option value="ASC">Ascending</option>
+          <option value="DESC">Descending</option>
         </select>
       </div>
 
@@ -70,62 +74,4 @@
   <div id="buffer-box"></div>
 </body>
 <script src="/StudentLogger/js/selectDatasetFunctions.js"></script>
-<script>
-  function selectDataset(Title, Description, Dataset_IDs, Dataset_index){
-    var form = $('#datasetForm');
-    if(validateInput()){
-      appendResubmissionData(form, Title, Description, Dataset_IDs);
-      alert(`<input style="display: none;" name="Dataset_index" value=${Dataset_index} />`);
-      form.append(`<input style="display: none;" name="Dataset_index" value=${Dataset_index} />`);
-      form.submit();
-    }
-  }
-
-  function cancelDataset(Title, Description, Dataset_IDs){
-    var form = $('#datasetForm');
-    form.empty();
-    appendResubmissionData(form, Title, Description, Dataset_IDs);
-    form.submit();
-  }
-
-  function appendResubmissionData(form, Title, Description, Dataset_IDs){
-    var Dataset_IDs_String = '';
-    $.each(Dataset_IDs, function(index, value){
-      if(value != null){
-        Dataset_IDs_String = Dataset_IDs_String.concat(`
-          <input name="Dataset_IDs[${index}]" value=${value} />
-        `);
-      }
-    });
-    form.append(`
-      <div style="display: none;">
-        <input name="Title" value="${Title}"/>
-        <input name="Description" value="${Description}" />
-        ${Dataset_IDs_String}
-      </div>
-    `);
-  }
-
-  function validateInput(){
-    var tableSelection = $('#tableSelect').val();
-    var outputFieldSelection = $('#outputFieldSelect').val();
-    var orderDeterminingFieldSelection = $('#orderDeterminingFieldSelect').val();
-    var orderSelection = $('#orderSelect').val();
-
-    if(tableSelection && outputFieldSelection && orderDeterminingFieldSelection && orderSelection){
-      return true;
-    }
-
-    if(!tableSelection){
-      alert('Please select a table');
-    }else if(!outputFieldSelection){
-      alert('Please select an output field');
-    }else if(!orderDeterminingFieldSelection){
-      alert('Please select an order determining field');
-    }else if(!orderSelection){
-      alert('Please select an order of output');
-    }
-    return false;
-  }
-</script>
 </html>

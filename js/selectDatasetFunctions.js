@@ -103,3 +103,63 @@ function updateConditions(){
     }
   }
 }
+
+function selectDataset(Title, Description, Dataset_IDs, Dataset_index){
+  var form = $('#datasetForm');
+  if(validateInput()){
+    appendResubmissionData(form, Title, Description, Dataset_IDs);
+    form.append(`<input style="display: none;" name="Dataset_index" value=${Dataset_index} />`);
+    form.submit();
+  }
+}
+
+function cancelDataset(Title, Description, Dataset_IDs){
+  var form = $('#datasetForm');
+  form.empty();
+  appendResubmissionData(form, Title, Description, Dataset_IDs);
+  form.submit();
+}
+
+function appendResubmissionData(form, Title, Description, Dataset_IDs){
+  var Dataset_IDs_String = '';
+  $.each(Dataset_IDs, function(index, value){
+    if(value != null){
+      Dataset_IDs_String = Dataset_IDs_String.concat(`
+        <input name="Dataset_IDs[${index}]" value=${value} />
+      `);
+    }
+  });
+  form.append(`
+    <div style="display: none;">
+      <input name="Title" value="${Title}"/>
+      <input name="Description" value="${Description}" />
+      ${Dataset_IDs_String}
+    </div>
+  `);
+}
+
+function validateInput(){
+  var datasetName = $('#datasetName').val();
+  var tableSelection = $('#tableSelect').val();
+  var outputFieldSelection = $('#outputFieldSelect').val();
+  var orderDeterminingFieldSelection = $('#orderDeterminingFieldSelect').val();
+  var orderSelection = $('#orderSelect').val();
+
+  if(datasetName && tableSelection && outputFieldSelection && orderDeterminingFieldSelection && orderSelection){
+    return true;
+  }
+
+  //TODO: more thorough name validation
+  if(!datasetName){
+    alert('Please type in a dataset name');
+  }else if(!tableSelection){
+    alert('Please select a table');
+  }else if(!outputFieldSelection){
+    alert('Please select an output field');
+  }else if(!orderDeterminingFieldSelection){
+    alert('Please select an order determining field');
+  }else if(!orderSelection){
+    alert('Please select an order of output');
+  }
+  return false;
+}

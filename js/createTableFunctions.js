@@ -27,7 +27,7 @@ function addColumn(Dataset_IDs, index, Dataset_name = '(Select Data Set)', Datas
 
   $('#columnSelection').append(`
     <div class="row row-padded">
-      <input name="Dataset_IDs[${index}]" style="display: none;" value="${Dataset_ID}"/>
+      <input name="Dataset_IDs[${index}]" style="display: none;" value=${Dataset_ID} />
       <label class="label-text text-right col-lg-6">Column ${index}:</label>
       <button class="btn btn-regular ${buttonClass}" type="button" onclick="selectDataset(${Dataset_IDs_string}, ${index})">${Dataset_name}</button>
     </div>
