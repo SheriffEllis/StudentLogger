@@ -104,10 +104,10 @@ function updateConditions(){
   }
 }
 
-function selectDataset(Title, Description, Dataset_IDs, Dataset_index){
+function selectDataset(Title, Description, Dataset_IDs, Dataset_index, Function_type = null){
   var form = $('#datasetForm');
   if(validateInput()){
-    appendResubmissionData(form, Title, Description, Dataset_IDs);
+    appendResubmissionData(form, Title, Description, Dataset_IDs, Function_type);
     form.append(`<input style="display: none;" name="Dataset_index" value=${Dataset_index} />`);
     form.submit();
   }
@@ -120,7 +120,7 @@ function cancelDataset(Title, Description, Dataset_IDs){
   form.submit();
 }
 
-function appendResubmissionData(form, Title, Description, Dataset_IDs){
+function appendResubmissionData(form, Title, Description, Dataset_IDs, Function_type){
   var Dataset_IDs_String = '';
   $.each(Dataset_IDs, function(index, value){
     if(value != null){
@@ -129,10 +129,16 @@ function appendResubmissionData(form, Title, Description, Dataset_IDs){
       `);
     }
   });
+  if(Function_type != null){
+    Function_type_String = `<input name="Function_type" value="${Function_type}" />`;
+  }else{
+    Function_type_String = '';
+  }
   form.append(`
     <div style="display: none;">
-      <input name="Title" value="${Title}"/>
+      <input name="Title" value="${Title}" />
       <input name="Description" value="${Description}" />
+      ${Function_type_String}
       ${Dataset_IDs_String}
     </div>
   `);

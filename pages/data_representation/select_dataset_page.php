@@ -9,6 +9,7 @@
     die('Connection failed: ' . $conn->connect_error);
   }
 
+  //TODO?: allow function output to be selected as dataset
   //TODO: adjust for function
   $Title = $_POST['Title'];
   $Description = $_POST['Description'];
@@ -17,6 +18,10 @@
   $Postback = $_POST['Postback'];
   $javascript_data = "'".$Title."', '".$Description.
     "', [".implode(', ', $Dataset_IDs)."], ".$Dataset_index;
+  if(isset($_POST['Function_type'])){
+    $Function_type = $_POST['Function_type'];
+    $javascript_data = "$javascript_data, $Function_type";
+  }
 
   require($current_path . '/templates/navbar.php');
 ?>

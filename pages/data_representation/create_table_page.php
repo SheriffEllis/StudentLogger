@@ -9,19 +9,17 @@
     die('Connection failed: ' . $conn->connect_error);
   }
 
-  if(!empty($_POST['Title'])){$Title = $_POST['Title'];}
+  if(isset($_POST['Title'])){$Title = $_POST['Title'];}
   else{$Title = '';}
 
-  if(!empty($_POST['Description'])){$Description = $_POST['Description'];}
+  if(isset($_POST['Description'])){$Description = $_POST['Description'];}
   else{$Description = '';}
 
-  if(!empty($_POST['Dataset_IDs'])){$Dataset_IDs = $_POST['Dataset_IDs'];}
+  if(isset($_POST['Dataset_IDs'])){$Dataset_IDs = $_POST['Dataset_IDs'];}
   else{$Dataset_IDs = array();}
 
   //Data table submitted
-
   if(!empty($_POST['submitted'])){
-
     //create table
     $sql = "INSERT INTO data_table (Table_title, Table_description) VALUES (?, ?)";
     $stmt = $conn->prepare($sql);
@@ -79,10 +77,10 @@
       <div id="columnSelection" class="row row-padded">
       </div>
 
-      <!-- TODO: make submit button actually submit relevant data -->
+      <!-- TODO?: validate if any datasets have been entered -->
       <div class="row row-padded text-center">
         <button class="btn btn-success btn-regular" type="submit" name="submitted" value=true >Save</button>
-        <button class="btn btn-danger btn-regular" type="button" onclick="cancelTable()">Cancel</button>
+        <button class="btn btn-danger btn-regular" type="button" onclick="cancel()">Cancel</button>
       </div>
 
       <div id="buffer-box-small"></div>
@@ -95,18 +93,5 @@
 <script>
   var Dataset_IDs = <?php echo '['.implode(', ',$Dataset_IDs).']'; ?>;
   renderColumns(Dataset_IDs);
-
-  function cancelTable(){
-    $.post('/StudentLogger/php/discard_datasets.php', {}, function(){
-      window.location = 'data_representation_page.php';
-    });
-  }
-
-  //if user leaves page, discard current datasets
-  /*
-  window.addEventListener('beforeunload', (event) => {
-    $.post('/StudentLogger/php/discard_datasets.php', {Dataset_IDs : Dataset_IDs});
-  });
-  */
 </script>
 </html>
