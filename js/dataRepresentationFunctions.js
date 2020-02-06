@@ -44,7 +44,18 @@ function editTable(){
 }
 
 function removeTable(){
-  alert('TODO');
+  var tableId = $('#tableSelect').val();
+  if(!tableId){
+    alert('No table selected');
+    return;
+  }
+  if(confirm('Are you sure you want to delete this data table?')){
+    $.post('/StudentLogger/php/delete_datatable.php',
+      {Data_table_ID: tableId},
+      alert('Successfully deleted datatable')
+    );
+    window.location.reload();
+  }
 }
 
 function viewTable(){
@@ -100,7 +111,18 @@ function editFunction(){
 }
 
 function removeFunction(){
-  alert('TODO');
+  var functionId = $('#functionSelect').val();
+  if(!functionId){
+    alert('No function selected');
+    return;
+  }
+  if(confirm('Are you sure you want to delete this function?')){
+    $.post('/StudentLogger/php/delete_function.php',
+      {Function_ID: functionId},
+      alert('Successfully deleted function')
+    );
+    window.location.reload();
+  }
 }
 
 function viewFunctionOutput(){
