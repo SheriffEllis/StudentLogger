@@ -1,6 +1,12 @@
 <?php
   session_start();
-  $title = 'Create Table';
+  if(isset($_POST['_ID'])){
+    $title = 'Edit Table';
+    $Data_table_ID = $_POST['_ID'];
+  }
+  else{
+    $title = 'Create Table';
+  }
   $web_section = 'data_representation';
   $current_path = getenv('CURRENT_PATH');
 
@@ -20,18 +26,28 @@
 
   //Data table submitted
   if(!empty($_POST['submitted'])){
-    //create table
-    $sql = "INSERT INTO data_table (Table_title, Table_description) VALUES (?, ?)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ss", $Title, $Description);
-    $stmt->execute();
-    $stmt->close();
+    if(isset($Data_table_ID)){
+      //edit table
+      $sql = "UPDATE data_table SET Table_title=?, Table_description=? WHERE Data_table_ID=$Data_table_ID";
+      $stmt = $conn->prepare($sql);
+      $stmt->bind_param("ss", $Title, $Description);
+      $stmt->execute();
+      $stmt->close();
+      $new_datatable_ID = $Data_table_ID;
+    }else{
+      //create table
+      $sql = "INSERT INTO data_table (Table_title, Table_description) VALUES (?, ?)";
+      $stmt = $conn->prepare($sql);
+      $stmt->bind_param("ss", $Title, $Description);
+      $stmt->execute();
+      $stmt->close();
 
-    $stmt = $conn->prepare("SELECT LAST_INSERT_ID()");
-    $stmt->bind_result($new_datatable_ID);
-    $stmt->execute();
-    $stmt->fetch();
-    $stmt->close();
+      $stmt = $conn->prepare("SELECT LAST_INSERT_ID()");
+      $stmt->bind_result($new_datatable_ID);
+      $stmt->execute();
+      $stmt->fetch();
+      $stmt->close();
+    }
 
     $sql = "UPDATE dataset SET Data_table_ID=? WHERE Dataset_ID=?";
     $stmt = $conn->prepare($sql);
@@ -63,6 +79,11 @@
   require($current_path . '/templates/navbar.php');
 ?>
   <form id="tableForm" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post">
+    <?php
+      if(isset($Data_table_ID)){
+        echo "<input name='_ID' value='$Data_table_ID' style='display: none;'/>";
+      }
+    ?>
     <div class="container box">
       <div class="row row-padded text-center">
         <input id="Title" name="Title" class="col-lg-8 col-centered output-text" type="text"

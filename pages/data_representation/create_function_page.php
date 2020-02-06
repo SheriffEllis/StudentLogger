@@ -1,6 +1,12 @@
 <?php
   session_start();
-  $title = 'Create Function';
+  if(isset($_POST['_ID'])){
+    $title = 'Edit Function';
+    $Function_ID = $_POST['_ID'];
+  }
+  else{
+    $title = 'Create Function';
+  }
   $web_section = 'data_representation';
   $current_path = getenv('CURRENT_PATH');
 
@@ -23,18 +29,28 @@
 
   //function submitted
   if(!empty($_POST['submitted'])){
-    //create function
-    $sql = "INSERT INTO function (Function_title, Function_description, Function_type) VALUES (?, ?, ?)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssi", $Title, $Description, $Function_type);
-    $stmt->execute();
-    $stmt->close();
+    if(isset($Function_ID)){
+      //edit function
+      $sql = "UPDATE function SET Function_title=?, Function_description=?, Function_type? WHERE Function_ID=$Function_ID";
+      $stmt = $conn->prepare($sql);
+      $stmt->bind_param("ssi", $Title, $Description, $Function_type);
+      $stmt->execute();
+      $stmt->close();
+      $new_function_ID = $Function_ID;
+    }else{
+      //create function
+      $sql = "INSERT INTO function (Function_title, Function_description, Function_type) VALUES (?, ?, ?)";
+      $stmt = $conn->prepare($sql);
+      $stmt->bind_param("ssi", $Title, $Description, $Function_type);
+      $stmt->execute();
+      $stmt->close();
 
-    $stmt = $conn->prepare("SELECT LAST_INSERT_ID()");
-    $stmt->bind_result($new_function_ID);
-    $stmt->execute();
-    $stmt->fetch();
-    $stmt->close();
+      $stmt = $conn->prepare("SELECT LAST_INSERT_ID()");
+      $stmt->bind_result($new_function_ID);
+      $stmt->execute();
+      $stmt->fetch();
+      $stmt->close();
+    }
 
     $sql = "UPDATE dataset SET Function_ID=? WHERE Dataset_ID=?";
     $stmt = $conn->prepare($sql);
@@ -65,6 +81,11 @@
   require($current_path . '/templates/navbar.php');
 ?>
   <form id="functionForm" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post">
+    <?php
+      if(isset($Function_ID)){
+        echo "<input name='_ID' value='$Function_ID' style='display: none;'/>";
+      }
+    ?>
     <div class="container box">
       <div class="row row-padded text-center">
         <input id="Title" name="Title" class="col-lg-8 col-centered output-text" type="text"

@@ -10,23 +10,33 @@
   }
 
   //TODO?: allow function output to be selected as dataset
-  //TODO: adjust for function
   $Title = $_POST['Title'];
   $Description = $_POST['Description'];
   $Dataset_IDs = $_POST['Dataset_IDs'];
   $Dataset_index = $_POST['Dataset_index'];
   $Postback = $_POST['Postback'];
-  $javascript_data = "'".$Title."', '".$Description.
-    "', [".implode(', ', $Dataset_IDs)."], ".$Dataset_index;
-  if(isset($_POST['Function_type'])){
-    $Function_type = $_POST['Function_type'];
-    $javascript_data = "$javascript_data, $Function_type";
-  }
+  if(isset($_POST['Function_type'])){$Function_type = $_POST['Function_type'];}
+  if(isset($_POST['_ID'])){$_ID = $_POST['_ID'];}
 
   require($current_path . '/templates/navbar.php');
 ?>
 
   <form id="datasetForm" action="<?php echo $Postback; ?>" method="post">
+    <div style="display: none;">
+      <input name="Title" value="<?php echo $Title; ?>" />
+      <input name="Description" value="<?php echo $Description; ?>" />
+      <?php
+        foreach($Dataset_IDs as $index=>$Dataset_ID){
+          echo "<input name='Dataset_IDs[$index]' value='$Dataset_ID' />";
+        }
+        if(isset($Function_type)){
+          echo "<input name='Function_type' value='$Function_type' />";
+        }
+        if(isset($_ID)){
+          echo "<input name='_ID' value='$_ID' />";
+        }
+      ?>
+    </div>
     <div class="container box">
       <div class="row row-padded text-center output-text">
         <input id="datasetName" name="dataset_name" type="text" placeholder="Enter dataset name..."/>
@@ -67,8 +77,8 @@
         </div>
 
         <div class="row row-padded text-center">
-          <button class="btn btn-success btn-regular" type="button" onclick="selectDataset(<?php echo $javascript_data; ?>)">Select</button>
-          <button class="btn btn-danger btn-regular" type="button" onclick="cancelDataset(<?php echo $javascript_data; ?>)">Cancel</button>
+          <button class="btn btn-success btn-regular" type="button" onclick="selectDataset(<?php echo $Dataset_index; ?>)">Select</button>
+          <button class="btn btn-danger btn-regular" type="button" onclick="cancelDataset()">Cancel</button>
         </div>
       </div>
 
