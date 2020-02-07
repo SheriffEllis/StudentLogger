@@ -59,7 +59,19 @@ function removeTable(){
 }
 
 function viewTable(){
-  alert('TODO');
+  var url = '/StudentLogger/pages/data_representation/view_table_page.php';
+  var tableId = $('#tableSelect').val();
+  if(!tableId){
+    alert('No table selected');
+    return;
+  }
+  var form = $(`
+    <form action="${url}" style="display: none;" method="post">
+      <input type="text" name="Data_table_ID" value="${tableId}"></input>
+    </form>
+  `);
+  $('body').append(form);
+  form.submit();
 }
 
 function selectFunction(){

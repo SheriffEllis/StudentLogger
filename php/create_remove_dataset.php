@@ -13,10 +13,12 @@
 
     $conditions = "";
     if(isset($POST["ticked"])){
+      $conditions = "WHERE ";
       $ticked = $POST["ticked"];
       $investigated_field = $POST["investigated_field"];
       $comparator = $POST["comparator"];
       $compared_value = $POST["compared_value"];
+
       if(isset($POST["logic_operator"])){
         $logic_operator = $POST["logic_operator"];
       }else{
@@ -24,11 +26,11 @@
       }
 
       for($i = 0; !empty($ticked[$i]); $i++){
-        $conditions = $conditions . " " . $investigated_field[$i] . $comparator[$i] . $compared_value[$i] . " ";
+        $conditions = $conditions . " " . $investigated_field[$i] . $comparator[$i] . "'" . $compared_value[$i] . "'" . " ";
         if(!empty($ticked[$i+1])){$conditions = $conditions . $logic_operator[$i] . " ";}
       }
     }
-    $Query = "SELECT $output_field FROM $selected_table WHERE $conditions ORDER BY $order_field $order";
+    $Query = "SELECT $output_field FROM $selected_table $conditions ORDER BY $order_field $order";
 
     $stmt->execute();
     $result = $conn->query("SELECT LAST_INSERT_ID() AS Dataset_ID");
