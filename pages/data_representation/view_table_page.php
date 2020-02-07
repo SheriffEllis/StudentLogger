@@ -48,7 +48,6 @@
 
     <div id="buffer-box-small"></div>
 
-    <!-- TODO: enter actual table values -->
     <table class="col-centered">
       <?php
         function retrieveColumn($conn, $Dataset){
@@ -63,7 +62,7 @@
             }
             return $results;
           }else{
-            return null;
+            return "Error";
           }
         }
 

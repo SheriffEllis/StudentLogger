@@ -31,7 +31,7 @@
   if(!empty($_POST['submitted'])){
     if(isset($Function_ID)){
       //edit function
-      $sql = "UPDATE function SET Function_title=?, Function_description=?, Function_type? WHERE Function_ID=$Function_ID";
+      $sql = "UPDATE function SET Function_title=?, Function_description=?, Function_type=? WHERE Function_ID=$Function_ID";
       $stmt = $conn->prepare($sql);
       $stmt->bind_param("ssi", $Title, $Description, $Function_type);
       $stmt->execute();

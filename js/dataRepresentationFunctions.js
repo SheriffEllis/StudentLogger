@@ -138,5 +138,17 @@ function removeFunction(){
 }
 
 function viewFunctionOutput(){
-  alert('TODO');
+  var url = '/StudentLogger/pages/data_representation/view_function_page.php';
+  var functionId = $('#functionSelect').val();
+  if(!functionId){
+    alert('No function selected');
+    return;
+  }
+  var form = $(`
+    <form action="${url}" style="display: none;" method="post">
+      <input type="text" name="Function_ID" value="${functionId}"></input>
+    </form>
+  `);
+  $('body').append(form);
+  form.submit();
 }
