@@ -37,6 +37,7 @@
     <div class="row row-padded">
       <div class="col-lg-6 rounded-box tb-padding">
         <?php
+          //TODO: calculate age via birthdate
           foreach($values as $field => $value){
             echo '
             <div class="row">

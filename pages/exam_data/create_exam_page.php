@@ -15,6 +15,7 @@
     $Format_ID = $_POST['Format_ID'];
     $Pupil_Grades = $_POST['Pupil_Grades'];
 
+    //Create exam
     $sql = 'INSERT INTO grade (Paper, Date, Format_ID, Pupil_ID, Grade)
       VALUES (?, ?, ?, ?, ?)';
     $stmt = $conn->prepare($sql);
@@ -26,6 +27,9 @@
       $stmt->execute();
     }
     $stmt->close();
+    
+    include($current_path . "/php/publish_notifications.php");
+    publishNotifications($conn, $Paper, $Format_ID, $Pupil_Grades);
 
     header('Location: /StudentLogger/pages/exam_data/exam_data_page.php');
   }else{

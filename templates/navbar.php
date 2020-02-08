@@ -37,14 +37,22 @@
             <button id="notifications-button" class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
               <span class="caret"></span>
               <span class="glyphicon glyphicon-bell"></span>
-              <!-- TODO: substitute real number of notifications -->
-              (3)
+              <?php
+                include($current_path . "/php/retrieve_notifications.php");
+                $Notifications = retrieveNotifications($_SESSION['usr']);
+                echo "(" . count($Notifications) . ")";
+              ?>
             </button>
             <ul class="dropdown-menu">
-              <!-- TODO: substitute real notifications -->
-              <li><a href="#">[STUDENT1] is struggling in [CLASS1]</a></li>
-              <li><a href="#">[STUDENT2] is struggling in [CLASS2]</a></li>
-              <li><a href="#">[STUDENT3] is struggling in [CLASS3]</a></li>
+              <?php
+                foreach($Notifications as $ID=>$Notification){
+                  echo "
+                    <li>
+                      <a><button class=\"btn btn-danger\" onclick=\"readNotification('$ID')\">X</button> $Notification</a>
+                    </li>
+                  ";
+                }
+              ?>
             </ul>
           </div>
         </li>
