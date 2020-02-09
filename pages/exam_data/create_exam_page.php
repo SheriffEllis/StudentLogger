@@ -9,6 +9,8 @@
     die('Connection failed: ' . $conn->connect_error);
   }
 
+  //TODO?: Data validation
+
   if(!empty($_POST['Paper'])){
     $Paper = $_POST['Paper'];
     $Date = $_POST['Date'];
@@ -27,7 +29,7 @@
       $stmt->execute();
     }
     $stmt->close();
-    
+
     include($current_path . "/php/publish_notifications.php");
     publishNotifications($conn, $Paper, $Format_ID, $Pupil_Grades);
 
