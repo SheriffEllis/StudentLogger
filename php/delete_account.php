@@ -16,10 +16,5 @@
   $stmt->execute();
   $stmt->close();
 
-  $stmt = $conn->prepare("DELETE FROM grade_notification WHERE Username=?");
-  $stmt->bind_param('s', $usr);
-  $stmt->execute();
-  $stmt->close();
-
   $conn->close();
 ?>

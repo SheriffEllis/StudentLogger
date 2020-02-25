@@ -1,11 +1,12 @@
 <?php
   session_start();
-  $title = 'Create Function';
+  $title = 'Edit Function';
   $web_section = 'data_representation';
   $current_path = getenv('CURRENT_PATH');
 
   require($current_path . '/templates/navbar.php');
 ?>
+  <!-- TODO: enter existing data into form -->
   <form action="" method="post">
     <div class="container box">
       <div class="row row-padded text-center">
@@ -13,7 +14,7 @@
       </div>
 
       <div class="row row-padded text-center">
-        <textarea name="function-description" class="col-lg-8 col-centered output-text description-box" placeholder="Enter function description..."></textarea>
+        <textarea name="function_description" class="col-lg-8 col-centered output-text description-box" placeholder="Enter function description..."></textarea>
       </div>
 
       <!-- TODO: input actual functions into options -->

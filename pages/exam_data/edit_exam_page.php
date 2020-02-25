@@ -9,7 +9,7 @@
     die('Connection failed: ' . $conn->connect_error);
   }
 
-  //TODO?: re-enter data from selected exam
+  //TODO: re-enter data from selected exam
 
   $Paper = $_POST['Paper'];
   //checks for Date rather than Paper because Paper is given by editExam script
@@ -27,9 +27,6 @@
       $stmt->execute();
     }
     $stmt->close();
-
-    include($current_path . "/php/publish_notifications.php");
-    publishNotifications($conn, $Paper, $Format_ID, $Pupil_Grades);
 
     header('Location: /StudentLogger/pages/exam_data/exam_data_page.php');
   }else{

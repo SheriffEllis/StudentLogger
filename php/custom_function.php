@@ -2,26 +2,22 @@
 function customFunction($Function_type, $inputs = null){
   switch($Function_type){
     case 0:
-      //SUM
-      $functionName = "SUM";
+      $functionName = 'SUM';
       if($inputs == null){return $functionName;}
       $sum = 0;
       foreach($inputs as $num){
-        if(gettype($num) != "integer"){return "Error";}
         $sum += $num;
       }
-      return $sum;
+      return array('functionName'=>$functionName, 'output'=>$sum);
     case 1:
-      //AVERAGE
-      $functionName = "AVERAGE";
+      $functionName = 'AVERAGE';
       if($inputs == null){return $functionName;}
       $sum = 0;
       foreach($inputs as $num){
-        if(gettype($num) != "integer"){return "Error";}
         $sum += $num;
       }
       $average = $sum/count($inputs);
-      return $average;
+      return array('functionName'=>$functionName, 'output'=>$average);
     default: return null;
   }
 }

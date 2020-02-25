@@ -24,8 +24,8 @@
           $buttons = '
           <div class="text-center">
             <a class="btn-regular btn btn-success" href="create_table_page.php">Add Table</a>
-            <button class="btn-regular btn btn-warning" onclick="editTable()">Edit Table</button>
-            <button class="btn-regular btn btn-danger" onclick="removeTable()">Remove Table</button>
+            <a class="btn-regular btn btn-warning" href="edit_table_page.php">Edit Table</a>
+            <a class="btn-regular btn btn-danger" href="">Remove Table</a>
           </div>
           ';
           require($current_path . '/templates/query_box_template.php');
@@ -39,7 +39,7 @@
         <p id="table-columns" class="description-text">...</p>
 
         <div class="row row-padded text-center">
-          <button class="btn-regular btn btn-primary text-center" onclick="viewTable()">View Table</button>
+          <a class="btn-regular btn btn-primary text-center" href="view_table_page.php">View Table</a>
         </div>
       </div>
     </div>
@@ -62,8 +62,8 @@
           $buttons = '
           <div class="text-center">
             <a class="btn-regular btn btn-success" href="create_function_page.php">Add Function</a>
-            <button class="btn-regular btn btn-warning" onclick="editFunction()">Edit Function</button>
-            <button class="btn-regular btn btn-danger" onclick="removeFunction()">Remove Function</button>
+            <a class="btn-regular btn btn-warning" href="edit_function_page.php">Edit Function</a>
+            <a class="btn-regular btn btn-danger" href="">Remove Function</a>
           </div>
           ';
           require($current_path . '/templates/query_box_template.php');
@@ -80,7 +80,7 @@
         <p id="function-type" class="description-text">...</p>
 
         <div class="row row-padded text-center">
-        <button class="btn-regular btn btn-primary text-center" onclick="viewFunctionOutput()">View Function Output</button>
+          <a class="btn-regular btn btn-primary text-center" href="view_function_page.php">View Function Output</a>
         </div>
       </div>
     </div>

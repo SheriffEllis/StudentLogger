@@ -20,7 +20,7 @@ function searchNormal(searchId, selectId, table, idField, outputField){
     function(results){
       select.empty();
       $.each(results, function(index, value){
-        select.append(`<option value="${index}">${value}</option>`);
+        select.append(`<option value=${index}>${value}</option>`);
       });
     }, 'json');
 }
@@ -66,7 +66,7 @@ function searchCriterion(searchId, selectId, criterionId, table, idField, output
     function(results){
       select.empty();
       $.each(results, function(index, value){
-        select.append(`<option value="${index}">${value}</option>`);
+        select.append(`<option value=${index}>${value}</option>`);
       });
     }, 'json');
 }

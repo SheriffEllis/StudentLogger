@@ -1,9 +1,5 @@
 <?php
   require($current_path . '/templates/metadata.php');
-  //If user not logged in, redirect to login page
-  if(empty($_SESSION['usr'])){
-    header("Location: /StudentLogger/index.php");
-  }
 ?>
 
   <!--
@@ -41,26 +37,18 @@
             <button id="notifications-button" class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
               <span class="caret"></span>
               <span class="glyphicon glyphicon-bell"></span>
-              <?php
-                include($current_path . "/php/retrieve_notifications.php");
-                $Notifications = retrieveNotifications($_SESSION['usr']);
-                echo "(" . count($Notifications) . ")";
-              ?>
+              <!-- TODO: substitute real number of notifications -->
+              (3)
             </button>
             <ul class="dropdown-menu">
-              <?php
-                foreach($Notifications as $ID=>$Notification){
-                  echo "
-                    <li>
-                      <a><button class=\"btn btn-danger\" onclick=\"readNotification('$ID')\">X</button> $Notification</a>
-                    </li>
-                  ";
-                }
-              ?>
+              <!-- TODO: substitute real notifications -->
+              <li><a href="#">[STUDENT1] is struggling in [CLASS1]</a></li>
+              <li><a href="#">[STUDENT2] is struggling in [CLASS2]</a></li>
+              <li><a href="#">[STUDENT3] is struggling in [CLASS3]</a></li>
             </ul>
           </div>
         </li>
-        <li><a href="/StudentLogger/php/logout.php"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
+        <li><a href="/StudentLogger/index.php"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
       </ul>
     </div>
   </nav>

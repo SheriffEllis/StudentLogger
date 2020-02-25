@@ -33,7 +33,7 @@ function searchExam(searchId, selectId, criterionId, blankSearch = false){
     function(results){
       select.empty();
       $.each(results, function(index, value){
-        select.append(`<option value="${value}">${value}</option>`);
+        select.append(`<option value=${value}>${value}</option>`);
       });
     }, 'json');
 }
