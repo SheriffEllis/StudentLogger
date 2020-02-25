@@ -1,5 +1,9 @@
 <?php
   require($current_path . '/templates/metadata.php');
+  //If user not logged in, redirect to login page
+  if(empty($_SESSION['usr'])){
+    header("Location: /StudentLogger/index.php");
+  }
 ?>
 
   <!--
@@ -56,7 +60,7 @@
             </ul>
           </div>
         </li>
-        <li><a href="/StudentLogger/index.php"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
+        <li><a href="/StudentLogger/php/logout.php"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
       </ul>
     </div>
   </nav>

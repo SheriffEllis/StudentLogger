@@ -1,6 +1,5 @@
 <?php
   session_start();
-  unset($_SESSION['usr']);
   $title = 'Login';
   $current_path = getenv('CURRENT_PATH');
   include($current_path . '/php/process_login.php');
@@ -32,7 +31,7 @@
 
       <div class="form-group">
         <label for="pwd" class="sr-only">Password</label>
-        <input type="password" class="col-lg-4 col-centered form-control form-m" placeholder="Enter password" 
+        <input type="password" class="col-lg-4 col-centered form-control form-m" placeholder="Enter password"
         name="pwd" required autocomplete="<?php
           //Auto input password if user clicked "Remember me" tickbox
           if(empty($_SESSION['remember'])){
