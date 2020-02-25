@@ -4,131 +4,84 @@
   $web_section = 'data_representation';
   $current_path = getenv('CURRENT_PATH');
 
+  $conn = new mysqli(getenv('HTTP_HOST'), getenv('HTTP_USER'), getenv('HTTP_PASS'), getenv('HTTP_DATABASE'));
+  if ($conn->connect_error) {
+    die('Connection failed: ' . $conn->connect_error);
+  }
+
+  //TODO?: allow function output to be selected as dataset
+  $Title = $_POST['Title'];
+  $Description = $_POST['Description'];
+  $Dataset_IDs = $_POST['Dataset_IDs'];
+  //remove the null value set by select dataset button
+  array_pop($Dataset_IDs);
+  //TODO: fix deletion of datasets from datatable/function on cancel
+  $Dataset_index = $_POST['Dataset_index'];
+  $Postback = $_POST['Postback'];
+  if(isset($_POST['Function_type'])){$Function_type = $_POST['Function_type'];}
+  if(isset($_POST['_ID'])){$_ID = $_POST['_ID'];}
+
   require($current_path . '/templates/navbar.php');
 ?>
 
-  <form action="" method="post">
+  <form id="datasetForm" action="<?php echo $Postback; ?>" method="post">
+    <div style="display: none;">
+      <input name="Title" value="<?php echo $Title; ?>" />
+      <input name="Description" value="<?php echo $Description; ?>" />
+      <?php
+        foreach($Dataset_IDs as $index=>$Dataset_ID){
+          echo "<input name='Dataset_IDs[$index]' value='$Dataset_ID' />";
+        }
+        if(isset($Function_type)){
+          echo "<input name='Function_type' value='$Function_type' />";
+        }
+        if(isset($_ID)){
+          echo "<input name='_ID' value='$_ID' />";
+        }
+      ?>
+    </div>
     <div class="container box">
+      <div class="row row-padded text-center output-text">
+        <input id="datasetName" name="dataset_name" type="text" placeholder="Enter dataset name..."/>
+      </div>
+
       <div class="row row-padded text-center">
-        <select class="col-centered output-text">
+        <select id="tableSelect" name="selected_table" onchange="renderOptions()" class="col-centered output-text">
           <option disabled selected hidden>Select Table</option>
-          <option>Table1</option>
-          <option>Table2</option>
-          <option>Table3</option>
+          <?php
+            //Select all table names except dataset and teacher
+            $sql = 'SELECT table_name FROM information_schema.tables
+              WHERE table_schema ="student_logger" AND table_name != "dataset" AND table_name != "teacher"';
+            $results = $conn->query($sql);
+            while($result = $results->fetch_assoc()){
+              echo '<option value="'.$result['table_name'].'">'.$result['table_name'].'</option>';
+            }
+          ?>
         </select>
       </div>
 
-      <div class="row row-padded text-center">
-        <select class="col-centered output-text">
-          <option disabled selected hidden>Select Output Field</option>
-          <option>Field1</option>
-          <option>Field2</option>
-          <option>Field3</option>
+      <div id="outputFieldRow" class="row row-padded text-center" style="display: none;">
+        <select id="outputFieldSelect" name="output_field" class="col-centered output-text" >
         </select>
       </div>
 
-      <div class="row row-padded text-center">
-        <select class="output-text">
-          <option disabled selected hidden>Order Determining Field</option>
-          <option>Field1</option>
-          <option>Field2</option>
-          <option>Field3</option>
+      <div id="orderDeterminingRow" class="row row-padded text-center" style="display: none;">
+        <select id="orderDeterminingFieldSelect" name="order_field" class="output-text">
         </select>
-        <select class="output-text">
+        <select id="orderSelect" name="order" class="output-text">
           <option disabled selected hidden>Order</option>
-          <option>Ascending</option>
-          <option>Descending</option>
+          <option value="ASC">Ascending</option>
+          <option value="DESC">Descending</option>
         </select>
       </div>
 
-      <!-- First condition box -->
-      <!-- TODO: implement dynamic adding of more condition boxes -->
       <div class="row row-padded">
-        <div class="col-lg-8 col-centered box">
-          <div class="row row-padded label-text text-center">
-            <label>Condition 1</label>
-            <input class="mediumCheckbox" type="checkbox"></input>
-          </div>
-
-          <div class="row row-padded text-center">
-            <select class="output-text">
-              <option disabled selected hidden>Investigated Field</option>
-              <option>Field1</option>
-              <option>Field2</option>
-              <option>Field3</option>
-            </select>
-          </div>
-
-          <!-- with adequete comparators, the "not" option isn't necessary -->
-
-          <div class="row row-mid-padded text-center">
-            <select class="output-text">
-              <option disabled selected hidden>Comparator</option>
-              <option> == </option>
-              <option> != </option>
-              <option> <  </option>
-              <option> <= </option>
-              <option> >  </option>
-              <option> => </option>
-            </select>
-          </div>
-
-          <div class="row row-mid-padded">
-            <p class="col-lg-6 text-right output-text">Compared Value:</p>
-            <input class="col-lg-3 vertical-text-padding" type="text" placeholder="Enter value..."></input>
-          </div>
+        <div id="conditionsSection">
         </div>
 
-        <div class="row row-mid-padded text-center">
-          <select class="col-centered output-text">
-            <option selected disabled hidden>Logical Operator</option>
-            <option>AND</option>
-            <option>OR</option>
-            <option>XOR</option>
-            <option>NAND</option>
-            <option>NOR</option>
-          </select>
-        </div>
-
-        <!-- Condition 2 -->
-        <div class="col-lg-8 col-centered box">
-          <div class="row row-padded label-text text-center">
-            <label>Condition 1</label>
-            <input class="mediumCheckbox" type="checkbox"></input>
-          </div>
-
-          <div class="row row-padded text-center">
-            <select class="output-text">
-              <option disabled selected hidden>Investigated Field</option>
-              <option>Field1</option>
-              <option>Field2</option>
-              <option>Field3</option>
-            </select>
-          </div>
-
-          <div class="row row-mid-padded text-center">
-            <select class="output-text">
-              <option disabled selected hidden>Comparator</option>
-              <option> == </option>
-              <option> != </option>
-              <option> <  </option>
-              <option> <= </option>
-              <option> >  </option>
-              <option> => </option>
-            </select>
-          </div>
-
-          <div class="row row-mid-padded">
-            <p class="col-lg-6 text-right output-text">Compared Value:</p>
-            <input class="col-lg-3 vertical-text-padding" type="text" placeholder="Enter value..."></input>
-          </div>
-        </div>
-
-
-        <!-- TODO: make submit button actuall submit relevant data -->
         <div class="row row-padded text-center">
-          <button class="btn btn-success btn-regular" type="submit">Select</button>
-          <a class="btn btn-danger btn-regular" href="data_representation_page.php">Cancel</a>
+          <button class="btn btn-success btn-regular" type="button" onclick="selectDataset(<?php echo $Dataset_index; ?>)">Select</button>
+          <button class="btn btn-danger btn-regular" type="button" onclick="cancelDataset()">Cancel</button>
         </div>
       </div>
 
@@ -138,4 +91,5 @@
 
   <div id="buffer-box"></div>
 </body>
+<script src="/StudentLogger/js/selectDatasetFunctions.js"></script>
 </html>

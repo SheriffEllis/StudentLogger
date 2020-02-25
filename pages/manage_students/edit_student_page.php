@@ -28,6 +28,7 @@
     $Last_name = $_POST['Last_name'];
     $Email = $_POST['Email'];
     $Year_group = $_POST['Year_group'];
+    //TODO: replace age with birthdate
     $Age = $_POST['Age'];
     $Sex = $_POST['Sex'];
     $sql = 'UPDATE student SET First_name=?, Last_name=?, Email=?, Year_group=?, Age=?, Sex=? WHERE Student_ID=?';
