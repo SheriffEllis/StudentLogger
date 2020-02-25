@@ -114,6 +114,7 @@ function selectDataset(Dataset_index){
 
 function cancelDataset(){
   var form = $('#datasetForm');
+  //TODO: replace emptying entire form with emptying just dataset info
   form.empty();
   form.submit();
 }
