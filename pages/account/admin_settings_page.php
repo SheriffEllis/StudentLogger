@@ -50,7 +50,7 @@
 
     <div class="row tb-padding">
       <div class="label-text col-lg-4 text-right">Privilege:</div>
-      <input id="privilege" type="number" step="1" min="0" max="2" value="2" class="vertical-text-padding col-lg-1"></input>
+      <input id="privilege" type="number" step="1" min="0" max="1" value="1" class="vertical-text-padding col-lg-1"></input>
       <div class="col-lg-1"></div>
       <button class="btn btn-success btn-regular" type="button"
       onclick="updatePrivilege()">Update Privilege</button>
