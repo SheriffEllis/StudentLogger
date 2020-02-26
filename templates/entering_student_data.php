@@ -26,13 +26,28 @@
           $value = '';
         }
 
-        echo '
-        <div class="row form-group">
-          <label for="'. $field.'" class="label-text text-center"'.$hidden.'>'.$field.'</label>
-          <input type="text" class="col-lg-4 col-centered form-control form-m"
-          name="'.$field.'" value="'.$value.'" '.$readonly.' '.$hidden.' '.$required.'>
-        </div>
-        ';
+        if($field == 'Sex'){
+          echo '
+          <div class="row form-group">
+            <label for="Sex" class="label-text text-center">Sex</label>
+            <select type="text" class="col-lg-4 col-centered form-control form-m"
+            name="Sex" value="'.$value.'" required>
+              <option disabled selected hidden>Select Sex</option>
+              <option value="M">Male</option>
+              <option value="F">Female</option>
+              <option value="O">Other</option>
+            </select>
+          </div>
+          ';
+        }else{
+          echo '
+          <div class="row form-group">
+            <label for="'. $field.'" class="label-text text-center"'.$hidden.'>'.$field.'</label>
+            <input type="text" class="col-lg-4 col-centered form-control form-m"
+            name="'.$field.'" value="'.$value.'" '.$readonly.' '.$hidden.' '.$required.'>
+          </div>
+          ';
+        }
       }
     ?>
 
