@@ -52,7 +52,6 @@
     <p class="output-text"><?php echo customFunction($Function_type); ?></p>
   </div>
 
-  <!-- TODO: enter actual function values and output -->
   <table class="col-centered">
     <?php
       function retrieveColumn($conn, $Dataset){
