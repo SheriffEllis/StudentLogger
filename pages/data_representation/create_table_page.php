@@ -49,6 +49,7 @@
       $stmt->close();
     }
 
+    //Assign each dataset to the new created table
     $sql = "UPDATE dataset SET Data_table_ID=? WHERE Dataset_ID=?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ii", $new_datatable_ID, $Dataset_ID);

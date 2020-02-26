@@ -52,6 +52,7 @@
       $stmt->close();
     }
 
+    //Assign each dataset to the new created function
     $sql = "UPDATE dataset SET Function_ID=? WHERE Dataset_ID=?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ii", $new_function_ID, $Dataset_ID);
