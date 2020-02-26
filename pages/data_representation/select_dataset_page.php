@@ -9,13 +9,12 @@
     die('Connection failed: ' . $conn->connect_error);
   }
 
-  //TODO?: allow function output to be selected as dataset
   $Title = $_POST['Title'];
   $Description = $_POST['Description'];
   $Dataset_IDs = $_POST['Dataset_IDs'];
   //remove the null value set by select dataset button
   array_pop($Dataset_IDs);
-  //TODO: fix deletion of datasets from datatable/function on cancel
+  
   $Dataset_index = $_POST['Dataset_index'];
   $Postback = $_POST['Postback'];
   if(isset($_POST['Function_type'])){$Function_type = $_POST['Function_type'];}
