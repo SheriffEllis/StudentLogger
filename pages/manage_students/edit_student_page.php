@@ -20,7 +20,6 @@
   }
 
   $Student_ID = $_POST['Student_ID'];
-  //TODO: Data validation (optional)
   //if data has been submitted
   if(!empty($_POST['First_name'])){
     //Enter known fields into student
