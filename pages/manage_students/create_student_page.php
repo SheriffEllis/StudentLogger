@@ -18,7 +18,6 @@
     array_push($fields, $row["Field"]);
   }
 
-  //TODO: data validation (optional)
   //if data has been submitted
   if(!empty($_POST["First_name"])){
     $Student_ID = $_POST["Student_ID"];
