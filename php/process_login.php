@@ -33,7 +33,7 @@
     if(!empty($hash)){
       if(password_verify($pwd, $hash)){
         //Access granted
-        $_SESSION['usr'] = $_POST['usr'];
+        $_SESSION['usr'] = $usr;
         header("Location: /StudentLogger/pages/homepage.php");
       }else{
         //Access denied: wrong password
