@@ -9,8 +9,6 @@
     die('Connection failed: ' . $conn->connect_error);
   }
 
-  //TODO?: re-enter data from selected exam
-
   $Paper = $_POST['Paper'];
   //checks for Date rather than Paper because Paper is given by editExam script
   if(!empty($_POST['Date'])){

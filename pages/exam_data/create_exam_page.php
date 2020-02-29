@@ -9,8 +9,6 @@
     die("Connection failed: " . $conn->connect_error);
   }
 
-  //TODO?: Data validation
-
   if(!empty($_POST["Paper"])){
     $Paper = $_POST["Paper"];
     $Date = $_POST["Date"];

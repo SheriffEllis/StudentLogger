@@ -29,8 +29,6 @@
     }
   ?>
 
-    <!-- TODO: pre-enter data for edit page -->
-
     <div class="container">
       <div class="row row-padded">
         <label class="label-text text-right col-lg-6" for="Paper">Paper Name:</label>
@@ -92,7 +90,7 @@
               $row = $results->fetch_assoc();
               $min_grade = $row['Symbol'];
 
-              echo '<option value="'.$id.'">('.$max_grade.') => ('.$min_grade.')</option>';
+              echo '<option value="'.$id.'">('.$max_grade.') to ('.$min_grade.')</option>';
             }
           ?>
         </select>
