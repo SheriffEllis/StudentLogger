@@ -19,7 +19,8 @@
 
     //Check if notification for poor grade already exists
     foreach($poor_grade_pupils as $Pupil_ID){
-      $sql = "SELECT Notification_ID FROM grade_notification WHERE Pupil_ID=$Pupil_ID AND isRead=false LIMIT 1";
+      $sql = "SELECT Notification_ID FROM grade_notification WHERE Pupil_ID=$Pupil_ID
+        AND isRead=false LIMIT 1";
       $results = $conn->query($sql);
       $row = $results->fetch_assoc();
       if(!$row){
@@ -28,7 +29,8 @@
         continue;
       }
       //Otherwise search for if notifications exist for this paper
-      $sql = "SELECT Notification_ID FROM grade_notification WHERE Pupil_ID=$Pupil_ID AND (Paper1=? OR Paper2=? OR Paper3=?) LIMIT 1";
+      $sql = "SELECT Notification_ID FROM grade_notification WHERE Pupil_ID=$Pupil_ID AND
+        (Paper1=? OR Paper2=? OR Paper3=?) LIMIT 1";
       $stmt = $conn->prepare($sql);
       $stmt->bind_param("sss", $Paper, $Paper, $Paper);
       $stmt->bind_result($Flag);
